@@ -1,0 +1,41 @@
+VISHU HOME TUITION — FINAL CORRECTED UPDATE CHECKLIST
+22 September 2026
+
+BEFORE DEPLOY
+[ ] Keep previous working ZIP as backup.
+[ ] Extract this corrected ZIP to a new folder.
+[ ] Do NOT change GoDaddy nameservers.
+[ ] Do NOT reconnect vishuhometuition.in.
+[ ] Do NOT recreate/set ADMIN_TOKEN.
+[ ] Do NOT recreate/set RESEND_API_KEY.
+[ ] Do NOT create a new Worker.
+
+DEPLOY
+[ ] Open CMD in the extracted folder.
+[ ] Run: npm install
+[ ] Run: npx wrangler deploy
+[ ] Confirm Worker shown is: vishu-home-tuition-integrated
+
+AFTER DEPLOY
+[ ] Open https://vishuhometuition.in
+[ ] Open https://vishuhometuition.in/api/health
+[ ] Confirm ok=true, backendReady=true, storage=durable-object-sqlite, admin=true.
+[ ] Open https://vishuhometuition.in/admin
+[ ] Confirm System / Email still shows Resend configured and ready.
+[ ] If browser still shows old favicon, hard refresh or close/reopen tab/browser.
+
+FINAL DUMMY TUTOR TEST
+[ ] Submit Tutor form once.
+[ ] Form does not wait on Resend email calls after data/file save.
+[ ] Applicant receives only Registration Received at submission stage.
+[ ] Admin receives only one New Tutor Registration notification.
+[ ] No separate Payment Proof email goes to applicant/admin.
+[ ] Approve registration in Admin.
+[ ] Applicant receives one combined Registration Approved + Digital ID email.
+[ ] Digital card has no “APPROVED HOME TUTOR” subtitle.
+[ ] Digital card has white/green VERIFIED & APPROVED badge above QR.
+[ ] SCAN TO VERIFY is yellow under QR.
+[ ] QR verification page shows Tutor Contact Number.
+
+ROLLBACK
+If an unexpected problem appears, do not delete Worker/database/domain. Redeploy the previous known-good package to the SAME Worker.

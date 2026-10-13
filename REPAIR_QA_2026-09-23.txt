@@ -1,0 +1,32 @@
+VISHU HOME TUITION — TARGETED REPAIR QA
+Base: VISHU_HOME_TUITION_EXACT_EMERALD_3_BUTTONS_FINAL_2026-09-23.zip
+
+Changes from approved base:
+1. Homepage Quick Enquiry section removed.
+2. Book Free Demo Class -> /quick-enquiry
+3. Header/mobile Contact -> /quick-enquiry
+4. Header/mobile Get a Tutor -> /quick-enquiry
+5. Added public/quick-enquiry/index.html with existing /api/lead + WhatsApp flow.
+6. Added explicit Worker route for /quick-enquiry.
+
+Preserved unchanged from approved base:
+- Teacher registration panel and backend
+- Student registration panel and backend
+- Admin panel
+- Emerald/Gold three-button design and animation
+- Trusted in Gorakhpur
+- How It Works
+- Gallery/sliders/content
+- Registration reliability/upload fixes
+
+Validation:
+- src/index.js syntax: PASS
+- Homepage inline JS syntax: PASS
+- Quick Enquiry inline JS syntax: PASS
+- Teacher panel JS syntax: PASS
+- Student panel JS syntax: PASS
+- Admin panel JS syntax: PASS
+- Teacher button + data-vht-register: PRESENT
+- Student button + data-vht-register: PRESENT
+- Registration overlay + click handler: PRESENT
+- Quick Enquiry route: PRESENT

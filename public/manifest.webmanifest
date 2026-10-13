@@ -1,0 +1,22 @@
+{
+  "name": "VISHU HOME TUITION GORAKHPUR",
+  "short_name": "VISHU HOME TUITION",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#061E49",
+  "icons": [
+    {
+      "src": "/favicon-vishu-home-tuition.png?v=20260922",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png?v=20260922",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

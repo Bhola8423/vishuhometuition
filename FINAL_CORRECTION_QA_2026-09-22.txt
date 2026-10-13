@@ -1,0 +1,62 @@
+VISHU HOME TUITION — FINAL CORRECTION QA
+Date: 22 September 2026
+
+SCOPE LOCK
+Only requested fixes and performance/bug corrections were applied. Existing page copy and original visual assets were preserved. The supplied square logo is used as favicon/browser/app icon only; the existing website/header logo assets were not replaced.
+
+PERFORMANCE
+- public/index.html reduced from ~10.56 MB to ~0.37 MB by externalizing previously embedded base64 payloads/assets.
+- SEO landing page reduced from ~0.56 MB to ~0.09 MB by referencing the identical existing logo asset instead of embedding it as base64.
+- Tutor, Student and Admin panels now load on demand instead of being embedded in the initial homepage payload.
+- Large below-the-fold homepage images remain lazy-loaded and async-decoded.
+- Static /assets/* retain long immutable caching.
+
+EMAIL FLOW
+Normal approved registration applicant flow:
+1) Registration Received
+2) Registration Approved + Digital ID (combined)
+Removed automatic separate payment-proof emails.
+Admin receives one New Tutor/Student Registration email for the submission; payment-proof presence is summarized inside that one admin email.
+Approval status email is not separately sent when status becomes APPROVED; the Digital ID email is the approval email.
+REJECTED/CORRECTION_REQUIRED status emails remain available because they are distinct operational outcomes.
+
+SUBMISSION RESPONSE
+After files and registration data are successfully saved, Resend registration emails are queued in the Durable Object context rather than blocking the registration HTTP response.
+
+DIGITAL CARD / VERIFY
+- Tutor subtitle “APPROVED HOME TUTOR” removed.
+- White rounded VERIFIED & APPROVED badge with green text/tick added above QR.
+- SCAN TO VERIFY displayed in yellow below QR.
+- Footer website URL removed; “Verified by VISHU HOME TUITION” retained.
+- Existing rectangular auto-fit photo behavior retained.
+- Tutor public QR verification details include Contact Number.
+
+FAVICON
+- User-supplied square logo converted to true PNG and used at 512x512 for favicon.
+- 96x96 favicon and 180x180 Apple touch icon generated without cropping.
+- New favicon URL/version used to reduce stale browser-cache problems.
+- Existing header/site logo and OG image remain unchanged.
+
+VALIDATION COMPLETED
+- src/index.js: Node JavaScript syntax check passed.
+- Inline JavaScript syntax checks passed across homepage, SEO landing page, Admin, Tutor and Student panels.
+- No embedded base64 HTML/images remain in the primary homepage/panels/SEO landing page.
+- All local image/link/script file references checked for existence.
+- Source Admin/Tutor/Student HTML files are byte-for-byte synchronized with deployed /public/panels versions.
+- Existing /public/assets files from the prior package were verified unchanged.
+- Existing header logo and OG image were verified unchanged.
+- Visible text extracted from the homepage and SEO landing page is unchanged from the prior package.
+- wrangler.jsonc keeps the same Worker name, Durable Object binding, SQLite storage and production environment variables.
+
+LIVE END-TO-END CONFIRMATION REQUIRED AFTER DEPLOY
+A final dummy Tutor registration + admin approval should be used to confirm live network/email behavior with the existing Cloudflare/Resend account secrets.
+
+SMART PHOTO AUTO-FIT ADDENDUM (2026-09-22)
+- Digital-card canvas remains 1200x720 PNG.
+- Original registration photo remains stored unchanged; smart framing is applied only when rendering the card.
+- Card renderer now uses high-quality canvas smoothing.
+- When browser FaceDetector is available, largest detected face drives crop/zoom/headroom automatically.
+- Universal fallback uses portrait-biased smart crop for browsers without FaceDetector.
+- Tutor/Student upload preview now uses portrait-oriented focal positioning.
+- No external AI/API/model was added, so no new secret, cost, privacy exposure or page-load dependency was introduced.
+- Admin tabs, website controls, backend controls, gallery, system/email access remain unchanged.

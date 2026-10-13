@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#082a61" name="theme-color"/>
+<title>Student Registration | Vishu Home Tuition</title>
+<style>
+:root{
+  --navy:#06285f;--navy2:#0a428f;--blue:#176bd8;--blue2:#2e86ef;--gold:#f6c94a;
+  --ink:#17233a;--muted:#6f7d91;--bg:#f3f6fb;--card:#fff;--line:#dfe7f1;
+  --ok:#17815a;--bad:#c63f45;--warn:#9b671b;
+  --shadow:0 18px 48px rgba(9,42,93,.10);--shadow-soft:0 8px 24px rgba(9,42,93,.07);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Segoe UI Variable Text","Segoe UI",Inter,Roboto,Arial,sans-serif;color:var(--ink);min-height:100vh;background:linear-gradient(180deg,#eef4fd 0,#f7f9fc 260px,#f4f7fb 100%)}
+body:before{content:"";position:fixed;inset:0 0 auto 0;height:250px;pointer-events:none;background:radial-gradient(circle at 12% 4%,rgba(23,107,216,.12),transparent 30%),radial-gradient(circle at 92% 8%,rgba(246,201,74,.13),transparent 26%);z-index:-1}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:12px}.wrap{width:min(100% - 28px,1060px);margin-inline:auto}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(215,225,237,.9);padding-top:env(safe-area-inset-top,0px)}
+.sitebar{min-height:72px;padding:9px 0;display:flex;align-items:center;gap:12px}
+.brand-mark{width:56px;height:56px;flex:0 0 56px;border-radius:14px;display:grid;place-items:center;background:#fff;border:1px solid #dce6f2;box-shadow:0 8px 20px rgba(6,40,95,.12);overflow:hidden;padding:6px}.brand-mark img{width:100%;height:100%;object-fit:contain;display:block}
+.brand-copy{min-width:0;display:flex;flex-direction:column;gap:2px}.brand-copy strong{font-size:14px;line-height:1.1;color:var(--navy);letter-spacing:.05px}.brand-copy small{font-size:10.5px;color:var(--muted);line-height:1.15}.sitebar-spacer{margin-left:auto}
+.btn{border:0;border-radius:12px;padding:11px 15px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-weight:850;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease,background .16s ease;white-space:nowrap}.btn:hover{transform:translateY(-1px)}.btn:active{transform:none}.btn-primary{background:linear-gradient(135deg,var(--navy),#0a4aa7);color:#fff;box-shadow:0 8px 20px rgba(6,40,95,.16)}.btn-light{background:#fff;color:var(--navy);border:1px solid #d6e0ec;box-shadow:0 3px 10px rgba(9,42,93,.04)}.btn.mini{min-height:34px;padding:7px 10px;font-size:12px}.btn-ok{background:#ebf8f2;color:#116d49;border:1px solid #cce9d8}.btn-bad{background:#fff0f0;color:#a8353b;border:1px solid #f1cfd1}.btn-warn{background:#fff8e9;color:#855914;border:1px solid #efdfbc}
+.page{padding:20px 0 54px}.form-shell{background:#fff;border:1px solid rgba(22,56,101,.08);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+
+.registration-banner{position:relative;background:transparent;border-bottom:1px solid #dbe5f1;overflow:hidden;line-height:0}
+.registration-banner img{display:block;width:100%;height:auto;object-fit:cover;background:transparent}
+.registration-banner:after{content:"";position:absolute;inset:auto 0 0;height:1px;background:linear-gradient(90deg,transparent,rgba(246,201,74,.9),transparent);pointer-events:none}
+
+.form-top{position:relative;background:#fff;padding:22px 24px 20px;border-bottom:1px solid #e7edf5}
+.form-top:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--blue),#5ea6f5 62%,var(--gold))}
+.form-top:after{content:"";position:absolute;right:22px;top:18px;width:74px;height:74px;border-radius:22px;background:linear-gradient(145deg,rgba(23,107,216,.08),rgba(246,201,74,.10));transform:rotate(8deg);pointer-events:none}
+.form-top-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:18px}.form-top-copy{min-width:0;max-width:720px}.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:9.8px;letter-spacing:1.25px;font-weight:950;text-transform:uppercase;color:var(--blue);background:#eef6ff;border:1px solid #d9eaff;border-radius:999px;padding:6px 9px;margin-bottom:9px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(246,201,74,.14)}
+.form-top h1{margin:0;color:var(--navy);font-size:clamp(24px,4vw,32px);line-height:1.08;letter-spacing:-.45px}.form-top p{margin:8px 0 0;color:var(--muted);font-size:12.5px;line-height:1.55;max-width:640px}
+.hero-badges{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;max-width:290px}.hero-badge{padding:7px 9px;border:1px solid #dfe9f5;background:#f8fbff;border-radius:999px;font-size:9.8px;font-weight:850;color:#36506f}
+.form-body{padding:7px 24px 26px}.section-title{margin:23px 0 14px;display:flex;align-items:center;gap:9px;color:var(--navy);font-size:14px;font-weight:950;letter-spacing:.05px}.section-title:before{content:"";width:5px;height:20px;border-radius:10px;background:linear-gradient(180deg,var(--blue),#79b2f4)}.section-title:after{content:"";height:1px;background:#e8eef5;flex:1;margin-left:3px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:14px}.field label{display:block;font-size:12px;font-weight:850;color:#40516d;margin-bottom:7px}.req{color:var(--bad)}
+input,select,textarea{width:100%;min-height:48px;padding:12px 13px;border:1px solid #cfdbe8;border-radius:12px;background:#fff;color:var(--ink);outline:none;box-shadow:0 1px 0 rgba(9,42,93,.02);transition:.15s}textarea{min-height:96px;resize:vertical}input::placeholder,textarea::placeholder{color:#97a3b4}input:focus,select:focus,textarea:focus{border-color:#4b91e7;box-shadow:0 0 0 4px rgba(23,107,216,.09)}.input-help{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.4}
+.upload-card{border:1px dashed #cbd9e8;border-radius:15px;padding:14px 15px;background:linear-gradient(180deg,#fbfdff,#f8fbff);margin-bottom:11px}.upload-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.upload-title{font-size:12px;font-weight:900}.upload-help{font-size:10.5px;color:var(--muted)}.upload-card input[type=file]{margin-top:10px;min-height:auto;padding:10px;background:#fff;border-style:solid}.preview-photo{width:88px;height:112px;border-radius:12px;overflow:hidden;background:#edf2f7;border:1px solid #d9e3ee;display:grid;place-items:center;color:#8d9aab;margin-top:10px;font-size:10px;font-weight:900}.preview-photo img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:11px}.choice label{margin:0;display:flex;gap:10px;align-items:flex-start;border:1px solid #dce5ef;border-radius:14px;padding:13px 14px;background:#fbfcfe;font-size:12px;line-height:1.45;transition:.15s}.choice label:has(input:checked){border-color:#8ebbf2;background:#f1f7ff;box-shadow:0 0 0 3px rgba(23,107,216,.06)}.choice input{width:auto;min-height:auto;margin-top:3px;accent-color:var(--blue)}
+.payment-card{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:center;border:1px solid #d8e5f3;border-radius:18px;padding:17px;background:linear-gradient(145deg,#f7fbff,#fff 55%,#fffaf0);box-shadow:var(--shadow-soft)}.qr-shell{text-align:center;padding:12px 10px;border-radius:16px;background:#fff;border:1px solid #e1e9f2}.qr-shell img{display:block;width:186px;height:186px;object-fit:contain;margin:auto;background:#fff;border-radius:10px;padding:4px}.fee-pill{display:inline-flex;background:#eaf3ff;color:var(--navy);padding:6px 10px;border-radius:999px;font-size:10.5px;font-weight:900;margin-bottom:10px}.upi-id{font-size:10.5px;color:#53627a;margin-top:8px;word-break:break-all}.payment-side{display:flex;flex-direction:column;gap:10px}.payment-meta{border:1px solid #e0e8f1;border-radius:14px;background:#fff;padding:4px 13px}.pay-row{display:grid;grid-template-columns:132px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed #e7edf4;font-size:12px}.pay-row:last-child{border-bottom:0}.pay-row span{color:var(--muted);font-weight:750}.pay-row strong{color:#243a5a;word-break:break-word}.pay-row strong small{font-size:10.5px;color:var(--muted);font-weight:800}.pay-actions{display:flex;gap:9px;flex-wrap:wrap}.scan-tip{font-size:10.5px;line-height:1.5;color:#1D7F3F;background:#EFFBF3;border:1px solid #BEE7C8;border-radius:11px;padding:9px 11px;font-weight:700}
+.notice{margin-top:14px;padding:12px 13px;border:1px solid #d8e7f7;border-radius:12px;background:#f4f9ff;color:#50647c;font-size:10.8px;line-height:1.55}.notice:before{content:"✓";display:inline-grid;place-items:center;width:18px;height:18px;margin-right:6px;border-radius:50%;background:#e3f0ff;color:var(--blue);font-weight:950}.notice.ok{border-color:#cce8d7;background:#effaf4;color:#246645}.payment-verify-note{font-size:11px;line-height:1.6;border-left:4px solid #20a464}.payment-verify-note b{color:#123c2b}.notice.warn{border-color:#eddcb8;background:#fff8ea;color:#7a5a20}.actions{display:flex;justify-content:flex-end;gap:10px;align-items:center;flex-wrap:wrap;margin-top:19px}.submit-btn{min-width:190px}
+.success-card,.status-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:25px;text-align:center}.success-icon{width:60px;height:60px;border-radius:18px;margin:0 auto 12px;display:grid;place-items:center;background:#eaf8f1;color:var(--ok);font-size:28px;font-weight:950}.registration-id{display:inline-flex;margin-top:8px;padding:8px 11px;border-radius:10px;background:#eef5ff;color:var(--navy);font-weight:950;letter-spacing:.4px}.status-chip{display:inline-flex;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:900}.status-chip.pending{background:#fff4dd;color:#8a5a12}.status-chip.approved{background:#eaf8f1;color:#146d48}.status-chip.rejected{background:#fdecec;color:#ad3333}.status-chip.correction{background:#fff3e3;color:#9a5b0a}
+.verify-box{max-width:620px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:22px}.verify-head{display:flex;align-items:flex-start;gap:10px;justify-content:space-between;margin-bottom:14px}.verify-head h2{margin:0;font-size:22px}.verify-head p{margin:5px 0 0;font-size:12px;color:var(--muted)}.verify-form{display:flex;gap:9px}.verify-form input{flex:1}.verify-result{margin-top:14px}.kv{display:grid;grid-template-columns:145px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed #e7edf4;font-size:12px;text-align:left}.kv:last-child{border-bottom:0}.kv span{color:var(--muted)}.kv b{color:#263b59}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#17253d;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:800;box-shadow:0 10px 26px rgba(0,0,0,.18);transition:.2s;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}footer{padding:0 0 34px;text-align:center;color:#7a879b;font-size:10.5px}
+.admin-page{padding:20px 0 52px}.admin-login{max-width:460px;margin:30px auto 0;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px}.admin-login h1{margin:0 0 6px;font-size:24px}.admin-login p{margin:0 0 16px;color:var(--muted);font-size:12px}.admin-shell{display:grid;grid-template-columns:260px 1fr;gap:16px}.admin-side{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;height:max-content;position:sticky;top:88px}.admin-side h3{margin:4px 6px 12px;color:var(--navy)}.admin-nav{display:grid;gap:7px}.admin-nav button{width:100%;text-align:left;border:1px solid transparent;background:#f7f9fc;color:#44546d;border-radius:10px;padding:10px 11px;font-weight:800}.admin-nav button.active{background:#edf5ff;color:var(--navy);border-color:#d6e6fa}.admin-main{min-width:0}.admin-toolbar{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.admin-toolbar input,.admin-toolbar select{width:auto;min-width:170px;flex:1}.table-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:11px 12px;border-bottom:1px solid #edf1f6;text-align:left;font-size:12px;vertical-align:middle}th{background:#f8fafc;color:#53627a;font-size:11px;text-transform:uppercase;letter-spacing:.35px;position:sticky;top:0}tr:hover td{background:#fbfdff}.detail-card{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:18px}.detail-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.detail-head h2{margin:0;font-size:22px}.detail-head p{margin:5px 0 0;color:var(--muted);font-size:12px}.detail-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:14px}.docs{display:grid;gap:8px}.doc-row{display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:9px 10px;background:#fbfcfe}.doc-icon{width:34px;height:34px;border-radius:9px;background:#edf5ff;color:var(--navy);display:grid;place-items:center;font-weight:950}.doc-row b{display:block;font-size:12px}.doc-row small{display:block;font-size:10px;color:var(--muted);margin-top:2px}.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-note{margin-top:12px}
+@media(max-width:820px){.grid,.payment-card,.detail-grid{grid-template-columns:1fr}.qr-shell{max-width:340px;width:100%;margin:auto}.admin-shell{grid-template-columns:1fr}.admin-side{position:static}.admin-nav{grid-template-columns:1fr 1fr}.form-top-inner{align-items:flex-start}.hero-badges{max-width:220px}}
+@media(max-width:600px){.wrap{width:min(100% - 14px,1060px)}.sitebar{min-height:62px;padding:7px 0;gap:8px}.brand-mark{width:46px;height:46px;flex-basis:46px;border-radius:11px;padding:4px}.brand-copy{max-width:none;min-width:0}.brand-copy strong{font-size:12.2px;white-space:normal}.brand-copy small{font-size:9.5px;white-space:normal}.sitebar .btn{min-height:36px;padding:8px 10px;font-size:10.5px;border-radius:10px;flex:0 0 auto}.page{padding-top:12px}.form-shell{border-radius:18px}.registration-banner img{width:100%;height:auto;object-fit:cover}.form-top{padding:18px 16px 17px}.form-top-inner{display:block}.form-top h1{font-size:23px;line-height:1.12;padding-right:54px}.form-top p{font-size:11.7px;margin-top:7px;padding-right:18px}.hero-badges{justify-content:flex-start;max-width:none;margin-top:11px}.hero-badge{font-size:9px;padding:6px 8px}.form-body{padding:4px 16px 21px}.section-title{margin-top:20px;font-size:13.5px}.grid{grid-template-columns:1fr;gap:0}.choice{grid-template-columns:1fr}.payment-card{padding:12px;gap:13px}.qr-shell{padding:11px 8px}.qr-shell img{width:min(240px,100%);height:auto;aspect-ratio:1/1}.pay-row{grid-template-columns:1fr;gap:3px}.pay-actions{display:grid;grid-template-columns:1fr}.pay-actions .btn{width:100%}.actions{align-items:stretch;flex-direction:column-reverse}.submit-btn{width:100%}.verify-form{flex-direction:column}.verify-form .btn{width:100%}.kv{grid-template-columns:1fr;gap:3px}.notice{font-size:10.4px}.admin-nav{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.brand-copy strong{font-size:11.4px}.brand-copy small{font-size:9px}.sitebar .btn{padding:8px 8px}.form-top h1{font-size:22px}.hero-badge{font-size:9px}}
+
+
+/* FINAL CURSOR UX: show hand pointer only on interactive/clickable controls. */
+a[href],button:not(:disabled),[role="button"],[onclick],summary,select,label[for],input[type="button"],input[type="submit"],input[type="reset"],input[type="file"],input[type="checkbox"],input[type="radio"],.btn,.submit,[data-vht-register]{cursor:pointer!important}
+button:disabled,input:disabled,select:disabled,[aria-disabled="true"],.vht-cms-disabled{cursor:not-allowed!important}
+</style>
+<style>
+    .qr-only-payment{align-items:start}
+    .qr-only-payment .qr-shell img{
+      width:min(230px,100%)!important;height:auto!important;aspect-ratio:1/1;
+      border:1px solid #e2e8f0;border-radius:14px;padding:8px;background:#fff;
+    }
+    .qr-save-hint{margin-top:8px;font-size:10px;line-height:1.45;color:#66758a}
+    .safe-manual-payment{border-left:4px solid #17815a!important}
+    .qr-only-actions .btn{min-width:170px}
+    @media(max-width:600px){
+      .qr-only-payment .qr-shell img{width:min(260px,92%)!important}
+      .qr-only-actions{display:grid!important;grid-template-columns:1fr!important}
+      .qr-only-actions .btn{width:100%!important}
+    }
+    </style>
+
+<style>
+.personal-upi-final .qr-shell img{
+  width:min(245px,100%)!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  object-fit:contain!important;
+  border:1px solid #e2e8f0!important;
+  border-radius:16px!important;
+  padding:8px!important;
+  background:#fff!important;
+}
+.personal-upi-final .qr-save-hint{
+  margin-top:8px;font-size:10.5px;line-height:1.45;color:#66758a
+}
+.personal-upi-final .safe-manual-payment{
+  border-left:4px solid #1765E8!important
+}
+.personal-upi-final .qr-only-actions{
+  display:flex;flex-wrap:wrap;gap:9px
+}
+.personal-upi-final .qr-only-actions .btn{
+  min-width:150px
+}
+@media(max-width:600px){
+  .personal-upi-final .qr-shell img{width:min(270px,94%)!important}
+  .personal-upi-final .qr-only-actions{
+    display:grid!important;
+    grid-template-columns:1fr!important
+  }
+  .personal-upi-final .qr-only-actions .btn{
+    width:100%!important
+  }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="wrap sitebar">
+<div aria-hidden="true" class="brand-mark"><img alt="" src="/assets/optimized-inline/student-765663d5e776d208.jpg"/></div>
+<div class="brand-copy">
+<strong>VISHU HOME TUITION</strong>
+<small>Student Registration • Gorakhpur</small>
+</div>
+<div class="sitebar-spacer"></div>
+<button class="btn btn-light" onclick="openVerify()" type="button">Check Status</button>
+</div>
+</header>
+<main class="page" id="formView">
+<div class="wrap">
+<section class="form-shell">
+<div aria-label="Registration banner" class="registration-banner">
+<img alt="Student registration banner" src="/assets/optimized-inline/student-8515be770d5c7357.png"/>
+</div>
+<form class="form-body" data-type="student" enctype="multipart/form-data" id="registrationForm">
+<input name="type" type="hidden" value="student"/>
+<div class="section-title">Student &amp; Parent Details</div>
+<div class="grid">
+<div class="field"><label>Student Name <span class="req">*</span></label><input autocomplete="name" name="studentName" placeholder="Student full name" required=""/></div>
+<div class="field"><label>Parent / Guardian Name <span class="req">*</span></label><input name="parentName" placeholder="Parent or guardian name" required=""/></div>
+<div class="field"><label>Contact Number <span class="req">*</span></label><input inputmode="numeric" maxlength="10" name="phone" placeholder="10-digit mobile number" required=""/></div>
+<div class="field"><label>Email ID <span class="req">*</span></label><input autocomplete="email" name="email" placeholder="Active email address" required="" type="email"/><div class="input-help">Use an active email address.</div></div>
+<div class="field"><label>Class <span class="req">*</span></label><input name="className" placeholder="e.g. Class 8" required=""/></div>
+<div class="field"><label>Board <span class="req">*</span></label><select name="board" required=""><option value="">Select board</option><option>CBSE</option><option>ICSE</option><option>UP Board</option><option>Other</option></select></div>
+<div class="field"><label>Subject(s) <span class="req">*</span></label><input name="subjects" placeholder="e.g. Maths, Science" required=""/></div>
+<div class="field"><label>Address <span class="req">*</span></label><input name="area" placeholder="Full address / locality / landmark" required=""/></div>
+<div class="field"><label>Preferred Tutor</label><select name="tutorPref"><option>Any</option><option>Male Tutor</option><option>Female Tutor</option></select></div>
+<div class="field"><label>Preferred Timing</label><input name="timing" placeholder="e.g. 5 PM - 6 PM"/></div>
+<div class="field"><label>Monthly Budget</label><input inputmode="numeric" name="budget" placeholder="Optional"/></div>
+</div>
+<div class="field"><label>Special Requirement Note</label><textarea name="note" placeholder="Weak subjects or any special requirement"></textarea></div>
+<div class="section-title">Student Photo</div>
+<div class="upload-card">
+<div class="upload-head"><span class="upload-title">Student Photo <span class="req">*</span></span><span class="upload-help">JPG/JPEG/PNG/WEBP • Max 5 MB</span></div>
+<input accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" id="photo" name="photo" onchange="previewPhoto(this)" required="" type="file"/>
+<div class="preview-photo" id="photoPreview">PHOTO</div>
+</div>
+<div class="section-title">Registration Type</div>
+<div class="choice">
+<label><input checked="" name="registrationType" type="radio" value="NON_ADVANCE"/> <span><b>Non-Advance Registration</b><br/><span class="muted">Submit requirement without advance payment.</span></span></label>
+<label><input name="registrationType" type="radio" value="ADVANCE"/> <span><b>Advance Registration</b><br/><span class="muted">Pay your selected advance amount and upload proof.</span></span></label>
+</div>
+<div class="hidden" id="advanceBox">
+<div class="section-title">Advance Payment</div>
+<div class="field advance-amount-field"><label>Advance Amount (₹) <span class="req">*</span></label><input id="advanceAmount" inputmode="numeric" min="1" name="advanceAmount" placeholder="Enter advance amount" step="1" type="number"/><div class="input-help">Enter the amount you are paying in advance.</div></div>
+<div class="payment-card qr-only-payment personal-upi-final">
+<div class="qr-shell">
+<span class="fee-pill">Advance Payment</span>
+<img alt="VISHU HOME TUITION UPI QR code" id="studentPersonalQr" src="/assets/optimized-inline/student-56ab23603c03e67c.jpg"/>
+<div class="upi-id">vishuhometuition@okicici</div>
+<div class="qr-save-hint">Save this QR to your gallery, then use “Scan from Gallery” in your UPI app.</div>
+</div>
+<div class="payment-side">
+<div class="payment-meta">
+<div class="pay-row"><span>Business</span><strong>VISHU HOME TUITION (GORAKHPUR)</strong></div>
+<div class="pay-row"><span>UPI Account Name</span><strong>Vikash Kumar Yadav</strong></div>
+<div class="pay-row"><span>UPI ID</span><strong>vishuhometuition@okicici</strong></div>
+<div class="pay-row"><span>UPI / Payment Number</span><strong onclick="copyUPINumber()" title="Click to copy" style="cursor:pointer">7052500258</strong></div>
+<div class="pay-row"><span>Payment For</span><strong>VISHU HOME TUITION • Student Registration</strong></div>
+</div>
+
+<div class="pay-actions qr-only-actions">
+<a class="btn btn-primary" download="VISHU-HOME-TUITION-UPI-QR.jpg" href="/assets/optimized-inline/student-56ab23603c03e67c.jpg">Save QR to Gallery</a>
+<button class="btn btn-light" onclick="copyUPI()" type="button">Copy UPI ID</button>
+<button class="btn btn-light" onclick="copyUPINumber()" type="button">Copy UPI Number</button>
+</div>
+<div class="scan-tip">You can also copy the UPI ID or payment number and pay manually. After payment, upload the payment screenshot below for verification.</div>
+<div class="upload-card">
+<div class="upload-head">
+<span class="upload-title">Payment Screenshot <span class="req">*</span></span>
+<span class="upload-help">JPG/JPEG/PNG/WEBP/PDF • Max 5 MB</span>
+</div>
+<input accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" id="paymentProof" name="paymentProof" type="file"/>
+</div>
+</div>
+</div>
+</div>
+<div class="actions">
+<span class="small muted">By submitting, you confirm that the information provided is correct.</span>
+<button class="btn btn-primary submit-btn" id="submitBtn" type="submit">Submit Registration</button>
+</div>
+</form>
+</section>
+</div>
+</main>
+<section class="page hidden" id="successView">
+<div class="wrap" style="max-width:680px">
+<div class="success-card">
+<div class="success-icon">✓</div>
+<h2 style="margin:0">Registration Submitted</h2>
+<p class="muted">Keep this Registration ID for status checking.</p>
+<div class="registration-id" id="successId">—</div>
+<div class="notice" id="emailStatus" style="margin-top:14px"></div>
+<div class="actions" style="justify-content:center"><button class="btn btn-light" onclick="backToForm()" type="button">New Registration</button><button class="btn btn-primary" onclick="openVerify()" type="button">Check Status</button></div>
+</div>
+</div>
+</section>
+<section class="page hidden" id="verifyView">
+<div class="wrap">
+<div class="verify-box">
+<div class="verify-head"><div><h2>Check Registration Status</h2><p>Enter the Student Registration ID.</p></div><button class="btn btn-light mini" onclick="backToForm()" type="button">Back</button></div>
+<div class="verify-form"><input id="verifyId" placeholder="e.g. VHT-S8500"/><button class="btn btn-primary" onclick="verifyRegistration()" type="button">Check Status</button></div>
+<div class="verify-result" id="verifyResult"></div>
+</div>
+</div>
+</section>
+<footer>Vishu Home Tuition • Gorakhpur</footer>
+<div class="toast" id="toast"></div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const form = $('registrationForm');
+  const type = form?.dataset.type || '';
+  const apiOrigin = 'https://vishuhometuition.in';
+  const isLocalPreview = false;
+  const apiUrl = path => apiOrigin + path;
+  const DEMO_KEY = 'vht_final_demo_regs';
+
+  function toast(msg){
+    const el = $('toast');
+    if(!el) return;
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(()=>el.classList.remove('show'),5200);
+  }
+  window.vhtToast = toast;
+
+  function show(view){
+    ['formView','successView','verifyView'].forEach(id => $(id)?.classList.add('hidden'));
+    $(view)?.classList.remove('hidden');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  window.openVerify = () => show('verifyView');
+  window.backToForm = () => show('formView');
+
+  window.previewPhoto = (input) => {
+    const file = input.files?.[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => { $('photoPreview').innerHTML = `<img src="${reader.result}" alt="Selected photo preview">`; };
+    reader.readAsDataURL(file);
+  };
+
+  const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
+  const isCompressibleImage = file => ['.jpg','.jpeg','.png','.webp'].includes(fileExt(file));
+
+  document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const file = input.files?.[0];
+      if(file && !isCompressibleImage(file) && file.size > MAX_UPLOAD_BYTES){
+        input.value='';
+        toast('This file must be 5 MB or smaller. Images are compressed automatically before upload.');
+      }
+    });
+  });
+
+
+  const UPLOAD_TIMEOUT_MS = 300000; // 5 minutes for slow mobile uploads
+  const IMAGE_COMPRESS_THRESHOLD = 2 * 1024 * 1024;
+  const IMAGE_TARGET_BYTES = 1500 * 1024;
+  const IMAGE_MAX_DIMENSION = 2200;
+
+  function fileExt(file){
+    const n=String(file?.name||'').toLowerCase();
+    const i=n.lastIndexOf('.');
+    return i>=0?n.slice(i):'';
+  }
+
+  function allowedClientFile(field,file){
+    const ext=fileExt(file);
+    const images=new Set(['.jpg','.jpeg','.png','.webp']);
+    if(field==='photo') return images.has(ext);
+    if(field==='paymentProof' || field==='identityDoc' || field==='marksheetDoc') return images.has(ext) || ext==='.pdf';
+    if(field==='resumeDoc') return new Set(['.jpg','.jpeg','.png','.webp','.pdf','.doc','.docx']).has(ext);
+    return true;
+  }
+
+  function prettyField(field){
+    return ({photo:'Photo',resumeDoc:'Resume / CV',marksheetDoc:'Marksheet',identityDoc:'Identity Proof',paymentProof:'Payment Screenshot'})[field] || 'File';
+  }
+
+  function validateUploadFiles(){
+    for(const input of form.querySelectorAll('input[type="file"]')){
+      const file=input.files?.[0];
+      if(!file) continue;
+      if(!isCompressibleImage(file) && file.size > MAX_UPLOAD_BYTES){
+        toast(`${prettyField(input.name)} must be 5 MB or smaller.`);
+        input.focus();
+        return false;
+      }
+      if(!allowedClientFile(input.name,file)){
+        toast(`${prettyField(input.name)} format is not supported. Use JPG, JPEG, PNG, WEBP${input.name==='resumeDoc'?', PDF, DOC or DOCX':', or PDF where allowed'}.`);
+        input.focus();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  async function imageElementFromFile(file){
+    const url=URL.createObjectURL(file);
+    try{
+      const img=new Image();
+      img.decoding='async';
+      await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url;});
+      return img;
+    } finally {
+      // URL is revoked by the caller after drawing, via a copied source URL when needed.
+      // Keeping this fallback small avoids blocking unsupported mobile browsers.
+      setTimeout(()=>URL.revokeObjectURL(url),0);
+    }
+  }
+
+  async function compressImageIfUseful(file){
+    const ext=fileExt(file);
+    if(!['.jpg','.jpeg','.png','.webp'].includes(ext) || file.size <= IMAGE_COMPRESS_THRESHOLD) return file;
+    try{
+      let source,width,height,close=()=>{};
+      if('createImageBitmap' in window){
+        source=await createImageBitmap(file);
+        width=source.width;height=source.height;
+        close=()=>{try{source.close()}catch{}};
+      }else{
+        source=await imageElementFromFile(file);
+        width=source.naturalWidth||source.width;height=source.naturalHeight||source.height;
+      }
+      if(!width || !height){ close(); return file; }
+      const scale=Math.min(1, IMAGE_MAX_DIMENSION/Math.max(width,height));
+      const w=Math.max(1,Math.round(width*scale));
+      const h=Math.max(1,Math.round(height*scale));
+      const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+      const ctx=canvas.getContext('2d',{alpha:false});
+      if(!ctx){ close(); return file; }
+      ctx.drawImage(source,0,0,w,h);close();
+      const qualities=[0.86,0.78,0.70];
+      let best=null;
+      for(const q of qualities){
+        const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/webp',q));
+        if(!blob) continue;
+        if(!best || blob.size<best.size) best=blob;
+        if(blob.size<=IMAGE_TARGET_BYTES){best=blob;break;}
+      }
+      if(!best || best.size>=file.size) return file;
+      const base=String(file.name||'image').replace(/\.[^.]+$/,'') || 'image';
+      return new File([best],`${base}.webp`,{type:'image/webp',lastModified:Date.now()});
+    }catch{
+      return file; // compression is an optimization, never a reason to block submission
+    }
+  }
+
+  async function buildOptimizedFormData(){
+    const fd=new FormData(form);
+    fd.set('type',type);
+    for(const input of form.querySelectorAll('input[type="file"]')){
+      const file=input.files?.[0];
+      if(!file) continue;
+      if(['photo','paymentProof','identityDoc','resumeDoc'].includes(input.name)){
+        const optimized=await compressImageIfUseful(file);
+        if(optimized.size > MAX_UPLOAD_BYTES){
+          throw new Error(`${prettyField(input.name)} is still above 5 MB after optimization. Please use a smaller file.`);
+        }
+        if(optimized!==file) fd.set(input.name,optimized,optimized.name);
+      }
+    }
+    return fd;
+  }
+
+  function networkLikeError(err){
+    const raw=String(err?.message||'');
+    return err?.name==='AbortError' || (err?.name==='TypeError' && /fetch|network|load|failed/i.test(raw));
+  }
+
+  async function postRegistrationWithRetry(fd){
+    let lastErr;
+    for(let attempt=0;attempt<2;attempt++){
+      const controller=new AbortController();
+      const timer=setTimeout(()=>controller.abort(),UPLOAD_TIMEOUT_MS);
+      try{
+        return await fetch(apiUrl('/api/register'),{
+          method:'POST',body:fd,signal:controller.signal,headers:{'accept':'application/json'},cache:'no-store'
+        });
+      }catch(err){
+        lastErr=err;
+        if(!networkLikeError(err) || attempt===1) throw err;
+        await new Promise(r=>setTimeout(r,1200));
+      }finally{
+        clearTimeout(timer);
+      }
+    }
+    throw lastErr || new Error('Upload failed.');
+  }
+
+  window.copyUPI = async () => {
+    const value = 'vishuhometuition@okicici';
+    try{
+      await navigator.clipboard.writeText(value);
+      toast('UPI ID copied');
+    }catch{
+      const t=document.createElement('textarea');
+      t.value=value;t.setAttribute('readonly','');t.style.position='fixed';t.style.opacity='0';
+      document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('UPI ID copied');
+    }
+  };
+
+  function refreshStudentAdvance(){
+    if(type !== 'student') return;
+    const selected = document.querySelector('input[name="registrationType"]:checked')?.value || 'NON_ADVANCE';
+    const isAdvance = selected === 'ADVANCE';
+    const box = $('advanceBox');
+    const amount = $('advanceAmount');
+    const proof = $('paymentProof');
+    if(box) box.classList.toggle('hidden', !isAdvance);
+    if(amount){ amount.required = isAdvance; amount.disabled = !isAdvance; if(!isAdvance) amount.value=''; }
+    if(proof){ proof.required = isAdvance; proof.disabled = !isAdvance; if(!isAdvance) proof.value=''; }
+  }
+  document.querySelectorAll('input[name="registrationType"]').forEach(r => r.addEventListener('change',refreshStudentAdvance));
+  refreshStudentAdvance();
+
+  function demoItems(){try{return JSON.parse(localStorage.getItem(DEMO_KEY)||'[]')}catch{return[]}}
+  function saveDemo(items){try{localStorage.setItem(DEMO_KEY,JSON.stringify(items))}catch{}}
+  function demoId(){
+    const yy=String(new Date().getFullYear()).slice(-2);
+    const prefix=type==='teacher'?'VHT-T':'VHT-S';
+    const stamp=Date.now().toString(36).toUpperCase();
+    let rnd='';
+    try{const b=new Uint8Array(3);crypto.getRandomValues(b);rnd=Array.from(b,x=>x.toString(16).padStart(2,'0')).join('').toUpperCase();}
+    catch{rnd=Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,'0').toUpperCase();}
+    return prefix+yy+'-'+stamp+'-'+rnd;
+  }
+
+  async function submitForm(e){
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+
+    const phone = form.querySelector('[name="phone"]')?.value.trim() || '';
+    if(!/^[6-9]\d{9}$/.test(phone)){
+      form.querySelector('[name="phone"]')?.focus();
+      toast('Enter a valid 10-digit Indian mobile number.');
+      return;
+    }
+
+    if(type==='student'){
+      const regType = form.querySelector('[name="registrationType"]:checked')?.value;
+      if(regType==='ADVANCE'){
+        const amount=$('advanceAmount')?.value.trim();
+        const proof=$('paymentProof')?.files?.[0];
+        if(!amount || !proof){toast('Enter advance amount and upload payment screenshot.');return;}
+      }
+    }
+
+    const submitBtn=$('submitBtn');
+    const oldText=submitBtn.textContent;
+    submitBtn.disabled=true;
+    submitBtn.textContent='Submitting...';
+
+    try{
+      if(!validateUploadFiles()) return;
+      submitBtn.textContent='Preparing files...';
+      const fd=await buildOptimizedFormData();
+
+      if(isLocalPreview){
+        const id=demoId();
+        const item={id,type,status:'PENDING',createdAt:new Date().toISOString(),email:fd.get('email'),name:fd.get(type==='teacher'?'name':'studentName')};
+        const items=demoItems();items.unshift(item);saveDemo(items);
+        renderSuccess({id,emailSent:false,paymentEmailSent:false,preview:true});
+        return;
+      }
+
+      submitBtn.textContent='Uploading... Please wait';
+      const res=await postRegistrationWithRetry(fd);
+      const contentType=res.headers.get('content-type')||'';
+      if(!contentType.toLowerCase().includes('application/json')){
+        if(res.status===413) throw new Error('The selected files are too large to upload together. Please use smaller/compressed files and try again.');
+        if(res.status>=500) throw new Error('Registration server is temporarily unavailable. Your form is still filled; please try again in a moment.');
+        throw new Error('Registration service is not connected correctly on this website address. Please reopen vishuhometuition.in and try again.');
+      }
+      const data=await res.json().catch(()=>({}));
+      if(!res.ok || !data.ok || !data.id) throw new Error(data.error||'Registration could not be saved. Please try again.');
+      renderSuccess(data);
+      form.reset();
+      $('photoPreview').textContent='PHOTO';
+      refreshStudentAdvance();
+    }catch(err){
+      const raw=String(err?.message||'');
+      if(networkLikeError(err)){
+        toast(err?.name==='AbortError'
+          ? 'Upload is taking too long on this connection. Your form is still filled. Use a stable network and tap Submit Registration again.'
+          : 'Internet/upload connection was interrupted. Your form is still filled. Check the network and tap Submit Registration again.');
+      }else{
+        toast(raw||'Something went wrong. Please try again.');
+      }
+    }finally{
+      submitBtn.disabled=false;
+      submitBtn.textContent=oldText;
+    }
+  }
+
+  function renderSuccess(data){
+    $('successId').textContent=data.id||'—';
+    const emailMsg=$('emailStatus');
+    if(data.preview){
+      emailMsg.className='notice warn';
+      emailMsg.textContent='Preview mode: design is working locally. Database and email notifications activate after deployment with the included Cloudflare setup.';
+    }else if(data.emailQueued || data.emailSent){
+      emailMsg.className='notice ok';
+      emailMsg.textContent='Registration saved successfully. Your registration confirmation email is being sent now.';
+    }else if(data.emailConfigured){
+      emailMsg.className='notice ok';
+      emailMsg.textContent='Registration saved successfully.';
+    }else{
+      emailMsg.className='notice warn';
+      emailMsg.textContent='Registration is saved, but email delivery is not configured yet.';
+    }
+    show('successView');
+  }
+
+  async function verify(){
+    const id=$('verifyId').value.trim().toUpperCase();
+    if(!id){toast('Enter your Registration ID.');return;}
+    const box=$('verifyResult');
+    box.innerHTML='<div class="notice">Checking status...</div>';
+    try{
+      let data;
+      if(isLocalPreview){
+        const item=demoItems().find(x=>x.id===id);
+        if(!item) throw new Error('Registration ID not found in preview data.');
+        data=item;
+      }else{
+        const res=await fetch(apiUrl('/api/status?id='+encodeURIComponent(id)),{headers:{'accept':'application/json'}});
+        data=await res.json().catch(()=>({}));
+        if(!res.ok) throw new Error(data.error||'Registration ID not found.');
+      }
+      const cls = data.status==='APPROVED'?'approved':data.status==='REJECTED'?'rejected':data.status==='CORRECTION_REQUIRED'?'correction':'pending';
+      box.innerHTML=`
+        <div class="status-card" style="box-shadow:none;padding:16px">
+          <span class="status-chip ${cls}">${escapeHtml((data.status||'PENDING').replaceAll('_',' '))}</span>
+          <div class="kv"><span>Registration ID</span><b>${escapeHtml(data.id)}</b></div>
+          <div class="kv"><span>Registration Type</span><b>${escapeHtml((data.type||type).toUpperCase())}</b></div>
+          ${data.updatedAt?`<div class="kv"><span>Last Updated</span><b>${escapeHtml(data.updatedAt)}</b></div>`:''}
+          ${data.note?`<div class="notice warn" style="text-align:left">${escapeHtml(data.note)}</div>`:''}
+        </div>`;
+    }catch(err){
+      box.innerHTML=`<div class="notice warn">${escapeHtml(err.message||'Unable to check status.')}</div>`;
+    }
+  }
+  window.verifyRegistration=verify;
+
+  function escapeHtml(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+
+  form?.addEventListener('submit',submitForm);
+
+  const params=new URLSearchParams(location.search);
+  const verifyId=params.get('verify');
+  if(verifyId){
+    show('verifyView');
+    $('verifyId').value=verifyId.toUpperCase();
+    verify();
+  }
+})();
+
+</script>
+
+<script id="vht-copy-number-final">
+function copyUPINumber(){
+  const value='7052500258';
+  const ok=()=>{ if(typeof toast==='function') toast('UPI number copied'); };
+  const no=()=>{ if(typeof toast==='function') toast('Unable to copy automatically. Please copy 7052500258 manually.'); };
+  try{
+    const i=document.createElement('input');
+    i.value=value;i.setAttribute('readonly','');
+    i.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';
+    document.body.appendChild(i);i.focus();i.select();i.setSelectionRange(0,value.length);
+    const done=document.execCommand('copy');document.body.removeChild(i);
+    if(done){ok();return;}
+  }catch(e){}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(value).then(ok).catch(no)}else no();
+}
+</script>
+<script id="vht-payment-settings">
+(async function(){try{if(location.protocol==='file:')return;const r=await fetch('/api/site-content',{cache:'no-store'});if(!r.ok)return;const d=await r.json();const amt=String(d?.settings?.payments?.studentDefaultAdvanceAmount||'').replace(/[^0-9]/g,'');const input=document.getElementById('advanceAmount');if(input&&amt&&!input.value){input.value=amt;input.placeholder='Suggested advance: ₹'+amt}}catch{}})();
+</script>
+</body>
+</html>

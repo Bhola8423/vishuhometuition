@@ -1,0 +1,22 @@
+VISHU HOME TUITION — FINAL UPDATE DEPLOY
+
+This ZIP updates the EXISTING Worker: vishu-home-tuition-integrated
+Do NOT redo GoDaddy, nameservers, custom domain, Resend verification, ADMIN_TOKEN or RESEND_API_KEY.
+
+1. Extract this ZIP.
+2. Open CMD inside this extracted folder.
+3. Run:
+   npm install
+4. After it completes, run:
+   npx wrangler deploy
+5. Wait for Wrangler Success.
+6. Test:
+   https://vishuhometuition.in/api/health
+   Expected: ok=true, backendReady=true, admin=true
+7. Open:
+   https://vishuhometuition.in/admin
+8. Submit one dummy Tutor registration and one dummy Student registration.
+9. Confirm first IDs on a fresh permanent sequence are VHT-T2500 and VHT-S8500, then auto-increment.
+10. Approve one dummy record and verify Digital Card + QR + email.
+
+Existing Cloudflare secrets/database remain on the same Worker.

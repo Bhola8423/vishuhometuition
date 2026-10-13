@@ -1,0 +1,177 @@
+VISHU HOME TUITION — A-TO-Z AUDIT & VALIDATION
+Date: 2026-09-21
+Target domain: https://vishuhometuition.in
+
+OVERALL STATUS
+CODE PACKAGE: PASS / DEPLOY-READY
+LIVE ACCOUNT CONFIGURATION: REQUIRED BEFORE PUBLIC LAUNCH
+
+AUDIT FIXES APPLIED IN THIS FINAL PASS
+1. Student Advance Registration fixed:
+   - Added missing Advance Amount input.
+   - Payment screenshot is required only for ADVANCE registration.
+   - NON_ADVANCE registration no longer gets blocked by a hidden required payment field.
+2. Google site-name signals strengthened:
+   - WebSite structured data name = VISHU HOME TUITION.
+   - alternateName = Vishu Home Tuition, VHT, vishuhometuition.in.
+   - application-name / Apple web-app title / publisher use VISHU HOME TUITION.
+3. Gorakhpur landing page title now uses full brand: VISHU HOME TUITION.
+4. Admin CMS default landing SEO title updated to the same full brand.
+5. Admin registration notification now lists uploaded document names and links to the private Admin Panel (documents themselves remain protected in Admin rather than being emailed as sensitive attachments).
+
+STATIC/CODE VALIDATION — PASS
+- Main HTML parses successfully.
+- Gorakhpur landing HTML parses successfully.
+- No duplicate IDs found on main or landing page.
+- All local static image/icon/manifest references resolve to files in public/.
+- 18 image/graphic files are present in public/ (14 under public/assets plus root icons/logo/OG image).
+- All JSON-LD blocks parse as valid JSON.
+- Main-page inline JavaScript syntax checked with Node.js: PASS.
+- Landing-page inline JavaScript syntax checked with Node.js: PASS.
+- Student/Tutor/Admin embedded inline JavaScript syntax checked with Node.js: PASS.
+- Worker backend src/index.js syntax checked with Node.js: PASS.
+- Embedded Student/Tutor/Admin payloads decode correctly and match their audited source copies.
+- All API paths called by frontend/admin have corresponding backend routes.
+
+FRONTEND / UX — PRESENT
+- Main responsive header/navigation.
+- Latest approved VISHU HOME TUITION branding.
+- Home/hero section.
+- Trust/highlight cards.
+- How It Works/process content.
+- Tutor Registration section.
+- Student Registration section.
+- Teacher/student transparent group graphics.
+- Tuition Fees slider and final single-line Please Note strip.
+- Quick enquiry/WhatsApp flow.
+- Feedback carousel (representative-feedback disclaimer is hidden per final request).
+- Founder/vision section.
+- FAQ/helpful information.
+- Footer/social links.
+- Floating WhatsApp + Call buttons.
+- WhatsApp/Call shine sweep every 4 seconds.
+- Registration CTA buttons use stable click size with subtle sheen; no click zoom/expand.
+
+MOBILE CAROUSEL — PRESENT
+- Continuous conveyor-style motion on configured mobile tracks.
+- Final speed: 32.89 px/sec.
+- Touch/pointer interaction pauses the carousel.
+- Resume delay after interaction: 2 seconds.
+- Desktop carousel behavior remains separate.
+
+REGISTRATION — PRESENT
+Tutor:
+- Full name, phone, email, qualification, experience, classes, subjects, area, board(s).
+- Tutor photo.
+- Resume/CV.
+- Identity proof.
+- Payment proof.
+- ₹500 registration payment UI and UPI QR/ID/number copy.
+
+Student:
+- Student/parent/contact/academic requirement fields.
+- Student photo.
+- NON_ADVANCE option works without payment proof.
+- ADVANCE option reveals and requires Advance Amount + Payment Screenshot.
+- UPI QR/ID/number copy.
+
+BACKEND / STORAGE — PRESENT
+- Cloudflare Worker backend.
+- SQLite Durable Object binding: REG_STORE.
+- Unique registration IDs (Tutor: VHT-T-YY..., Student: VHT-S-YY...).
+- Server-side required-field validation.
+- 10-digit Indian phone validation.
+- Email validation.
+- Max 10 MB per uploaded file.
+- Upload type restrictions for photo/resume/ID/payment/gallery.
+- Files stored in chunked Durable Object storage.
+- Statuses: PENDING, APPROVED, REJECTED, CORRECTION_REQUIRED.
+- Health endpoint: /api/health.
+
+EMAIL / NOTIFICATIONS — PRESENT, REQUIRES LIVE RESEND CONFIG
+- Resend API integration.
+- New registration applicant email with unique Registration ID and status link.
+- New registration admin email with applicant summary, uploaded-document names and Admin Panel link.
+- Payment-proof applicant/admin emails when payment proof exists.
+- Approval/rejection/correction status email.
+- Quick website tutor request admin email.
+- Email event log visible in Admin Panel.
+- Email system test in Admin Panel.
+
+DIGITAL ID / VERIFICATION — PRESENT
+- Teacher and Student digital card generator.
+- APPROVED registration required before card generation.
+- First approval through Admin UI can auto-generate and email the PNG digital card when Resend is configured.
+- Digital card Download / Share / Email actions.
+- QR verification URL: https://vishuhometuition.in/verify?id=REGISTRATION_ID
+- Public verification exposes only basic registration/profile information and approval state.
+- Automatic WhatsApp Business sending is NOT included because Meta WhatsApp Business API credentials/sender configuration are not part of this package; browser Share can hand off the card to WhatsApp when supported.
+
+ADMIN PANEL — PRESENT
+- ADMIN_TOKEN login (stored only in browser sessionStorage, not hard-coded).
+- Registration list/filter/search/detail.
+- Uploaded document viewing.
+- Status approval/rejection/correction + notes.
+- Email logs.
+- Digital card generation/share/email.
+- Website content editor.
+- Contact/social/theme editor.
+- SEO title/description editor.
+- Notice/offer strip editor.
+- Fee update editor.
+- Additional service-area editor.
+- Feedback editor.
+- Student gallery upload/publish/unpublish/delete.
+- Email system status/test.
+
+SEO / GEO / SEARCH — PRESENT
+Homepage title:
+  Best Home Tuition in Gorakhpur | VISHU HOME TUITION
+Landing title:
+  Home Tutor in Gorakhpur | CBSE, ICSE, UP Board | VISHU HOME TUITION
+- Canonical URLs use https://vishuhometuition.in/.
+- Meta descriptions present.
+- robots + googlebot directives present.
+- Open Graph + Twitter metadata present.
+- LocalBusiness + EducationalOrganization + WebSite + Service + WebPage structured data present.
+- WebSite preferred site name = VISHU HOME TUITION with alternate names.
+- sitemap.xml present.
+- robots.txt present; /api/ and /admin blocked from indexing.
+- llms.txt present for machine-readable business context.
+- manifest.webmanifest present with VISHU HOME TUITION name.
+- Dedicated /home-tuition-gorakhpur/ page.
+- Landing page contains 163 locality chips, 15 landmark/corridor entries, 18 subject chips and 9 FAQs.
+- All localities are consolidated on one substantive page. Hundreds of thin duplicate locality pages are intentionally NOT generated.
+
+GOOGLE “CLOUDFLARE” SITE-NAME SCREENSHOT
+The old search result is for the pages.dev host. Website-side site-name signals are now set to VISHU HOME TUITION. Google controls when its displayed site name changes. After the custom domain is live, redirect the old pages.dev production URL to vishuhometuition.in with HTTP 301 and request re-indexing in Search Console.
+
+CLOUDFLARE — PACKAGE READY
+- wrangler.jsonc present.
+- Static assets directory configured.
+- run_worker_first includes API/admin/verify/home/registration routes.
+- Durable Object binding + SQLite declaration present.
+- www -> apex redirect exists in Worker code once www is routed to the Worker.
+- SITE_URL = https://vishuhometuition.in.
+- ADMIN_EMAIL = vishuhometuition.gkp@gmail.com.
+- MAIL_FROM = VISHU HOME TUITION <registrations@vishuhometuition.in>.
+
+LIVE-ONLY ITEMS NOT PROVABLE OFFLINE
+These require your Cloudflare/Resend accounts after deployment:
+- Domain nameservers / zone activation.
+- Worker Custom Domain activation for vishuhometuition.in.
+- ADMIN_TOKEN secret exists.
+- RESEND_API_KEY secret exists.
+- Resend domain/DNS is verified.
+- Real Durable Object writes/uploads.
+- Real outbound email delivery.
+- Google recrawl/site-name update.
+- pages.dev -> custom-domain 301 redirect.
+
+RUNTIME TEST LIMITATION
+The sandbox used for this final audit blocked local Chromium navigation by administrator policy, so browser-level end-to-end navigation could not be rerun here. Syntax, structure, references, frontend/backend route matching and configuration were audited statically. The included GO-LIVE checklist contains the required live smoke tests immediately after deployment.
+
+OPTIONAL HARDENING AFTER LAUNCH
+- Cloudflare Turnstile / WAF rate limiting if spam submissions appear.
+- Cloudflare Web Analytics.
+- Meta WhatsApp Business Cloud API only if fully automatic WhatsApp notifications are later required.

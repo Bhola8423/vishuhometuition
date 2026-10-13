@@ -1,0 +1,21 @@
+VISHU HOME TUITION — UPDATE QA REPORT
+Date: 2026-09-21
+
+PASSED CHECKS
+- Worker source JavaScript syntax: PASS
+- Admin Panel JavaScript syntax: PASS
+- Main page inline JavaScript syntax: PASS
+- Embedded Admin HTML equals updated source: PASS
+- Duplicate Admin element IDs: NONE
+- Old operational Gmail (vishuhometuition@gmail.com): REMOVED from deploy text files
+- New operational Gmail (vishuhometuition.gkp@gmail.com): CONFIGURED
+- Cloudflare Worker name: UNCHANGED (vishu-home-tuition-integrated)
+- Durable Object binding/class: UNCHANGED
+- ADMIN_TOKEN: remains Cloudflare secret; not exposed in source
+- RESEND_API_KEY: remains Cloudflare secret; not exposed in source
+- Digital card QR: RETAINED
+- Digital card photo: changed from circular crop to rounded rectangular auto-fit/contain
+- Frontend animations/sliders: no timing/layout animation CSS intentionally changed by this update
+
+IMPORTANT
+Real outbound email requires the domain to be verified in Resend and RESEND_API_KEY to be set as a Cloudflare Worker secret.

@@ -1,0 +1,27 @@
+VISHU HOME TUITION — ADMIN CONTROL & EMAIL UPDATE
+Date: 2026-09-21
+
+WHAT CHANGED
+1. Admin Panel upgraded to current Website Control + Backend Controls.
+2. Current frontend copy/statistics are the CMS schema v2 defaults, so old Admin defaults no longer overwrite the newer website.
+3. Section visibility switches added for Trust, Tutor, Student, Fees, Quick Enquiry, How It Works, Feedback, Founder, FAQ and Gallery.
+4. Backend-enforced controls added for Tutor registration, Student registration, Quick Enquiry, registration/payment emails and status emails.
+5. Auto-email Digital Card on approval can be turned on/off from Admin.
+6. Digital Card photo changed from circular crop to a rounded rectangular AUTO-FIT portrait frame. QR verification remains unchanged.
+7. Primary website/admin/Reply-To email changed to: vishuhometuition.gkp@gmail.com
+8. Professional sender remains: registrations@vishuhometuition.in (requires verified Resend domain).
+9. RESEND_API_KEY and ADMIN_TOKEN are intentionally NOT stored in frontend/Admin; they remain Cloudflare secrets.
+10. Existing Worker name/database bindings remain unchanged, so redeploying to the same Worker preserves normal Durable Object data and existing secrets.
+
+EMAIL FINAL STEP AFTER RESEND DOMAIN IS VERIFIED
+Run from this project folder:
+  npx wrangler secret put RESEND_API_KEY
+Paste the Resend API key when prompted.
+Then open /admin > System / Email > Send Test Email.
+
+DEPLOY UPDATE
+  npm install
+  npx wrangler deploy
+
+Worker name: vishu-home-tuition-integrated
+Domain target: https://vishuhometuition.in

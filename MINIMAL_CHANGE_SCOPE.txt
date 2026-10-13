@@ -1,0 +1,27 @@
+VISHU HOME TUITION — MINIMAL CHANGE SCOPE
+
+UNCHANGED ON PURPOSE
+- Main homepage visual design
+- Existing images and visual assets
+- Slider/motion timing
+- Transition/animation timing
+- Floating WhatsApp/call motion behavior
+- Teacher and student registration layout/flow except backend-controlled availability
+- Worker name
+- Durable Object / SQLite registration storage architecture
+- Existing registration ID system
+- Domain target and SITE_URL
+- QR verification concept
+
+UPDATED
+- Admin Panel controls synchronized to the current frontend
+- More current frontend sections/settings accessible from Admin
+- Backend toggles for tutor/student registration, quick enquiry and email events
+- Operational/admin/reply email set to vishuhometuition.gkp@gmail.com
+- Resend sender remains registrations@vishuhometuition.in
+- Digital card photo uses a rounded rectangular auto-fit portrait area instead of circular crop
+- Digital card QR retained
+- Email logs/test and automatic card email flow prepared
+
+SECURITY
+ADMIN_TOKEN and RESEND_API_KEY are not embedded in the ZIP. They remain Cloudflare secrets.

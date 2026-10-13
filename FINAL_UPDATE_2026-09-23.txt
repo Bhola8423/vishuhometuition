@@ -1,0 +1,13 @@
+VISHU HOME TUITION — requested final-touch update (2026-09-23)
+
+Applied only requested changes:
+- Tutor + Student registration uploads: server max 5 MB; compressible images >2 MB auto-optimized before upload; 5-minute timeout + retry retained.
+- Teacher marksheet upload removed.
+- Teacher preferred-area multi-area instruction added.
+- Teacher academic-board instruction clarified.
+- Student Area/Locality changed to Address; Address/Requirement Note changed to Special Requirement Note.
+- Teacher + Student digital ID card layout rebuilt to match supplied reference: uppercase auto-fit name, +91 contact row with icons, right-side verification QR, no top gold line; Teacher Digital ID terminology; student parent/guardian omitted from card but present in QR verification details.
+- Main CTA changed to Register as a Teacher.
+- Hero box changed to: 👑 Gorakhpur's No. 1 Home Tuition Platform.
+
+Existing registration reliability fixes from 2026-09-22 were preserved.

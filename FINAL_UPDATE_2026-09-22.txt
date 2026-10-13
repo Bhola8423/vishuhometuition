@@ -1,0 +1,35 @@
+VISHU HOME TUITION — FINAL OWNER UPDATE
+
+Permanent Registration IDs:
+- Teacher: VHT-T2500, VHT-T2501, VHT-T2502...
+- Student: VHT-S8500, VHT-S8501, VHT-S8502...
+- No year and no extra code. Counters are stored persistently in Durable Object SQLite.
+
+Admin operational control retained/extended:
+- View and search registrations
+- Edit registration details
+- Approve / Reject / Correction Required
+- Payment status: Pending / Submitted / Paid / Waived / Not Required
+- Active / Inactive registration + QR verification control
+- Private documents
+- Generate / download / share / email Digital ID Card
+- Notice management
+- Main Navy / Gold / Blue theme controls without editing code
+- Gallery / photos and website content controls
+
+Security:
+- Admin data/APIs require Cloudflare ADMIN_TOKEN.
+- Admin responses are no-store/noindex and same-origin framed only.
+- Existing ADMIN_TOKEN and RESEND_API_KEY remain Cloudflare secrets; redeploy does not recreate them.
+
+Email flow:
+- Registration applicant: Registration Received
+- Admin: one New Registration notification
+- Approval applicant: one Approved + Digital ID email
+- No separate payment-proof email.
+
+Performance / quality:
+- Existing optimized split panels and lazy-loaded assets retained.
+- Smart face-aware / portrait fallback card framing retained.
+- Digital Card remains 1200 x 720 PNG.
+- Existing design/content/graphics preserved apart from previously requested favicon/card/email fixes.

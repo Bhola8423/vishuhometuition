@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "vishu-home-tuition-integrated",
+  "main": "./src/index.js",
+  "compatibility_date": "2026-09-19",
+  "assets": {
+    "directory": "./dist/",
+    "html_handling": "auto-trailing-slash",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "REG_STORE",
+        "class_name": "RegistrationStore"
+      }
+    ]
+  },
+  "exports": {
+    "RegistrationStore": {
+      "type": "durable-object",
+      "storage": "sqlite"
+    }
+  },
+  "vars": {
+    "ADMIN_EMAIL": "vishuhometuition.gkp@gmail.com",
+    "REPLY_TO_EMAIL": "vishuhometuition.gkp@gmail.com",
+    "MAIL_FROM": "VISHU HOME TUITION <registrations@vishuhometuition.in>",
+    "SITE_URL": "https://vishuhometuition.in"
+  }
+}

@@ -1,0 +1,31 @@
+VISHU HOME TUITION — SOURCE MAP
+
+public/index.html
+  Main homepage and UI. Contains embedded Base64 Student/Tutor/Admin interfaces.
+
+public/home-tuition-gorakhpur/index.html
+  Dedicated local SEO/GEO page with 163 locality chips, 15 landmark/corridor references, subjects, FAQs and quick tutor request.
+
+src/index.js
+  Cloudflare Worker backend:
+  - Student/Tutor registration API
+  - Quick tutor lead API
+  - Unique registration IDs
+  - Status lookup and public verification
+  - Chunked file/document storage
+  - Admin registration list/detail/status/files
+  - Email logs
+  - Resend applicant/admin/payment/status/card emails
+  - Digital-card email endpoint
+  - Admin CMS content/media APIs
+  - Health endpoint
+
+wrangler.jsonc
+  Worker entry point, static assets, run_worker_first paths, Durable Object SQLite binding, domain/email vars.
+
+public/robots.txt
+public/sitemap.xml
+public/manifest.webmanifest
+public/llms.txt
+public/_headers
+  Search/crawl/PWA/cache/support files.

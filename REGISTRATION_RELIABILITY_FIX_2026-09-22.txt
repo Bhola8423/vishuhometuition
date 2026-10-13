@@ -1,0 +1,28 @@
+VISHU HOME TUITION — REGISTRATION RELIABILITY FIX
+Date: 22 September 2026
+
+Problem observed
+- Some users could submit registrations while others received a misleading "Registration server is not reachable" message.
+- The old browser code used a 45-second upload timeout, even though tutor registration can include several files.
+- Mobile uploads can therefore fail on slower/intermittent networks.
+- Image pickers also allowed formats such as HEIC via image/* even though the backend intentionally accepts JPG/JPEG/PNG/WEBP.
+
+Fix applied
+1. Upload timeout increased from 45 seconds to 5 minutes.
+2. One automatic retry is used for true network/upload interruptions.
+3. Large JPG/JPEG/PNG/WEBP images above 2 MB are best-effort compressed in the browser before upload (max dimension 2200px; target about 1.5 MB). If compression is unsupported/fails, the original file is used.
+4. HEIC/unsupported image selection is blocked by explicit file picker filters and client validation.
+5. Backend-supported WEBP is now explicitly listed in the UI.
+6. Error messages now distinguish network interruption, long upload, 413/oversize response, temporary server error and deployment mismatch.
+7. Failed submissions keep the completed form/files in place so the user can retry without refilling.
+8. Toast visibility increased for readability.
+
+No changes were made to existing Worker name, Durable Object binding, database, admin token, Resend secret, domain, SEO, sitemap, analytics, or website content/design.
+
+Deploy to the SAME existing Worker:
+  npm install
+  npx wrangler deploy
+
+Then test one Tutor and one Student registration on mobile data and Wi-Fi.
+
+5. Resume/CV WEBP consistency: frontend and backend now both accept WEBP, avoiding a client/server format mismatch.

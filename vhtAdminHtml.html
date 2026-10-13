@@ -1,0 +1,1492 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Vishu Home Tuition • Admin</title><style>
+:root{--navy:#061A3F;--blue:#1765E8;--gold:#F7C63D;--bg:#f3f6fb;--line:#dfe7f1;--muted:#6f7d91;--ok:#17815a;--bad:#c63f45}*{box-sizing:border-box}body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;background:var(--bg);color:#17233a}.wrap{width:min(1200px,94%);margin:auto}.head{background:var(--navy);color:#fff;padding:13px 0;position:sticky;top:0;z-index:10;box-shadow:0 7px 24px rgba(0,0,0,.15)}.head .wrap{display:flex;gap:12px;align-items:center}.head b{font-size:18px}.head small{opacity:.78}.sp{margin-left:auto}.btn,input,select,textarea{font:inherit}.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:850;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--blue);color:#fff}.light{background:#fff;color:var(--navy);border:1px solid var(--line)}.danger-btn{background:#fff0f0;color:#a83239;border:1px solid #f1cfd1}main{padding:20px 0 50px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 28px rgba(6,40,95,.07);padding:16px;margin-bottom:14px}.login{max-width:480px;margin:50px auto}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tab{background:#fff;border:1px solid var(--line);color:#17325f}.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field{margin-bottom:12px}.field label{display:block;font-size:11px;font-weight:900;color:#40516d;margin-bottom:6px;letter-spacing:.02em}.grid input,.grid select,.field input,.field textarea,.field select{width:100%;padding:11px;border:1px solid #cfdbe8;border-radius:10px;background:white;color:#17233a}.field textarea{resize:vertical;min-height:84px}.table{overflow:auto}.table table{width:100%;border-collapse:collapse;min-width:850px}.table th,.table td{padding:10px;border-bottom:1px solid #edf1f6;text-align:left;font-size:12px}.table th{background:#f8fafc}.pill{display:inline-block;padding:5px 8px;border-radius:99px;background:#edf5ff;font-size:10px;font-weight:900}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.kv{display:grid;grid-template-columns:155px 1fr;gap:8px;padding:8px 0;border-bottom:1px dashed #e5ebf2;font-size:12px}.kv span{color:var(--muted)}.docs{display:flex;gap:8px;flex-wrap:wrap}.hidden{display:none!important}.msg{padding:10px;border-radius:10px;background:#fff8e9;border:1px solid #efdfbc;font-size:12px}.ok{background:#ebf8f2;border-color:#cce9d8}.danger{background:#fff0f0;border-color:#f1cfd1}.section-title{display:flex;align-items:center;gap:9px;margin:0 0 13px;color:var(--navy);font-size:16px}.section-title:before{content:"";width:5px;height:21px;border-radius:6px;background:linear-gradient(var(--blue),var(--gold))}.hint{font-size:11px;line-height:1.55;color:var(--muted);margin:-4px 0 12px}.switch{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:850}.switch input{width:auto}.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.media-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}.media-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#eef3f8}.media-body{padding:11px}.media-body h4{margin:0 0 5px;font-size:13px}.media-body p{margin:0 0 9px;color:var(--muted);font-size:11px;line-height:1.4}.actions{display:flex;gap:7px;flex-wrap:wrap}.savebar{position:sticky;bottom:10px;z-index:5;display:flex;gap:9px;align-items:center;justify-content:flex-end;background:rgba(255,255,255,.93);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:0 12px 30px rgba(6,26,63,.12)}.small{font-size:11px;color:var(--muted)}
+@media(max-width:900px){.grid,.three{grid-template-columns:1fr 1fr}.media-grid{grid-template-columns:1fr 1fr}}@media(max-width:650px){.grid,.two,.three,.detail-grid,.media-grid{grid-template-columns:1fr}.head small{display:none}.kv{grid-template-columns:1fr;gap:2px}.tabs{position:sticky;top:67px;z-index:8;background:var(--bg);padding:7px 0}.tab{flex:1 1 auto}.savebar{justify-content:stretch}.savebar .btn{flex:1}}
+
+.card-modal{position:fixed;inset:0;background:rgba(6,26,63,.76);display:grid;place-items:center;padding:18px;z-index:9999;backdrop-filter:blur(8px)}
+.card-modal-box{width:min(1080px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:22px;padding:16px;box-shadow:0 28px 80px rgba(0,0,0,.28)}
+.card-modal-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.card-modal-head h3{margin:0;color:var(--navy)}.card-preview{background:#eaf0f7;border-radius:16px;padding:12px;overflow:auto}.card-preview canvas{display:block;width:100%;height:auto;max-width:900px;margin:auto;border-radius:14px;box-shadow:0 14px 34px rgba(6,26,63,.18)}
+.system-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.system-item{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fafcff}.system-item span{display:block;font-size:10px;color:var(--muted);font-weight:850;text-transform:uppercase;letter-spacing:.06em}.system-item b{display:block;margin-top:5px;font-size:13px;word-break:break-word}.ready{color:var(--ok)}.not-ready{color:var(--bad)}.email-log{margin-top:13px;border:1px solid var(--line);border-radius:12px;overflow:hidden}.email-log-row{display:grid;grid-template-columns:1.2fr 1.5fr .8fr 1fr;gap:8px;padding:8px 10px;border-bottom:1px solid #edf1f6;font-size:10.5px}.email-log-row:last-child{border-bottom:0}.email-log-row b{font-size:10.5px}.btn[disabled]{opacity:.48;cursor:not-allowed;transform:none!important}
+@media(max-width:650px){.system-grid{grid-template-columns:1fr}.email-log-row{grid-template-columns:1fr 1fr}.card-modal{padding:8px}.card-modal-box{padding:10px;border-radius:16px}}
+
+/* FINAL CURSOR UX: show hand pointer only on interactive/clickable controls. */
+a[href],button:not(:disabled),[role="button"],[onclick],summary,select,label[for],input[type="button"],input[type="submit"],input[type="reset"],input[type="file"],input[type="checkbox"],input[type="radio"],.btn,.submit,[data-vht-register]{cursor:pointer!important}
+button:disabled,input:disabled,select:disabled,[aria-disabled="true"],.vht-cms-disabled{cursor:not-allowed!important}
+</style></head><body><header class="head"><div class="wrap"><div><b>VISHU HOME TUITION</b><br><small>Admin • Registrations + Website Content</small></div><div class="sp"></div><button id="logout" class="btn light hidden">Logout</button></div></header><main class="wrap">
+<section id="login" class="card login"><h2>Admin Login</h2><p class="small">Enter the private ADMIN_TOKEN configured in Cloudflare.</p><div class="field"><input id="token" type="password" placeholder="Admin token"></div><button class="btn primary" onclick="login()">Open Admin Panel</button><div id="loginMsg" style="margin-top:12px"></div></section>
+<section id="app" class="hidden"><div class="tabs"><button class="btn tab active" data-tab="registrations">Registrations</button><button class="btn tab" data-tab="content">Website Control</button><button class="btn tab" data-tab="controls">Backend Controls</button><button class="btn tab" data-tab="gallery">Gallery / Photos</button><button class="btn tab" data-tab="system">System / Email</button></div>
+<div id="tab-registrations" class="tab-panel"><div class="card"><div class="grid"><select id="type"><option value="">All Types</option><option value="teacher">Teachers</option><option value="student">Students</option></select><select id="status"><option value="">All Status</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option><option>CORRECTION_REQUIRED</option></select><input id="q" placeholder="Search ID, name, phone, email"><button class="btn primary" onclick="loadList()">Search / Refresh</button></div></div><div class="card table"><table><thead><tr><th>ID</th><th>Type</th><th>Name</th><th>Phone</th><th>Status</th><th>Payment</th><th>Active</th><th>Created</th><th></th></tr></thead><tbody id="rows"></tbody></table></div><div id="detail" class="card hidden"></div></div>
+<div id="tab-content" class="tab-panel hidden">
+<div class="card"><h3 class="section-title">Current Hero</h3><p class="hint">These defaults match the current production frontend. Saving here updates the live site without editing HTML.</p><div class="three"><div class="field"><label>Hero kicker</label><input id="c_heroKicker"></div><div class="field"><label>Hero title — first line</label><input id="c_heroTitle1"></div><div class="field"><label>Hero title — second line</label><input id="c_heroTitle2"></div><div class="field"><label>Hero city</label><input id="c_heroCity"></div><div class="field"><label>Hero solution line</label><input id="c_heroSolution"></div><div class="field"><label>Hero description</label><input id="c_heroSub"></div><div class="field"><label>Hero chip 1</label><input id="c_heroChip1"></div><div class="field"><label>Hero chip 2</label><input id="c_heroChip2"></div><div class="field"><label>Hero chip 3</label><input id="c_heroChip3"></div></div></div>
+<div class="card"><h3 class="section-title">Trust / Social Proof</h3><div class="three"><div class="field"><label>Trust heading</label><input id="c_trustKicker"></div><div class="field"><label>Trusted since year</label><input id="c_sinceYear"></div><div class="field"><label>Since card title</label><input id="c_sinceTitle"></div><div class="field"><label>Teacher count</label><input id="c_teacherCount" inputmode="numeric"></div><div class="field"><label>Families count</label><input id="c_familyCount" inputmode="numeric"></div><div class="field"><label>Google rating</label><input id="c_googleRating"></div><div class="field"><label>Google review line</label><input id="c_googleText"></div><div class="field"><label>Justdial rating</label><input id="c_justdialRating"></div><div class="field"><label>Justdial review line</label><input id="c_justdialText"></div></div><div class="two"><div class="field"><label>Since card description</label><textarea id="c_sinceText"></textarea></div><div><div class="field"><label>Teacher card text</label><input id="c_teacherText"></div><div class="field"><label>Families card text</label><input id="c_familyText"></div></div></div></div>
+<div class="card"><h3 class="section-title">Registration Sections</h3><div class="two"><div><div class="field"><label>Student kicker</label><input id="c_studentKicker"></div><div class="field"><label>Student title</label><input id="c_studentTitle"></div><div class="field"><label>Student description</label><textarea id="c_studentText"></textarea></div><div class="field"><label>Student button</label><input id="c_studentButton"></div></div><div><div class="field"><label>Tutor kicker</label><input id="c_tutorKicker"></div><div class="field"><label>Tutor title</label><input id="c_tutorTitle"></div><div class="field"><label>Tutor description</label><textarea id="c_tutorText"></textarea></div><div class="field"><label>Tutor button</label><input id="c_tutorButton"></div></div></div></div>
+<div class="card"><h3 class="section-title">Fees, Quick Enquiry & How It Works</h3><div class="three"><div class="field"><label>Fees kicker</label><input id="c_feesKicker"></div><div class="field"><label>Fees title</label><input id="c_feesTitle"></div><div class="field"><label>Fees note badge</label><input id="c_feesNoteBadge"></div></div><div class="field"><label>Fees note</label><input id="c_feesNoteText"></div><hr style="border:0;border-top:1px solid var(--line);margin:15px 0"><div class="three"><div class="field"><label>Enquiry kicker</label><input id="c_contactKicker"></div><div class="field"><label>Enquiry title</label><input id="c_contactTitle"></div><div class="field"><label>Enquiry button</label><input id="c_contactButton"></div></div><div class="field"><label>Enquiry description</label><input id="c_contactText"></div><div class="three"><div class="field"><label>How it works kicker</label><input id="c_howKicker"></div><div class="field"><label>How it works title</label><input id="c_howTitle"></div><div class="field"><label>How it works description</label><input id="c_howText"></div></div></div>
+<div class="card"><h3 class="section-title">Feedback, Founder & FAQ</h3><div class="two"><div><div class="field"><label>Feedback kicker</label><input id="c_feedbackKicker"></div><div class="field"><label>Feedback title</label><input id="c_feedbackTitle"></div></div><div><div class="field"><label>Founder role</label><input id="c_founderRole"></div><div class="field"><label>Founder brand</label><input id="c_founderBrand"></div></div></div><div class="field"><label>Founder quote</label><textarea id="c_founderQuote" rows="4"></textarea></div><div class="three"><div class="field"><label>FAQ kicker</label><input id="c_faqKicker"></div><div class="field"><label>FAQ title</label><input id="c_faqTitle"></div><div class="field"><label>FAQ intro</label><input id="c_faqIntro"></div></div></div>
+<div class="card"><h3 class="section-title">Business Contact & Footer</h3><div class="three"><div class="field"><label>Phone / WhatsApp</label><input id="c_phone"></div><div class="field"><label>Official website contact email</label><input id="c_email"></div><div class="field"><label>Footer tagline</label><input id="c_footerTagline"></div></div><div class="field"><label>Footer services — one per line</label><textarea id="c_services" rows="4"></textarea></div></div>
+<div class="card"><h3 class="section-title">Social Links & Theme</h3><div class="three"><div class="field"><label>Instagram URL</label><input id="c_instagram"></div><div class="field"><label>YouTube URL</label><input id="c_youtube"></div><div class="field"><label>Facebook URL</label><input id="c_facebook"></div><div class="field"><label>X URL</label><input id="c_x"></div><div class="field"><label>LinkedIn URL</label><input id="c_linkedin"></div><div class="field"><label>Threads URL</label><input id="c_threads"></div><div class="field"><label>Navy</label><input id="c_navy" type="color"></div><div class="field"><label>Gold</label><input id="c_gold" type="color"></div><div class="field"><label>Blue</label><input id="c_blue" type="color"></div></div></div>
+<div class="card"><h3 class="section-title">SEO, Notice, Extra Fees/Areas & Feedback Items</h3><div class="field"><label>Homepage title</label><input id="c_homeTitle"></div><div class="field"><label>Homepage meta description</label><textarea id="c_homeDescription"></textarea></div><div class="field"><label>Gorakhpur landing page title</label><input id="c_landingTitle"></div><div class="field"><label>Landing page meta description</label><textarea id="c_landingDescription"></textarea></div><label class="switch"><input id="c_noticeEnabled" type="checkbox"> Show notice / offer strip</label><div class="field" style="margin-top:10px"><label>Notice / Offer text</label><input id="c_noticeText"></div><div class="two"><div class="field"><label>Additional fee updates — one line per item</label><textarea id="c_fees" rows="6"></textarea></div><div class="field"><label>Additional service areas — one per line</label><textarea id="c_areas" rows="6"></textarea></div></div><div class="field"><label>Feedback — one per line: Name | Role/Area | Feedback</label><textarea id="c_testimonials" rows="7"></textarea></div><p class="hint">Canonical domain, database code, ADMIN_TOKEN and API secrets remain protected in Cloudflare so they cannot be accidentally exposed from the browser.</p></div>
+<div class="savebar"><span id="contentMsg" class="small"></span><button class="btn light" onclick="syncCurrentDefaults()">Load Current Website Defaults</button><button class="btn light" onclick="loadContent()">Reset from Saved</button><button class="btn primary" onclick="saveContent()">Save Website Changes</button></div>
+</div>
+<div id="tab-controls" class="tab-panel hidden">
+<div class="card"><h3 class="section-title">Frontend Section Visibility</h3><p class="hint">Turn a section off without deleting its content. You can turn it back on anytime.</p><div class="three"><label class="switch"><input id="v_trust" type="checkbox"> Trust / statistics</label><label class="switch"><input id="v_tutor" type="checkbox"> Tutor registration section</label><label class="switch"><input id="v_student" type="checkbox"> Student registration section</label><label class="switch"><input id="v_fees" type="checkbox"> Fees section</label><label class="switch"><input id="v_contact" type="checkbox"> Quick enquiry section</label><label class="switch"><input id="v_how" type="checkbox"> How it works</label><label class="switch"><input id="v_feedback" type="checkbox"> Feedback</label><label class="switch"><input id="v_founder" type="checkbox"> Founder vision</label><label class="switch"><input id="v_faq" type="checkbox"> FAQ</label><label class="switch"><input id="v_gallery" type="checkbox"> Admin gallery</label></div></div>
+<div class="card"><h3 class="section-title">Registration Payment Control</h3><p class="hint">Change registration/payment amounts here. Saved values update the Teacher and Student registration forms automatically.</p><div class="two"><div class="field"><label>Teacher Registration Fee (₹)</label><input id="p_teacherFee" inputmode="numeric" min="0" step="1" type="number" placeholder="500"></div><div class="field"><label>Student Default Advance Amount (₹, optional)</label><input id="p_studentAdvance" inputmode="numeric" min="0" step="1" type="number" placeholder="Leave blank for student-entered amount"></div></div></div>
+<div class="card"><h3 class="section-title">Backend / Registration Controls</h3><p class="hint">These switches are enforced by the Worker backend, not just visually hidden on the frontend.</p><div class="two"><div><label class="switch"><input id="o_teacher" type="checkbox"> Accept Teacher registrations</label><br><label class="switch"><input id="o_student" type="checkbox"> Accept Student registrations</label><br><label class="switch"><input id="o_quick" type="checkbox"> Accept Quick Enquiry submissions</label></div><div><label class="switch"><input id="o_regmail" type="checkbox"> Automatic registration + payment emails</label><br><label class="switch"><input id="o_statusmail" type="checkbox"> Automatic status-change emails</label><br><label class="switch"><input id="o_cardmail" type="checkbox"> Auto-email digital card on new approval</label></div></div></div>
+<div class="card"><h3 class="section-title">Protected Backend Architecture</h3><div class="system-grid"><div class="system-item"><span>Database</span><b class="ready">Durable Object • SQLite</b></div><div class="system-item"><span>Registration IDs</span><b class="ready">Sequential • Teacher + Student</b></div><div class="system-item"><span>Files</span><b class="ready">Registration 5 MB • Gallery 10 MB validation</b></div><div class="system-item"><span>Secrets</span><b>ADMIN_TOKEN + RESEND_API_KEY stay protected in Cloudflare</b></div></div><p class="hint" style="margin-top:12px">Raw Worker source and secret values are intentionally not editable inside the public browser Admin Panel. This prevents one wrong click or compromised login from exposing credentials or breaking the live backend.</p></div>
+<div class="savebar"><span id="controlMsg" class="small"></span><button class="btn primary" onclick="saveContent(true)">Save Controls</button></div>
+</div>
+<div id="tab-gallery" class="tab-panel hidden"><div class="card"><h3 class="section-title">Upload Student / Website Photo</h3><p class="hint">Use JPG/PNG/WebP, up to 10 MB. Published photos appear automatically in the website gallery.</p><div class="three"><div class="field"><label>Photo</label><input id="m_file" type="file" accept="image/*"></div><div class="field"><label>Title / Student name</label><input id="m_title"></div><div class="field"><label>Order</label><input id="m_order" type="number" value="0"></div></div><div class="two"><div class="field"><label>Caption</label><input id="m_caption"></div><div class="field"><label>Image alt text</label><input id="m_alt"></div></div><label class="switch"><input id="m_published" type="checkbox" checked> Publish immediately</label><br><button class="btn primary" onclick="uploadMedia()">Upload Photo</button><span id="mediaMsg" class="small" style="margin-left:9px"></span></div><div id="mediaGrid" class="media-grid"></div></div>
+<div id="tab-system" class="tab-panel hidden"><div class="card"><h3 class="section-title">Email & Digital Card System</h3><p class="hint">Email uses Resend through the Cloudflare Worker. The admin inbox and Reply-To use your active business Gmail; sender remains your verified domain address.</p><div id="systemInfo" class="system-grid"><div class="system-item"><span>Status</span><b>Loading…</b></div></div><div style="margin-top:12px" class="actions"><button class="btn primary" onclick="sendTestEmail()">Send Test Email</button><span id="systemMsg" class="small"></span></div></div><div class="card"><h3 class="section-title">Digital Card Workflow</h3><p class="hint">Approve a Teacher/Student registration → card is generated with an auto-fit rectangular photo → verification QR stays active → automatic email is sent when Resend is configured and Auto-email is enabled.</p></div></div>
+</section></main>
+<div id="cardModal" class="card-modal hidden" role="dialog" aria-modal="true" aria-label="Digital card preview">
+  <div class="card-modal-box">
+    <div class="card-modal-head"><h3>Digital Card Preview</h3><div class="sp"></div><button class="btn light" onclick="closeCardModal()">Close</button></div>
+    <div class="card-preview"><canvas id="digitalCardCanvas" width="1200" height="720"></canvas></div>
+    <div class="actions" style="justify-content:center;margin-top:13px"><button class="btn primary" onclick="downloadDigitalCard()">Download PNG</button><button class="btn light" onclick="shareDigitalCard()">Share Card</button><button class="btn light" onclick="emailDigitalCard(false)">Email Card</button></div><div id="cardEmailMsg" class="small" style="text-align:center;margin-top:9px"></div>
+  </div>
+</div>
+<script>
+/* QRCode generator by Kazuhiko Arase (MIT); bundled locally for VHT digital cards. */
+(function(global){
+const __mods={}; const __cache={};
+__mods['QR8bitByte']=function(require,module,exports){
+var QRMode = require('./QRMode');
+
+function QR8bitByte(data) {
+	this.mode = QRMode.MODE_8BIT_BYTE;
+	this.data = data;
+}
+
+QR8bitByte.prototype = {
+
+	getLength : function() {
+		return this.data.length;
+	},
+	
+	write : function(buffer) {
+		for (var i = 0; i < this.data.length; i++) {
+			// not JIS ...
+			buffer.put(this.data.charCodeAt(i), 8);
+		}
+	}
+};
+
+module.exports = QR8bitByte;
+
+};
+__mods['QRBitBuffer']=function(require,module,exports){
+function QRBitBuffer() {
+	this.buffer = [];
+	this.length = 0;
+}
+
+QRBitBuffer.prototype = {
+
+	get : function(index) {
+		var bufIndex = Math.floor(index / 8);
+		return ( (this.buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+	},
+	
+	put : function(num, length) {
+		for (var i = 0; i < length; i++) {
+			this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+		}
+	},
+	
+	getLengthInBits : function() {
+		return this.length;
+	},
+	
+	putBit : function(bit) {
+	
+		var bufIndex = Math.floor(this.length / 8);
+		if (this.buffer.length <= bufIndex) {
+			this.buffer.push(0);
+		}
+	
+		if (bit) {
+			this.buffer[bufIndex] |= (0x80 >>> (this.length % 8) );
+		}
+	
+		this.length++;
+	}
+};
+
+module.exports = QRBitBuffer;
+
+};
+__mods['QRErrorCorrectLevel']=function(require,module,exports){
+module.exports = {
+	L : 1,
+	M : 0,
+	Q : 3,
+	H : 2
+};
+
+
+};
+__mods['QRMaskPattern']=function(require,module,exports){
+module.exports = {
+	PATTERN000 : 0,
+	PATTERN001 : 1,
+	PATTERN010 : 2,
+	PATTERN011 : 3,
+	PATTERN100 : 4,
+	PATTERN101 : 5,
+	PATTERN110 : 6,
+	PATTERN111 : 7
+};
+
+};
+__mods['QRMath']=function(require,module,exports){
+var QRMath = {
+
+	glog : function(n) {
+	
+		if (n < 1) {
+			throw new Error("glog(" + n + ")");
+		}
+		
+		return QRMath.LOG_TABLE[n];
+	},
+	
+	gexp : function(n) {
+	
+		while (n < 0) {
+			n += 255;
+		}
+	
+		while (n >= 256) {
+			n -= 255;
+		}
+	
+		return QRMath.EXP_TABLE[n];
+	},
+	
+	EXP_TABLE : new Array(256),
+	
+	LOG_TABLE : new Array(256)
+
+};
+	
+for (var i = 0; i < 8; i++) {
+	QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+	QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+		^ QRMath.EXP_TABLE[i - 5]
+		^ QRMath.EXP_TABLE[i - 6]
+		^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+	QRMath.LOG_TABLE[QRMath.EXP_TABLE[i] ] = i;
+}
+
+module.exports = QRMath;
+
+};
+__mods['QRMode']=function(require,module,exports){
+module.exports = {
+    MODE_NUMBER :       1 << 0,
+    MODE_ALPHA_NUM :    1 << 1,
+    MODE_8BIT_BYTE :    1 << 2,
+    MODE_KANJI :        1 << 3
+};
+
+};
+__mods['QRPolynomial']=function(require,module,exports){
+var QRMath = require('./QRMath');
+
+function QRPolynomial(num, shift) {
+	if (num.length === undefined) {
+		throw new Error(num.length + "/" + shift);
+	}
+
+	var offset = 0;
+
+	while (offset < num.length && num[offset] === 0) {
+		offset++;
+	}
+
+	this.num = new Array(num.length - offset + shift);
+	for (var i = 0; i < num.length - offset; i++) {
+		this.num[i] = num[i + offset];
+	}
+}
+
+QRPolynomial.prototype = {
+
+	get : function(index) {
+		return this.num[index];
+	},
+	
+	getLength : function() {
+		return this.num.length;
+	},
+	
+	multiply : function(e) {
+	
+		var num = new Array(this.getLength() + e.getLength() - 1);
+	
+		for (var i = 0; i < this.getLength(); i++) {
+			for (var j = 0; j < e.getLength(); j++) {
+				num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i) ) + QRMath.glog(e.get(j) ) );
+			}
+		}
+	
+		return new QRPolynomial(num, 0);
+	},
+	
+	mod : function(e) {
+	
+		if (this.getLength() - e.getLength() < 0) {
+			return this;
+		}
+	
+		var ratio = QRMath.glog(this.get(0) ) - QRMath.glog(e.get(0) );
+	
+		var num = new Array(this.getLength() );
+		
+		for (var i = 0; i < this.getLength(); i++) {
+			num[i] = this.get(i);
+		}
+		
+		for (var x = 0; x < e.getLength(); x++) {
+			num[x] ^= QRMath.gexp(QRMath.glog(e.get(x) ) + ratio);
+		}
+	
+		// recursive call
+		return new QRPolynomial(num, 0).mod(e);
+	}
+};
+
+module.exports = QRPolynomial;
+
+};
+__mods['QRRSBlock']=function(require,module,exports){
+var QRErrorCorrectLevel = require('./QRErrorCorrectLevel');
+
+function QRRSBlock(totalCount, dataCount) {
+	this.totalCount = totalCount;
+	this.dataCount  = dataCount;
+}
+
+QRRSBlock.RS_BLOCK_TABLE = [
+
+	// L
+	// M
+	// Q
+	// H
+
+	// 1
+	[1, 26, 19],
+	[1, 26, 16],
+	[1, 26, 13],
+	[1, 26, 9],
+	
+	// 2
+	[1, 44, 34],
+	[1, 44, 28],
+	[1, 44, 22],
+	[1, 44, 16],
+
+	// 3
+	[1, 70, 55],
+	[1, 70, 44],
+	[2, 35, 17],
+	[2, 35, 13],
+
+	// 4		
+	[1, 100, 80],
+	[2, 50, 32],
+	[2, 50, 24],
+	[4, 25, 9],
+	
+	// 5
+	[1, 134, 108],
+	[2, 67, 43],
+	[2, 33, 15, 2, 34, 16],
+	[2, 33, 11, 2, 34, 12],
+	
+	// 6
+	[2, 86, 68],
+	[4, 43, 27],
+	[4, 43, 19],
+	[4, 43, 15],
+	
+	// 7		
+	[2, 98, 78],
+	[4, 49, 31],
+	[2, 32, 14, 4, 33, 15],
+	[4, 39, 13, 1, 40, 14],
+	
+	// 8
+	[2, 121, 97],
+	[2, 60, 38, 2, 61, 39],
+	[4, 40, 18, 2, 41, 19],
+	[4, 40, 14, 2, 41, 15],
+	
+	// 9
+	[2, 146, 116],
+	[3, 58, 36, 2, 59, 37],
+	[4, 36, 16, 4, 37, 17],
+	[4, 36, 12, 4, 37, 13],
+	
+	// 10		
+	[2, 86, 68, 2, 87, 69],
+	[4, 69, 43, 1, 70, 44],
+	[6, 43, 19, 2, 44, 20],
+	[6, 43, 15, 2, 44, 16],
+
+	// 11
+	[4, 101, 81],
+	[1, 80, 50, 4, 81, 51],
+	[4, 50, 22, 4, 51, 23],
+	[3, 36, 12, 8, 37, 13],
+
+	// 12
+	[2, 116, 92, 2, 117, 93],
+	[6, 58, 36, 2, 59, 37],
+	[4, 46, 20, 6, 47, 21],
+	[7, 42, 14, 4, 43, 15],
+
+	// 13
+	[4, 133, 107],
+	[8, 59, 37, 1, 60, 38],
+	[8, 44, 20, 4, 45, 21],
+	[12, 33, 11, 4, 34, 12],
+
+	// 14
+	[3, 145, 115, 1, 146, 116],
+	[4, 64, 40, 5, 65, 41],
+	[11, 36, 16, 5, 37, 17],
+	[11, 36, 12, 5, 37, 13],
+
+	// 15
+	[5, 109, 87, 1, 110, 88],
+	[5, 65, 41, 5, 66, 42],
+	[5, 54, 24, 7, 55, 25],
+	[11, 36, 12],
+
+	// 16
+	[5, 122, 98, 1, 123, 99],
+	[7, 73, 45, 3, 74, 46],
+	[15, 43, 19, 2, 44, 20],
+	[3, 45, 15, 13, 46, 16],
+
+	// 17
+	[1, 135, 107, 5, 136, 108],
+	[10, 74, 46, 1, 75, 47],
+	[1, 50, 22, 15, 51, 23],
+	[2, 42, 14, 17, 43, 15],
+
+	// 18
+	[5, 150, 120, 1, 151, 121],
+	[9, 69, 43, 4, 70, 44],
+	[17, 50, 22, 1, 51, 23],
+	[2, 42, 14, 19, 43, 15],
+
+	// 19
+	[3, 141, 113, 4, 142, 114],
+	[3, 70, 44, 11, 71, 45],
+	[17, 47, 21, 4, 48, 22],
+	[9, 39, 13, 16, 40, 14],
+
+	// 20
+	[3, 135, 107, 5, 136, 108],
+	[3, 67, 41, 13, 68, 42],
+	[15, 54, 24, 5, 55, 25],
+	[15, 43, 15, 10, 44, 16],
+
+	// 21
+	[4, 144, 116, 4, 145, 117],
+	[17, 68, 42],
+	[17, 50, 22, 6, 51, 23],
+	[19, 46, 16, 6, 47, 17],
+
+	// 22
+	[2, 139, 111, 7, 140, 112],
+	[17, 74, 46],
+	[7, 54, 24, 16, 55, 25],
+	[34, 37, 13],
+
+	// 23
+	[4, 151, 121, 5, 152, 122],
+	[4, 75, 47, 14, 76, 48],
+	[11, 54, 24, 14, 55, 25],
+	[16, 45, 15, 14, 46, 16],
+
+	// 24
+	[6, 147, 117, 4, 148, 118],
+	[6, 73, 45, 14, 74, 46],
+	[11, 54, 24, 16, 55, 25],
+	[30, 46, 16, 2, 47, 17],
+
+	// 25
+	[8, 132, 106, 4, 133, 107],
+	[8, 75, 47, 13, 76, 48],
+	[7, 54, 24, 22, 55, 25],
+	[22, 45, 15, 13, 46, 16],
+
+	// 26
+	[10, 142, 114, 2, 143, 115],
+	[19, 74, 46, 4, 75, 47],
+	[28, 50, 22, 6, 51, 23],
+	[33, 46, 16, 4, 47, 17],
+
+	// 27
+	[8, 152, 122, 4, 153, 123],
+	[22, 73, 45, 3, 74, 46],
+	[8, 53, 23, 26, 54, 24],
+	[12, 45, 15, 28, 46, 16],
+
+	// 28
+	[3, 147, 117, 10, 148, 118],
+	[3, 73, 45, 23, 74, 46],
+	[4, 54, 24, 31, 55, 25],
+	[11, 45, 15, 31, 46, 16],
+
+	// 29
+	[7, 146, 116, 7, 147, 117],
+	[21, 73, 45, 7, 74, 46],
+	[1, 53, 23, 37, 54, 24],
+	[19, 45, 15, 26, 46, 16],
+
+	// 30
+	[5, 145, 115, 10, 146, 116],
+	[19, 75, 47, 10, 76, 48],
+	[15, 54, 24, 25, 55, 25],
+	[23, 45, 15, 25, 46, 16],
+
+	// 31
+	[13, 145, 115, 3, 146, 116],
+	[2, 74, 46, 29, 75, 47],
+	[42, 54, 24, 1, 55, 25],
+	[23, 45, 15, 28, 46, 16],
+
+	// 32
+	[17, 145, 115],
+	[10, 74, 46, 23, 75, 47],
+	[10, 54, 24, 35, 55, 25],
+	[19, 45, 15, 35, 46, 16],
+
+	// 33
+	[17, 145, 115, 1, 146, 116],
+	[14, 74, 46, 21, 75, 47],
+	[29, 54, 24, 19, 55, 25],
+	[11, 45, 15, 46, 46, 16],
+
+	// 34
+	[13, 145, 115, 6, 146, 116],
+	[14, 74, 46, 23, 75, 47],
+	[44, 54, 24, 7, 55, 25],
+	[59, 46, 16, 1, 47, 17],
+
+	// 35
+	[12, 151, 121, 7, 152, 122],
+	[12, 75, 47, 26, 76, 48],
+	[39, 54, 24, 14, 55, 25],
+	[22, 45, 15, 41, 46, 16],
+
+	// 36
+	[6, 151, 121, 14, 152, 122],
+	[6, 75, 47, 34, 76, 48],
+	[46, 54, 24, 10, 55, 25],
+	[2, 45, 15, 64, 46, 16],
+
+	// 37
+	[17, 152, 122, 4, 153, 123],
+	[29, 74, 46, 14, 75, 47],
+	[49, 54, 24, 10, 55, 25],
+	[24, 45, 15, 46, 46, 16],
+
+	// 38
+	[4, 152, 122, 18, 153, 123],
+	[13, 74, 46, 32, 75, 47],
+	[48, 54, 24, 14, 55, 25],
+	[42, 45, 15, 32, 46, 16],
+
+	// 39
+	[20, 147, 117, 4, 148, 118],
+	[40, 75, 47, 7, 76, 48],
+	[43, 54, 24, 22, 55, 25],
+	[10, 45, 15, 67, 46, 16],
+
+	// 40
+	[19, 148, 118, 6, 149, 119],
+	[18, 75, 47, 31, 76, 48],
+	[34, 54, 24, 34, 55, 25],
+	[20, 45, 15, 61, 46, 16]
+];
+
+QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
+	
+	var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+	
+	if (rsBlock === undefined) {
+		throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+	}
+
+	var length = rsBlock.length / 3;
+	
+	var list = [];
+	
+	for (var i = 0; i < length; i++) {
+
+		var count = rsBlock[i * 3 + 0];
+		var totalCount = rsBlock[i * 3 + 1];
+		var dataCount  = rsBlock[i * 3 + 2];
+
+		for (var j = 0; j < count; j++) {
+			list.push(new QRRSBlock(totalCount, dataCount) );	
+		}
+	}
+	
+	return list;
+};
+
+QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
+
+	switch(errorCorrectLevel) {
+	case QRErrorCorrectLevel.L :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+	case QRErrorCorrectLevel.M :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+	case QRErrorCorrectLevel.Q :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+	case QRErrorCorrectLevel.H :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+	default :
+		return undefined;
+	}
+};
+
+module.exports = QRRSBlock;
+
+};
+__mods['QRUtil']=function(require,module,exports){
+var QRMode = require('./QRMode');
+var QRPolynomial = require('./QRPolynomial');
+var QRMath = require('./QRMath');
+var QRMaskPattern = require('./QRMaskPattern');
+
+var QRUtil = {
+
+    PATTERN_POSITION_TABLE : [
+        [],
+        [6, 18],
+        [6, 22],
+        [6, 26],
+        [6, 30],
+        [6, 34],
+        [6, 22, 38],
+        [6, 24, 42],
+        [6, 26, 46],
+        [6, 28, 50],
+        [6, 30, 54],        
+        [6, 32, 58],
+        [6, 34, 62],
+        [6, 26, 46, 66],
+        [6, 26, 48, 70],
+        [6, 26, 50, 74],
+        [6, 30, 54, 78],
+        [6, 30, 56, 82],
+        [6, 30, 58, 86],
+        [6, 34, 62, 90],
+        [6, 28, 50, 72, 94],
+        [6, 26, 50, 74, 98],
+        [6, 30, 54, 78, 102],
+        [6, 28, 54, 80, 106],
+        [6, 32, 58, 84, 110],
+        [6, 30, 58, 86, 114],
+        [6, 34, 62, 90, 118],
+        [6, 26, 50, 74, 98, 122],
+        [6, 30, 54, 78, 102, 126],
+        [6, 26, 52, 78, 104, 130],
+        [6, 30, 56, 82, 108, 134],
+        [6, 34, 60, 86, 112, 138],
+        [6, 30, 58, 86, 114, 142],
+        [6, 34, 62, 90, 118, 146],
+        [6, 30, 54, 78, 102, 126, 150],
+        [6, 24, 50, 76, 102, 128, 154],
+        [6, 28, 54, 80, 106, 132, 158],
+        [6, 32, 58, 84, 110, 136, 162],
+        [6, 26, 54, 82, 110, 138, 166],
+        [6, 30, 58, 86, 114, 142, 170]
+    ],
+
+    G15 : (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18 : (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK : (1 << 14) | (1 << 12) | (1 << 10)    | (1 << 4) | (1 << 1),
+
+    getBCHTypeInfo : function(data) {
+        var d = data << 10;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+            d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) ) );    
+        }
+        return ( (data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+
+    getBCHTypeNumber : function(data) {
+        var d = data << 12;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+            d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) ) );    
+        }
+        return (data << 12) | d;
+    },
+
+    getBCHDigit : function(data) {
+
+        var digit = 0;
+
+        while (data !== 0) {
+            digit++;
+            data >>>= 1;
+        }
+
+        return digit;
+    },
+
+    getPatternPosition : function(typeNumber) {
+        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+
+    getMask : function(maskPattern, i, j) {
+        
+        switch (maskPattern) {
+            
+        case QRMaskPattern.PATTERN000 : return (i + j) % 2 === 0;
+        case QRMaskPattern.PATTERN001 : return i % 2 === 0;
+        case QRMaskPattern.PATTERN010 : return j % 3 === 0;
+        case QRMaskPattern.PATTERN011 : return (i + j) % 3 === 0;
+        case QRMaskPattern.PATTERN100 : return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 === 0;
+        case QRMaskPattern.PATTERN101 : return (i * j) % 2 + (i * j) % 3 === 0;
+        case QRMaskPattern.PATTERN110 : return ( (i * j) % 2 + (i * j) % 3) % 2 === 0;
+        case QRMaskPattern.PATTERN111 : return ( (i * j) % 3 + (i + j) % 2) % 2 === 0;
+
+        default :
+            throw new Error("bad maskPattern:" + maskPattern);
+        }
+    },
+
+    getErrorCorrectPolynomial : function(errorCorrectLength) {
+
+        var a = new QRPolynomial([1], 0);
+
+        for (var i = 0; i < errorCorrectLength; i++) {
+            a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0) );
+        }
+
+        return a;
+    },
+
+    getLengthInBits : function(mode, type) {
+
+        if (1 <= type && type < 10) {
+
+            // 1 - 9
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 10;
+            case QRMode.MODE_ALPHA_NUM  : return 9;
+            case QRMode.MODE_8BIT_BYTE  : return 8;
+            case QRMode.MODE_KANJI      : return 8;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 27) {
+
+            // 10 - 26
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 12;
+            case QRMode.MODE_ALPHA_NUM  : return 11;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 10;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 41) {
+
+            // 27 - 40
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 14;
+            case QRMode.MODE_ALPHA_NUM  : return 13;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 12;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else {
+            throw new Error("type:" + type);
+        }
+    },
+
+    getLostPoint : function(qrCode) {
+        
+        var moduleCount = qrCode.getModuleCount();
+        var lostPoint = 0;
+        var row = 0; 
+        var col = 0;
+
+        
+        // LEVEL1
+        
+        for (row = 0; row < moduleCount; row++) {
+
+            for (col = 0; col < moduleCount; col++) {
+
+                var sameCount = 0;
+                var dark = qrCode.isDark(row, col);
+
+                for (var r = -1; r <= 1; r++) {
+
+                    if (row + r < 0 || moduleCount <= row + r) {
+                        continue;
+                    }
+
+                    for (var c = -1; c <= 1; c++) {
+
+                        if (col + c < 0 || moduleCount <= col + c) {
+                            continue;
+                        }
+
+                        if (r === 0 && c === 0) {
+                            continue;
+                        }
+
+                        if (dark === qrCode.isDark(row + r, col + c) ) {
+                            sameCount++;
+                        }
+                    }
+                }
+
+                if (sameCount > 5) {
+                    lostPoint += (3 + sameCount - 5);
+                }
+            }
+        }
+
+        // LEVEL2
+
+        for (row = 0; row < moduleCount - 1; row++) {
+            for (col = 0; col < moduleCount - 1; col++) {
+                var count = 0;
+                if (qrCode.isDark(row,     col    ) ) count++;
+                if (qrCode.isDark(row + 1, col    ) ) count++;
+                if (qrCode.isDark(row,     col + 1) ) count++;
+                if (qrCode.isDark(row + 1, col + 1) ) count++;
+                if (count === 0 || count === 4) {
+                    lostPoint += 3;
+                }
+            }
+        }
+
+        // LEVEL3
+
+        for (row = 0; row < moduleCount; row++) {
+            for (col = 0; col < moduleCount - 6; col++) {
+                if (qrCode.isDark(row, col) && 
+                        !qrCode.isDark(row, col + 1) && 
+                         qrCode.isDark(row, col + 2) && 
+                         qrCode.isDark(row, col + 3) && 
+                         qrCode.isDark(row, col + 4) && 
+                        !qrCode.isDark(row, col + 5) && 
+                         qrCode.isDark(row, col + 6) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount - 6; row++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row + 1, col) &&
+                         qrCode.isDark(row + 2, col) &&
+                         qrCode.isDark(row + 3, col) &&
+                         qrCode.isDark(row + 4, col) &&
+                        !qrCode.isDark(row + 5, col) &&
+                         qrCode.isDark(row + 6, col) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        // LEVEL4
+        
+        var darkCount = 0;
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount; row++) {
+                if (qrCode.isDark(row, col) ) {
+                    darkCount++;
+                }
+            }
+        }
+        
+        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+        lostPoint += ratio * 10;
+
+        return lostPoint;       
+    }
+
+};
+
+module.exports = QRUtil;
+
+};
+__mods['index']=function(require,module,exports){
+//---------------------------------------------------------------------
+// QRCode for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//   http://www.opensource.org/licenses/mit-license.php
+//
+// The word "QR Code" is registered trademark of 
+// DENSO WAVE INCORPORATED
+//   http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+// Modified to work in node for this project (and some refactoring)
+//---------------------------------------------------------------------
+
+var QR8bitByte = require('./QR8bitByte');
+var QRUtil = require('./QRUtil');
+var QRPolynomial = require('./QRPolynomial');
+var QRRSBlock = require('./QRRSBlock');
+var QRBitBuffer = require('./QRBitBuffer');
+
+function QRCode(typeNumber, errorCorrectLevel) {
+	this.typeNumber = typeNumber;
+	this.errorCorrectLevel = errorCorrectLevel;
+	this.modules = null;
+	this.moduleCount = 0;
+	this.dataCache = null;
+	this.dataList = [];
+}
+
+QRCode.prototype = {
+	
+	addData : function(data) {
+		var newData = new QR8bitByte(data);
+		this.dataList.push(newData);
+		this.dataCache = null;
+	},
+	
+	isDark : function(row, col) {
+		if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+			throw new Error(row + "," + col);
+		}
+		return this.modules[row][col];
+	},
+
+	getModuleCount : function() {
+		return this.moduleCount;
+	},
+	
+	make : function() {
+		// Calculate automatically typeNumber if provided is < 1
+		if (this.typeNumber < 1 ){
+			var typeNumber = 1;
+			for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+				var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+
+				var buffer = new QRBitBuffer();
+				var totalDataCount = 0;
+				for (var i = 0; i < rsBlocks.length; i++) {
+					totalDataCount += rsBlocks[i].dataCount;
+				}
+
+				for (var x = 0; x < this.dataList.length; x++) {
+					var data = this.dataList[x];
+					buffer.put(data.mode, 4);
+					buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+					data.write(buffer);
+				}
+				if (buffer.getLengthInBits() <= totalDataCount * 8)
+					break;
+			}
+			this.typeNumber = typeNumber;
+		}
+		this.makeImpl(false, this.getBestMaskPattern() );
+	},
+	
+	makeImpl : function(test, maskPattern) {
+		
+		this.moduleCount = this.typeNumber * 4 + 17;
+		this.modules = new Array(this.moduleCount);
+		
+		for (var row = 0; row < this.moduleCount; row++) {
+			
+			this.modules[row] = new Array(this.moduleCount);
+			
+			for (var col = 0; col < this.moduleCount; col++) {
+				this.modules[row][col] = null;//(col + row) % 3;
+			}
+		}
+	
+		this.setupPositionProbePattern(0, 0);
+		this.setupPositionProbePattern(this.moduleCount - 7, 0);
+		this.setupPositionProbePattern(0, this.moduleCount - 7);
+		this.setupPositionAdjustPattern();
+		this.setupTimingPattern();
+		this.setupTypeInfo(test, maskPattern);
+		
+		if (this.typeNumber >= 7) {
+			this.setupTypeNumber(test);
+		}
+	
+		if (this.dataCache === null) {
+			this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+		}
+	
+		this.mapData(this.dataCache, maskPattern);
+	},
+
+	setupPositionProbePattern : function(row, col)  {
+		
+		for (var r = -1; r <= 7; r++) {
+			
+			if (row + r <= -1 || this.moduleCount <= row + r) continue;
+			
+			for (var c = -1; c <= 7; c++) {
+				
+				if (col + c <= -1 || this.moduleCount <= col + c) continue;
+				
+				if ( (0 <= r && r <= 6 && (c === 0 || c === 6) ) || 
+                     (0 <= c && c <= 6 && (r === 0 || r === 6) ) || 
+                     (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+					this.modules[row + r][col + c] = true;
+				} else {
+					this.modules[row + r][col + c] = false;
+				}
+			}		
+		}		
+	},
+	
+	getBestMaskPattern : function() {
+	
+		var minLostPoint = 0;
+		var pattern = 0;
+	
+		for (var i = 0; i < 8; i++) {
+			
+			this.makeImpl(true, i);
+	
+			var lostPoint = QRUtil.getLostPoint(this);
+	
+			if (i === 0 || minLostPoint >  lostPoint) {
+				minLostPoint = lostPoint;
+				pattern = i;
+			}
+		}
+	
+		return pattern;
+	},
+	
+	createMovieClip : function(target_mc, instance_name, depth) {
+	
+		var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+		var cs = 1;
+	
+		this.make();
+
+		for (var row = 0; row < this.modules.length; row++) {
+			
+			var y = row * cs;
+			
+			for (var col = 0; col < this.modules[row].length; col++) {
+	
+				var x = col * cs;
+				var dark = this.modules[row][col];
+			
+				if (dark) {
+					qr_mc.beginFill(0, 100);
+					qr_mc.moveTo(x, y);
+					qr_mc.lineTo(x + cs, y);
+					qr_mc.lineTo(x + cs, y + cs);
+					qr_mc.lineTo(x, y + cs);
+					qr_mc.endFill();
+				}
+			}
+		}
+		
+		return qr_mc;
+	},
+
+	setupTimingPattern : function() {
+		
+		for (var r = 8; r < this.moduleCount - 8; r++) {
+			if (this.modules[r][6] !== null) {
+				continue;
+			}
+			this.modules[r][6] = (r % 2 === 0);
+		}
+	
+		for (var c = 8; c < this.moduleCount - 8; c++) {
+			if (this.modules[6][c] !== null) {
+				continue;
+			}
+			this.modules[6][c] = (c % 2 === 0);
+		}
+	},
+	
+	setupPositionAdjustPattern : function() {
+	
+		var pos = QRUtil.getPatternPosition(this.typeNumber);
+		
+		for (var i = 0; i < pos.length; i++) {
+		
+			for (var j = 0; j < pos.length; j++) {
+			
+				var row = pos[i];
+				var col = pos[j];
+				
+				if (this.modules[row][col] !== null) {
+					continue;
+				}
+				
+				for (var r = -2; r <= 2; r++) {
+				
+					for (var c = -2; c <= 2; c++) {
+					
+						if (Math.abs(r) === 2 || 
+                            Math.abs(c) === 2 ||
+                            (r === 0 && c === 0) ) {
+							this.modules[row + r][col + c] = true;
+						} else {
+							this.modules[row + r][col + c] = false;
+						}
+					}
+				}
+			}
+		}
+	},
+	
+	setupTypeNumber : function(test) {
+	
+		var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+        var mod;
+	
+		for (var i = 0; i < 18; i++) {
+			mod = (!test && ( (bits >> i) & 1) === 1);
+			this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+		}
+	
+		for (var x = 0; x < 18; x++) {
+			mod = (!test && ( (bits >> x) & 1) === 1);
+			this.modules[x % 3 + this.moduleCount - 8 - 3][Math.floor(x / 3)] = mod;
+		}
+	},
+	
+	setupTypeInfo : function(test, maskPattern) {
+	
+		var data = (this.errorCorrectLevel << 3) | maskPattern;
+		var bits = QRUtil.getBCHTypeInfo(data);
+        var mod;
+	
+		// vertical		
+		for (var v = 0; v < 15; v++) {
+	
+			mod = (!test && ( (bits >> v) & 1) === 1);
+	
+			if (v < 6) {
+				this.modules[v][8] = mod;
+			} else if (v < 8) {
+				this.modules[v + 1][8] = mod;
+			} else {
+				this.modules[this.moduleCount - 15 + v][8] = mod;
+			}
+		}
+	
+		// horizontal
+		for (var h = 0; h < 15; h++) {
+	
+			mod = (!test && ( (bits >> h) & 1) === 1);
+			
+			if (h < 8) {
+				this.modules[8][this.moduleCount - h - 1] = mod;
+			} else if (h < 9) {
+				this.modules[8][15 - h - 1 + 1] = mod;
+			} else {
+				this.modules[8][15 - h - 1] = mod;
+			}
+		}
+	
+		// fixed module
+		this.modules[this.moduleCount - 8][8] = (!test);
+	
+	},
+	
+	mapData : function(data, maskPattern) {
+		
+		var inc = -1;
+		var row = this.moduleCount - 1;
+		var bitIndex = 7;
+		var byteIndex = 0;
+		
+		for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+	
+			if (col === 6) col--;
+	
+			while (true) {
+	
+				for (var c = 0; c < 2; c++) {
+					
+					if (this.modules[row][col - c] === null) {
+						
+						var dark = false;
+	
+						if (byteIndex < data.length) {
+							dark = ( ( (data[byteIndex] >>> bitIndex) & 1) === 1);
+						}
+	
+						var mask = QRUtil.getMask(maskPattern, row, col - c);
+	
+						if (mask) {
+							dark = !dark;
+						}
+						
+						this.modules[row][col - c] = dark;
+						bitIndex--;
+	
+						if (bitIndex === -1) {
+							byteIndex++;
+							bitIndex = 7;
+						}
+					}
+				}
+								
+				row += inc;
+	
+				if (row < 0 || this.moduleCount <= row) {
+					row -= inc;
+					inc = -inc;
+					break;
+				}
+			}
+		}
+		
+	}
+
+};
+
+QRCode.PAD0 = 0xEC;
+QRCode.PAD1 = 0x11;
+
+QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
+	
+	var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+	
+	var buffer = new QRBitBuffer();
+	
+	for (var i = 0; i < dataList.length; i++) {
+		var data = dataList[i];
+		buffer.put(data.mode, 4);
+		buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+		data.write(buffer);
+	}
+
+	// calc num max data.
+	var totalDataCount = 0;
+	for (var x = 0; x < rsBlocks.length; x++) {
+		totalDataCount += rsBlocks[x].dataCount;
+	}
+
+	if (buffer.getLengthInBits() > totalDataCount * 8) {
+		throw new Error("code length overflow. (" + 
+            buffer.getLengthInBits() + 
+            ">" +  
+            totalDataCount * 8 + 
+            ")");
+	}
+
+	// end code
+	if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+		buffer.put(0, 4);
+	}
+
+	// padding
+	while (buffer.getLengthInBits() % 8 !== 0) {
+		buffer.putBit(false);
+	}
+
+	// padding
+	while (true) {
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD0, 8);
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD1, 8);
+	}
+
+	return QRCode.createBytes(buffer, rsBlocks);
+};
+
+QRCode.createBytes = function(buffer, rsBlocks) {
+
+	var offset = 0;
+	
+	var maxDcCount = 0;
+	var maxEcCount = 0;
+	
+	var dcdata = new Array(rsBlocks.length);
+	var ecdata = new Array(rsBlocks.length);
+	
+	for (var r = 0; r < rsBlocks.length; r++) {
+
+		var dcCount = rsBlocks[r].dataCount;
+		var ecCount = rsBlocks[r].totalCount - dcCount;
+
+		maxDcCount = Math.max(maxDcCount, dcCount);
+		maxEcCount = Math.max(maxEcCount, ecCount);
+		
+		dcdata[r] = new Array(dcCount);
+		
+		for (var i = 0; i < dcdata[r].length; i++) {
+			dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+		}
+		offset += dcCount;
+		
+		var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+		var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+		var modPoly = rawPoly.mod(rsPoly);
+		ecdata[r] = new Array(rsPoly.getLength() - 1);
+		for (var x = 0; x < ecdata[r].length; x++) {
+            var modIndex = x + modPoly.getLength() - ecdata[r].length;
+			ecdata[r][x] = (modIndex >= 0)? modPoly.get(modIndex) : 0;
+		}
+
+	}
+	
+	var totalCodeCount = 0;
+	for (var y = 0; y < rsBlocks.length; y++) {
+		totalCodeCount += rsBlocks[y].totalCount;
+	}
+
+	var data = new Array(totalCodeCount);
+	var index = 0;
+
+	for (var z = 0; z < maxDcCount; z++) {
+		for (var s = 0; s < rsBlocks.length; s++) {
+			if (z < dcdata[s].length) {
+				data[index++] = dcdata[s][z];
+			}
+		}
+	}
+
+	for (var xx = 0; xx < maxEcCount; xx++) {
+		for (var t = 0; t < rsBlocks.length; t++) {
+			if (xx < ecdata[t].length) {
+				data[index++] = ecdata[t][xx];
+			}
+		}
+	}
+
+	return data;
+
+};
+
+module.exports = QRCode;
+
+};
+function __req(id){id=String(id).replace(/^\.\//,'').replace(/\.js$/,'');if(__cache[id])return __cache[id].exports;const fn=__mods[id];if(!fn)throw new Error('QR module not found: '+id);const module={exports:{}};__cache[id]=module;fn(__req,module,module.exports);return module.exports;}
+global.VHTQRCode=__req('index'); global.VHTQRErrorCorrectLevel=__req('QRErrorCorrectLevel');})(window);
+</script><script>
+const $=id=>document.getElementById(id);const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const LOCAL=(()=>{try{return location.protocol==='file:'||(location.protocol==='about:'&&parent.location.protocol==='file:')}catch{return location.protocol==='file:'}})();const DEMO_KEY='vht_final_demo_regs';const CMS_KEY='vht_demo_cms';let TOKEN=sessionStorage.getItem('vht_admin_token')||'';
+const DEFAULTS={"schemaVersion":2,"hero":{"kicker":"👑 Gorakhpur's No. 1 Home Tuition Platform","title1":"VISHU","title2":"HOME TUITION","city":"GORAKHPUR","solution":"Your Complete Home Tuition Solution in Gorakhpur","sub":"Personalised learning with the right guidance for a brighter future.","chip1":"Nursery to 12th","chip2":"CBSE • ICSE","chip3":"State Boards"},"trust":{"kicker":"TRUSTED IN GORAKHPUR","sinceYear":"2017","sinceTitle":"Serving Across Gorakhpur","sinceText":"Years of consistent work in education, mentorship and tutor support for local families.","teacherCount":"3800","teacherTitle":"Teacher Community","teacherText":"Male & female tutors across multiple subjects and classes.","familyCount":"8500","familyTitle":"Families Served","familyText":"Approx. families supported through home tuition services in Gorakhpur.","googleRating":"5.0","googleText":"995+ public reviews on Google.","justdialRating":"5.0","justdialText":"2500+ public reviews on Justdial."},"tutor":{"kicker":"TEACHER REGISTRATION","title":"BECOME A TUTOR","text":"Join our tutor community and connect with suitable teaching opportunities according to your subject, class preference, location, availability and teaching experience.","button":"Register as a Teacher"},"student":{"kicker":"STUDENT REGISTRATION","title":"RIGHT TUTOR FOR YOUR CHILD","text":"Share your child’s class, subject, board, location and preferred timing. We’ll use your requirement to help connect you with a suitable home tutor in Gorakhpur.","button":"Register as a Student"},"feesSection":{"kicker":"Simple & Transparent","title":"TUITION FEES","noteBadge":"PLEASE NOTE","noteText":"Fees may vary by subject, board, tutor availability and experience."},"contactSection":{"kicker":"Quick Enquiry","title":"NEED A HOME TUTOR?","text":"Fill your requirement and continue on WhatsApp.","button":"Send Enquiry via WhatsApp"},"howSection":{"kicker":"Simple • Fast • Effective","title":"HOW IT WORKS","text":"Three simple steps from requirement to personalised learning."},"feedbackSection":{"kicker":"Experience Highlights","title":"PARENTS, STUDENTS & TEACHERS SAY"},"founder":{"name":"Vikash Kumar","role":"Founder & Director","brand":"VISHU HOME TUITION","quote":"हमारा विश्वास है कि हर बच्चे में आगे बढ़ने की क्षमता होती है। सही शिक्षक, व्यक्तिगत मार्गदर्शन और निरंतर प्रोत्साहन से हम उस क्षमता को आत्मविश्वास और उपलब्धियों में बदलने का प्रयास करते हैं।"},"faqSection":{"kicker":"Helpful Information • Quick Answers","title":"HOME TUITION FAQs","intro":"Quick answers about VISHU HOME TUITION in Gorakhpur."},"contact":{"phone":"+91 7052500258","email":"vishuhometuition.gkp@gmail.com"},"footer":{"tagline":"Better Learning. Brighter Future.","services":["Home Tuition","Online Tuition","Subject Experts","Nursery to 12th"]},"social":{"instagram":"https://www.instagram.com/vishuhometuitiongorakhpur","youtube":"https://youtube.com/@vishuhometuitiongorakhpur","facebook":"https://www.facebook.com/profile.php?id=61579272522736","x":"https://x.com/VishuHomeTution","linkedin":"https://www.linkedin.com/in/vishu-home-tuition-gorakhpur-1a71b2424","threads":"https://www.threads.com/@vishuhometuitiongorakhpur"},"theme":{"navy":"#061A3F","gold":"#F7C63D","blue":"#1765E8"},"seo":{"homeTitle":"Best Home Tuition in Gorakhpur | VISHU HOME TUITION GORAKHPUR","homeDescription":"Find trusted home tuition in Gorakhpur for Nursery to Class 12 across CBSE, ICSE and UP Board with personalised tutor matching from VISHU HOME TUITION.","landingTitle":"Home Tutor in Gorakhpur | CBSE, ICSE, UP Board | VISHU HOME TUITION GORAKHPUR","landingDescription":"Find a suitable home tutor in Gorakhpur for CBSE, ICSE and UP Board students from Nursery to Class 12 with VISHU HOME TUITION."},"notice":{"enabled":false,"text":""},"visibility":{"trust":true,"tutor":true,"student":true,"fees":true,"contact":true,"how":true,"feedback":true,"founder":true,"faq":true,"gallery":true},"operations":{"teacherRegistrationEnabled":true,"studentRegistrationEnabled":true,"quickEnquiryEnabled":true,"registrationEmailsEnabled":true,"statusEmailsEnabled":true,"autoCardEmailOnApproval":true},"payments":{"teacherRegistrationFee":"500","studentDefaultAdvanceAmount":""},"fees":[],"areas":[],"testimonials":[]};
+let CURRENT_SETTINGS=JSON.parse(JSON.stringify(DEFAULTS));
+function deepMerge(a,b){if(Array.isArray(b))return b;if(b&&typeof b==='object'){const o={...(a||{})};for(const k of Object.keys(b))o[k]=deepMerge(a?.[k],b[k]);return o}return b===undefined?a:b}
+function demoItems(){try{return JSON.parse(localStorage.getItem(DEMO_KEY)||'[]')}catch{return[]}}function saveDemo(items){localStorage.setItem(DEMO_KEY,JSON.stringify(items))}
+async function api(path,opt={}){const base=(location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.hostname.endsWith('vishuhometuition.in'))?'':'https://vishuhometuition.in';const url=path.startsWith('http')?path:(base+path);opt.headers={...(opt.headers||{}),authorization:'Bearer '+TOKEN,'x-admin-token':TOKEN};const r=await fetch(url,opt);const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'Request failed');return d}
+async function login(){if(LOCAL){showApp();loadList();loadContent();return}TOKEN=$('token').value.trim();if(!TOKEN)return;try{await api('/api/admin/list');sessionStorage.setItem('vht_admin_token',TOKEN);showApp();loadList();loadContent()}catch(e){$('loginMsg').innerHTML='<div class="msg danger">'+esc(e.message)+'</div>'}}
+function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden');$('logout').classList.remove('hidden')}function logout(){if(!LOCAL)sessionStorage.removeItem('vht_admin_token');location.reload()}$('logout').onclick=logout;
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab-panel').forEach(x=>x.classList.add('hidden'));$('tab-'+b.dataset.tab).classList.remove('hidden');if(b.dataset.tab==='content'||b.dataset.tab==='controls')loadContent();if(b.dataset.tab==='gallery')loadMedia();if(b.dataset.tab==='system')loadSystemInfo()});
+async function getList(){if(!LOCAL){const p=new URLSearchParams();if($('type').value)p.set('type',$('type').value);if($('status').value)p.set('status',$('status').value);if($('q').value.trim())p.set('q',$('q').value.trim());return(await api('/api/admin/list?'+p)).items||[]}let items=demoItems();const type=$('type').value,status=$('status').value,q=$('q').value.trim().toLowerCase();if(type)items=items.filter(x=>x.type===type);if(status)items=items.filter(x=>x.status===status);if(q)items=items.filter(x=>[x.id,x.name,x.phone,x.email].some(v=>String(v||'').toLowerCase().includes(q)));return items}
+async function loadList(){try{const items=await getList();$('rows').innerHTML=items.map(x=>`<tr><td><b>${esc(x.id)}</b></td><td>${esc(x.type)}</td><td>${esc(x.name)}</td><td>${esc(x.phone)}</td><td><span class="pill">${esc(x.status)}</span></td><td>${esc(x.payment_status||x.paymentStatus||'PENDING')}</td><td>${(x.active===0||x.active===false)?'Inactive':'Active'}</td><td>${esc(new Date(x.created_at||x.createdAt).toLocaleString())}</td><td><button class="btn light" onclick="openDetail('${esc(x.id)}')">View</button></td></tr>`).join('')||'<tr><td colspan="9">No registrations found.</td></tr>'}catch(e){$('rows').innerHTML='<tr><td colspan="9">'+esc(e.message)+'</td></tr>'}}
+async function getDetail(id){if(!LOCAL)return api('/api/admin/detail?id='+encodeURIComponent(id));const x=demoItems().find(v=>v.id===id);if(!x)throw new Error('Registration not found.');return x}
+async function openDetail(id){try{const d=await getDetail(id);const payloadEntries=Object.entries(d.payload||{}).filter(([k,v])=>k!=='type'&&['string','number','boolean'].includes(typeof v));const payload=payloadEntries.map(([k,v])=>`<div class="kv"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');const editablePayload=payloadEntries.filter(([k])=>!['name','studentName','phone','email'].includes(k)).map(([k,v])=>`<div class="field"><label>${esc(k)}</label><input class="payload-edit" data-key="${esc(k)}" value="${esc(v)}"></div>`).join('');const docs=Object.entries(d.files||{}).map(([k,v])=>LOCAL?`<span class="btn light" style="cursor:default">${esc(k)}: ${esc(v.name||k)}</span>`:`<button class="btn light" onclick="openFile('${esc(d.id)}','${esc(k)}','${esc(v.name||k)}')">View ${esc(k)}</button>`).join('');const logs=(d.emails||[]).map(e=>`<div class="email-log-row"><b>${esc(e.event)}</b><span>${esc(e.recipient)}</span><span class="${e.status==='SENT'?'ready':e.status==='FAILED'?'not-ready':''}">${esc(e.status)}</span><span>${esc(new Date(e.created_at||e.createdAt).toLocaleString())}</span></div>`).join('');const approved=d.status==='APPROVED',active=d.active!==false;const payment=d.paymentStatus||d.payment_status||'PENDING';$('detail').innerHTML=`<h2 style="margin-top:0">${esc(d.id)} • ${esc(d.name)}</h2><div class="detail-grid"><div><h3>Registration Details</h3>${payload||'<div class="msg">No details.</div>'}<details style="margin-top:14px"><summary style="cursor:pointer;font-weight:850;color:var(--navy)">Edit Registration Details</summary><div style="margin-top:12px"><div class="field"><label>Name</label><input id="editName" value="${esc(d.name||'')}"></div><div class="field"><label>Phone</label><input id="editPhone" value="${esc(d.phone||'')}"></div><div class="field"><label>Email</label><input id="editEmail" value="${esc(d.email||'')}"></div>${editablePayload}<button class="btn primary" onclick="saveRegistrationEdit('${esc(d.id)}')">Save Edited Details</button><div id="editRegMsg" style="margin-top:8px"></div></div></details><h3 style="margin-top:18px">Email Log</h3><div class="email-log">${logs||'<div class="email-log-row"><span>No email events yet.</span></div>'}</div></div><div><h3>Documents</h3><div class="docs">${docs||'No files'}</div><h3>Operational Control</h3><div class="field"><label>Approval Status</label><select id="editStatus"><option ${d.status==='PENDING'?'selected':''}>PENDING</option><option ${d.status==='APPROVED'?'selected':''}>APPROVED</option><option ${d.status==='REJECTED'?'selected':''}>REJECTED</option><option ${d.status==='CORRECTION_REQUIRED'?'selected':''}>CORRECTION_REQUIRED</option></select></div><div class="field"><label>Payment Status</label><select id="editPayment"><option ${payment==='PENDING'?'selected':''}>PENDING</option><option ${payment==='SUBMITTED'?'selected':''}>SUBMITTED</option><option ${payment==='PAID'?'selected':''}>PAID</option><option ${payment==='WAIVED'?'selected':''}>WAIVED</option><option ${payment==='NOT_REQUIRED'?'selected':''}>NOT_REQUIRED</option></select></div><label class="switch" style="margin:8px 0 13px"><input id="editActive" type="checkbox" ${active?'checked':''}> Active registration / QR verification</label><div class="field"><label>Admin Note</label><textarea id="editNote" rows="5">${esc(d.note||'')}</textarea></div><div class="actions"><button class="btn primary" onclick="saveStatus('${esc(d.id)}')">Save Operational Status</button><button class="btn light" ${(approved&&active)?'': 'disabled title="Approve and activate registration first"'} onclick="generateDigitalCard('${esc(d.id)}')">Generate Digital Card</button></div><div id="saveMsg"></div>${(approved&&active)?'<div class="msg ok" style="margin-top:10px">Approved + Active: digital card generation is enabled.</div>':'<div class="msg" style="margin-top:10px">Digital card requires APPROVED + Active.</div>'}</div></div>`;$('detail').classList.remove('hidden');$('detail').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){alert(e.message)}}
+async function saveRegistrationEdit(id){try{const payload={};document.querySelectorAll('.payload-edit').forEach(el=>payload[el.dataset.key]=el.value);const body={id,name:$('editName').value,phone:$('editPhone').value,email:$('editEmail').value,payload};if(LOCAL){const x=demoItems().find(v=>v.id===id);if(x){x.name=body.name;x.phone=body.phone;x.email=body.email;x.payload={...(x.payload||{}),...payload};saveDemo(demoItems())}}else await api('/api/admin/edit',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});const msg=$('editRegMsg');if(msg)msg.innerHTML='<div class="msg ok">Registration details saved.</div>';await loadList();await openDetail(id)}catch(e){const msg=$('editRegMsg');if(msg)msg.innerHTML='<div class="msg danger">'+esc(e.message)+'</div>';else alert(e.message)}}
+async function saveStatus(id){
+  try{
+    const status=$('editStatus').value,note=$('editNote').value,active=$('editActive').checked,paymentStatus=$('editPayment').value;let result={};
+    if(LOCAL){const items=demoItems();const x=items.find(v=>v.id===id);x.status=status;x.note=note;x.active=active;x.paymentStatus=paymentStatus;saveDemo(items);result={emailSent:false,emailConfigured:false,statusChanged:true}}
+    else result=await api('/api/admin/update',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,status,note,active,paymentStatus})});
+    await loadList();await openDetail(id);
+    const autoCard=CURRENT_SETTINGS?.operations?.autoCardEmailOnApproval!==false;
+    const approvalFlow=!LOCAL && status==='APPROVED' && active && result.statusChanged && result.emailConfigured && autoCard;
+    const msg=$('saveMsg');if(msg)msg.innerHTML=`<div class="msg ${result.emailSent||approvalFlow?'ok':''}">Status saved.${approvalFlow?' Approved Digital ID email is being prepared.':result.emailSent?' Applicant email sent.':result.emailConfigured?'':' Email service is not configured yet.'}</div>`;
+    if(approvalFlow){
+      await generateDigitalCard(id,true);
+    }
+  }catch(e){const x=$('saveMsg');if(x)x.innerHTML='<div class="msg danger">'+esc(e.message)+'</div>';else alert(e.message)}
+}
+async function openFile(id,field){try{const r=await fetch('/api/admin/file?id='+encodeURIComponent(id)+'&field='+encodeURIComponent(field),{headers:{authorization:'Bearer '+TOKEN}});if(!r.ok)throw new Error('Unable to open file');const u=URL.createObjectURL(await r.blob());window.open(u,'_blank','noopener');setTimeout(()=>URL.revokeObjectURL(u),60000)}catch(e){alert(e.message)}}
+
+let CURRENT_CARD_BLOB=null,CURRENT_CARD_NAME='VISHU-HOME-TUITION-DIGITAL-CARD.png',CURRENT_CARD_ID='';
+async function loadSystemInfo(){if(LOCAL){$('systemInfo').innerHTML='<div class="system-item"><span>Email</span><b class="not-ready">Available after deployment/configuration</b></div><div class="system-item"><span>Digital Card</span><b class="ready">Built in • Ready</b></div>';return}try{const d=await api('/api/admin/system');$('systemInfo').innerHTML=`<div class="system-item"><span>Email Provider</span><b>${esc(d.emailProvider||'Resend')}</b></div><div class="system-item"><span>Email Status</span><b class="${d.emailConfigured?'ready':'not-ready'}">${d.emailConfigured?'Configured & Ready':'RESEND_API_KEY not set'}</b></div><div class="system-item"><span>Admin Inbox</span><b>${esc(d.adminEmail||'')}</b></div><div class="system-item"><span>Reply-To</span><b>${esc(d.replyToEmail||d.adminEmail||'')}</b></div><div class="system-item"><span>Professional Sender</span><b>${esc(d.mailFrom||'')}</b></div><div class="system-item"><span>Live Site</span><b>${esc(d.siteUrl||'')}</b></div><div class="system-item"><span>Database</span><b class="ready">Durable Object • SQLite</b></div><div class="system-item"><span>Digital Cards</span><b class="ready">PNG • Smart Face-Aware Auto-fit • Verification QR</b></div><div class="system-item"><span>ID Format</span><b class="ready">Teacher VHT-T2500+ • Student VHT-S8500+</b></div><div class="system-item"><span>Admin Security</span><b class="ready">ADMIN_TOKEN protected API • no public data access</b></div>`}catch(e){$('systemInfo').innerHTML='<div class="system-item"><span>Error</span><b class="not-ready">'+esc(e.message)+'</b></div>'}}
+async function sendTestEmail(){const m=$('systemMsg');if(LOCAL){m.textContent='Deploy first to test email.';return}try{m.textContent='Sending…';const d=await api('/api/admin/email-test',{method:'POST'});m.innerHTML='<span class="ready">Test email sent to '+esc(d.to||'admin inbox')+'.</span>'}catch(e){m.innerHTML='<span class="not-ready">'+esc(e.message)+'</span>'}}
+function closeCardModal(){$('cardModal').classList.add('hidden')}
+function cardOrigin(){try{if(parent&&parent.location&&parent.location.origin&&parent.location.origin!=='null')return parent.location.origin}catch{}return location.origin&&location.origin!=='null'?location.origin:'https://vishuhometuition.in'}
+function loadImg(src){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src})}
+function blobDataUrl(blob){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(blob)})}
+async function adminFileDataUrl(id,field){if(LOCAL)return null;try{const r=await fetch('/api/admin/file?id='+encodeURIComponent(id)+'&field='+encodeURIComponent(field),{headers:{authorization:'Bearer '+TOKEN}});if(!r.ok)return null;return await blobDataUrl(await r.blob())}catch{return null}}
+function rounded(ctx,x,y,w,h,r){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath()}
+function drawCover(ctx,img,x,y,w,h){const s=Math.max(w/img.width,h/img.height),sw=w/s,sh=h/s,sx=(img.width-sw)/2,sy=(img.height-sh)/2;ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)}
+function drawContain(ctx,img,x,y,w,h,pad=8){const aw=Math.max(1,w-pad*2),ah=Math.max(1,h-pad*2),s=Math.min(aw/img.width,ah/img.height),dw=img.width*s,dh=img.height*s,dx=x+(w-dw)/2,dy=y+(h-dh)/2;ctx.drawImage(img,dx,dy,dw,dh)}
+function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
+async function detectPrimaryFace(img){
+  try{
+    if(!('FaceDetector' in window))return null;
+    const detector=new FaceDetector({fastMode:true,maxDetectedFaces:3});
+    const faces=await detector.detect(img);
+    if(!faces?.length)return null;
+    return faces.map(f=>f.boundingBox).sort((a,b)=>(b.width*b.height)-(a.width*a.height))[0]||null;
+  }catch{return null}
+}
+async function drawSmartPortrait(ctx,img,x,y,w,h){
+  ctx.imageSmoothingEnabled=true;
+  try{ctx.imageSmoothingQuality='high'}catch{}
+  const target=w/h;
+  const face=await detectPrimaryFace(img);
+  if(face){
+    const maxCropH=Math.min(img.height,img.width/target);
+    const desiredFromHeight=face.height/0.34;
+    const desiredFromWidth=(face.width/0.50)/target;
+    const cropH=clamp(Math.max(desiredFromHeight,desiredFromWidth),maxCropH*0.44,maxCropH);
+    const cropW=cropH*target;
+    const faceCX=face.x+face.width/2;
+    const faceCY=face.y+face.height/2;
+    let sx=faceCX-cropW/2;
+    let sy=faceCY-cropH*0.33;
+    sx=clamp(sx,0,Math.max(0,img.width-cropW));
+    sy=clamp(sy,0,Math.max(0,img.height-cropH));
+    ctx.drawImage(img,sx,sy,cropW,cropH,x,y,w,h);
+    return 'face-aware';
+  }
+  // Universal fallback: portrait-style crop with a little more headroom than a simple centre crop.
+  let cropW,cropH;if(img.width/img.height>target){cropH=img.height;cropW=cropH*target}else{cropW=img.width;cropH=cropW/target}
+  const sx=clamp((img.width-cropW)/2,0,Math.max(0,img.width-cropW));
+  const sy=clamp((img.height-cropH)*0.28,0,Math.max(0,img.height-cropH));
+  ctx.drawImage(img,sx,sy,cropW,cropH,x,y,w,h);
+  return 'smart-crop';
+}
+function textWrap(ctx,text,x,y,maxWidth,lineHeight,maxLines=3){const words=String(text||'').split(/\s+/);let line='',lines=[];for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word;if(lines.length>=maxLines-1)break}else line=test}if(line&&lines.length<maxLines)lines.push(line);lines.forEach((ln,i)=>ctx.fillText(ln,x,y+i*lineHeight));return y+lines.length*lineHeight}
+function qrMatrix(text){const q=new VHTQRCode(-1,VHTQRErrorCorrectLevel.M);q.addData(text);q.make();return q}
+function drawQR(ctx,text,x,y,size){const q=qrMatrix(text),n=q.getModuleCount(),quiet=4,cell=Math.max(2,Math.floor(size/(n+quiet*2))),total=cell*(n+quiet*2),sx=x+(size-total)/2,sy=y+(size-total)/2;ctx.fillStyle='#fff';ctx.fillRect(x,y,size,size);ctx.fillStyle='#061A3F';for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))ctx.fillRect(sx+(c+quiet)*cell,sy+(r+quiet)*cell,cell,cell)}
+function formatIndianPhone(value){
+  let digits=String(value||'').replace(/\D/g,'');
+  if(digits.length===12 && digits.startsWith('91')) digits=digits.slice(2);
+  if(digits.length>10) digits=digits.slice(-10);
+  return digits.length===10?`+91 ${digits.slice(0,5)} ${digits.slice(5)}`:String(value||'').trim();
+}
+function drawContactIcons(ctx,x,y,phone){
+  const gold='#F7C63D';
+  ctx.save();
+  ctx.strokeStyle=gold;ctx.fillStyle=gold;ctx.lineWidth=3;
+  // WhatsApp-style speech circle with a phone mark.
+  ctx.beginPath();ctx.arc(x+14,y-8,13,0,Math.PI*2);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x+5,y+2);ctx.lineTo(x+1,y+9);ctx.lineTo(x+11,y+5);ctx.stroke();
+  ctx.font='900 16px Arial';ctx.textAlign='center';ctx.fillText('☎',x+14,y-2);
+  ctx.textAlign='left';ctx.font='800 24px Arial';ctx.fillText('|',x+36,y+1);
+  ctx.font='900 24px Arial';ctx.fillText('☎',x+55,y);
+  ctx.fillStyle='#fff';ctx.font='800 24px Arial';ctx.fillText(formatIndianPhone(phone),x+91,y);
+  ctx.restore();
+}
+function fitUpperName(ctx,name,x,y,maxWidth,startSize=42,minSize=24){
+  const text=String(name||'').trim().toUpperCase();
+  let size=startSize;
+  while(size>minSize){ctx.font=`900 ${size}px Arial`;if(ctx.measureText(text).width<=maxWidth)break;size-=2}
+  ctx.fillStyle='#fff';ctx.textAlign='left';ctx.fillText(text,x,y);
+  return size;
+}
+async function generateDigitalCard(id,autoEmail=false){try{
+  const d=await getDetail(id);
+  if(d.status!=='APPROVED'||d.active===false){alert('Approve and activate this registration before generating its digital card.');return}
+  CURRENT_CARD_ID=d.id;
+  const canvas=$('digitalCardCanvas'),ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);
+  const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#061A3F');g.addColorStop(.58,'#0A3478');g.addColorStop(1,'#1765E8');
+  ctx.fillStyle=g;rounded(ctx,0,0,W,H,34);ctx.fill();
+  ctx.globalAlpha=.08;ctx.strokeStyle='#fff';ctx.lineWidth=3;for(let i=0;i<5;i++){ctx.beginPath();ctx.arc(W-65,H-95,120+i*55,0,Math.PI*2);ctx.stroke()}ctx.globalAlpha=1;
+
+  let logo=null;try{logo=await loadImg(cardOrigin()+'/vishu-logo-final-transparent.png')}catch{}
+  if(logo){ctx.drawImage(logo,52,30,305,118)}else{ctx.fillStyle='#fff';ctx.font='900 34px Arial';ctx.fillText('VISHU HOME TUITION',56,82);ctx.fillStyle='#F7C63D';ctx.font='700 16px Arial';ctx.fillText('GORAKHPUR',56,108)}
+
+  const typeLabel=d.type==='teacher'?'TEACHER DIGITAL ID':'STUDENT DIGITAL ID';
+  ctx.fillStyle='#F7C63D';rounded(ctx,884,52,258,48,24);ctx.fill();ctx.fillStyle='#061A3F';ctx.textAlign='center';ctx.font='900 18px Arial';ctx.fillText(typeLabel,1013,83);ctx.textAlign='left';
+
+  const photoUrl=await adminFileDataUrl(d.id,'photo');let photo=null;if(photoUrl)try{photo=await loadImg(photoUrl)}catch{}
+  const px=52,py=180,pw=278,ph=316,pr=29;
+  ctx.save();rounded(ctx,px,py,pw,ph,pr);ctx.clip();ctx.fillStyle='#f5f8fc';ctx.fillRect(px,py,pw,ph);
+  if(photo)await drawSmartPortrait(ctx,photo,px,py,pw,ph);else{ctx.fillStyle='#eaf0f7';ctx.fillRect(px,py,pw,ph);ctx.fillStyle='#1765E8';ctx.font='900 74px Arial';ctx.textAlign='center';ctx.fillText((d.name||'V').split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase(),px+pw/2,py+ph/2+24)}
+  ctx.restore();ctx.lineWidth=7;ctx.strokeStyle='#F7C63D';rounded(ctx,px-3,py-3,pw+6,ph+6,pr+3);ctx.stroke();
+  ctx.textAlign='center';ctx.fillStyle='#fff';ctx.font='900 20px Arial';ctx.fillText(d.id,px+pw/2,530);ctx.font='700 14px Arial';ctx.fillStyle='#c9d8ef';ctx.fillText('REGISTRATION ID',px+pw/2,557);ctx.textAlign='left';
+
+  const p=d.payload||{};
+  fitUpperName(ctx,d.name,360,225,465,42,24);
+  drawContactIcons(ctx,360,274,d.phone);
+
+  let yy=322;
+  const fields=d.type==='teacher'
+    ? [['Qualification',p.qualification],['Experience',p.experience],['Classes',p.classes],['Subjects',p.subjects],['Area',p.area]]
+    : [['Class',p.className],['Board',p.board],['Subjects',p.subjects],['Address',p.area],['Preferred Tutor',p.tutorPref],['Timing',p.timing]];
+  for(const [label,value] of fields){
+    if(!String(value||'').trim())continue;
+    ctx.fillStyle='#9fb9dc';ctx.font='700 14px Arial';ctx.fillText(label.toUpperCase(),360,yy);
+    ctx.fillStyle='#fff';ctx.font='700 18px Arial';const next=textWrap(ctx,String(value),360,yy+24,430,22,2);yy=next+15;if(yy>650)break;
+  }
+
+  const verify=cardOrigin()+'/verify?id='+encodeURIComponent(d.id);
+  ctx.fillStyle='#fff';rounded(ctx,858,180,288,58,18);ctx.fill();ctx.fillStyle='#159447';ctx.font='900 18px Arial';ctx.textAlign='center';ctx.fillText('✓ VERIFIED & APPROVED',1002,217);
+  ctx.fillStyle='#fff';rounded(ctx,858,248,288,288,18);ctx.fill();drawQR(ctx,verify,884,274,236);
+  ctx.fillStyle='#F7C63D';ctx.font='900 15px Arial';ctx.textAlign='center';ctx.fillText('SCAN TO VERIFY',1002,568);
+  ctx.textAlign='left';ctx.fillStyle='#c9d8ef';ctx.font='600 13px Arial';ctx.fillText('Verified by VISHU HOME TUITION',56,690);
+
+  CURRENT_CARD_NAME=`${d.id}-${d.type==='teacher'?'TEACHER':'STUDENT'}-DIGITAL-ID.png`;
+  CURRENT_CARD_BLOB=await new Promise(res=>canvas.toBlob(res,'image/png',.96));
+  $('cardModal').classList.remove('hidden');const cem=$('cardEmailMsg');if(cem)cem.textContent='';if(autoEmail)await emailDigitalCard(true)
+}catch(e){alert('Digital card could not be generated: '+e.message)}}
+function downloadDigitalCard(){const c=$('digitalCardCanvas');const go=blob=>{const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=CURRENT_CARD_NAME;a.click();setTimeout(()=>URL.revokeObjectURL(u),3000)};if(CURRENT_CARD_BLOB)go(CURRENT_CARD_BLOB);else c.toBlob(go,'image/png',.96)}
+async function shareDigitalCard(){if(!CURRENT_CARD_BLOB){await new Promise(res=>$('digitalCardCanvas').toBlob(b=>{CURRENT_CARD_BLOB=b;res()},'image/png',.96))}const file=new File([CURRENT_CARD_BLOB],CURRENT_CARD_NAME,{type:'image/png'});if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[file]}))){try{await navigator.share({title:'VISHU HOME TUITION Digital Card',text:'Digital ID / Registration Card',files:[file]});return}catch(e){if(e.name==='AbortError')return}}downloadDigitalCard();alert('Direct sharing is not supported in this browser. The PNG card has been downloaded; you can send it on WhatsApp.')}
+function blobBase64(blob){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result||'').split(',')[1]||'');r.onerror=reject;r.readAsDataURL(blob)})}
+async function emailDigitalCard(auto=false){
+  const msg=$('cardEmailMsg');
+  if(LOCAL){if(msg)msg.textContent='Deploy to Cloudflare to email digital cards.';return false}
+  if(!CURRENT_CARD_ID){if(msg)msg.textContent='Generate a digital card first.';return false}
+  try{
+    if(!CURRENT_CARD_BLOB){CURRENT_CARD_BLOB=await new Promise(res=>$('digitalCardCanvas').toBlob(res,'image/png',.96))}
+    if(msg)msg.textContent=auto?'Approval saved. Emailing digital card…':'Emailing digital card…';
+    const imageBase64=await blobBase64(CURRENT_CARD_BLOB);
+    const d=await api('/api/admin/send-card',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id:CURRENT_CARD_ID,imageBase64,filename:CURRENT_CARD_NAME})});
+    if(msg)msg.innerHTML='<span class="ready">Digital card emailed successfully.</span>';
+    return !!d.ok;
+  }catch(e){if(msg)msg.innerHTML='<span class="not-ready">'+esc(e.message)+'</span>';return false}
+}
+
+const fieldMap={
+ heroKicker:'c_heroKicker',heroTitle1:'c_heroTitle1',heroTitle2:'c_heroTitle2',heroCity:'c_heroCity',heroSolution:'c_heroSolution',heroSub:'c_heroSub',heroChip1:'c_heroChip1',heroChip2:'c_heroChip2',heroChip3:'c_heroChip3',trustKicker:'c_trustKicker',sinceYear:'c_sinceYear',sinceTitle:'c_sinceTitle',sinceText:'c_sinceText',teacherCount:'c_teacherCount',teacherText:'c_teacherText',familyCount:'c_familyCount',familyText:'c_familyText',googleRating:'c_googleRating',googleText:'c_googleText',justdialRating:'c_justdialRating',justdialText:'c_justdialText',studentKicker:'c_studentKicker',studentTitle:'c_studentTitle',studentText:'c_studentText',studentButton:'c_studentButton',tutorKicker:'c_tutorKicker',tutorTitle:'c_tutorTitle',tutorText:'c_tutorText',tutorButton:'c_tutorButton',feesKicker:'c_feesKicker',feesTitle:'c_feesTitle',feesNoteBadge:'c_feesNoteBadge',feesNoteText:'c_feesNoteText',contactKicker:'c_contactKicker',contactTitle:'c_contactTitle',contactText:'c_contactText',contactButton:'c_contactButton',howKicker:'c_howKicker',howTitle:'c_howTitle',howText:'c_howText',feedbackKicker:'c_feedbackKicker',feedbackTitle:'c_feedbackTitle',founderRole:'c_founderRole',founderBrand:'c_founderBrand',founderQuote:'c_founderQuote',faqKicker:'c_faqKicker',faqTitle:'c_faqTitle',faqIntro:'c_faqIntro',phone:'c_phone',email:'c_email',footerTagline:'c_footerTagline',instagram:'c_instagram',youtube:'c_youtube',facebook:'c_facebook',x:'c_x',linkedin:'c_linkedin',threads:'c_threads',navy:'c_navy',gold:'c_gold',blue:'c_blue',homeTitle:'c_homeTitle',homeDescription:'c_homeDescription',landingTitle:'c_landingTitle',landingDescription:'c_landingDescription',noticeText:'c_noticeText'};
+function val(id,v=''){const e=$(id);if(e)e.value=v??''}function chk(id,v){const e=$(id);if(e)e.checked=v!==false}
+function fill(s){const x=deepMerge(DEFAULTS,s||{});CURRENT_SETTINGS=x;val('c_heroKicker',x.hero.kicker);val('c_heroTitle1',x.hero.title1);val('c_heroTitle2',x.hero.title2);val('c_heroCity',x.hero.city);val('c_heroSolution',x.hero.solution);val('c_heroSub',x.hero.sub);val('c_heroChip1',x.hero.chip1);val('c_heroChip2',x.hero.chip2);val('c_heroChip3',x.hero.chip3);val('c_trustKicker',x.trust.kicker);val('c_sinceYear',x.trust.sinceYear);val('c_sinceTitle',x.trust.sinceTitle);val('c_sinceText',x.trust.sinceText);val('c_teacherCount',x.trust.teacherCount);val('c_teacherText',x.trust.teacherText);val('c_familyCount',x.trust.familyCount);val('c_familyText',x.trust.familyText);val('c_googleRating',x.trust.googleRating);val('c_googleText',x.trust.googleText);val('c_justdialRating',x.trust.justdialRating);val('c_justdialText',x.trust.justdialText);val('c_studentKicker',x.student.kicker);val('c_studentTitle',x.student.title);val('c_studentText',x.student.text);val('c_studentButton',x.student.button);val('c_tutorKicker',x.tutor.kicker);val('c_tutorTitle',x.tutor.title);val('c_tutorText',x.tutor.text);val('c_tutorButton',x.tutor.button);val('c_feesKicker',x.feesSection.kicker);val('c_feesTitle',x.feesSection.title);val('c_feesNoteBadge',x.feesSection.noteBadge);val('c_feesNoteText',x.feesSection.noteText);val('c_contactKicker',x.contactSection.kicker);val('c_contactTitle',x.contactSection.title);val('c_contactText',x.contactSection.text);val('c_contactButton',x.contactSection.button);val('c_howKicker',x.howSection.kicker);val('c_howTitle',x.howSection.title);val('c_howText',x.howSection.text);val('c_feedbackKicker',x.feedbackSection.kicker);val('c_feedbackTitle',x.feedbackSection.title);val('c_founderRole',x.founder.role);val('c_founderBrand',x.founder.brand);val('c_founderQuote',x.founder.quote);val('c_faqKicker',x.faqSection.kicker);val('c_faqTitle',x.faqSection.title);val('c_faqIntro',x.faqSection.intro);val('c_phone',x.contact.phone);val('c_email',x.contact.email);val('c_footerTagline',x.footer.tagline);val('c_services',(x.footer.services||[]).join('\n'));for(const k of ['instagram','youtube','facebook','x','linkedin','threads'])val('c_'+k,x.social[k]||'');for(const k of ['navy','gold','blue'])val('c_'+k,x.theme[k]||DEFAULTS.theme[k]);val('c_homeTitle',x.seo.homeTitle);val('c_homeDescription',x.seo.homeDescription);val('c_landingTitle',x.seo.landingTitle);val('c_landingDescription',x.seo.landingDescription);$('c_noticeEnabled').checked=!!x.notice.enabled;val('c_noticeText',x.notice.text||'');val('c_fees',(x.fees||[]).join('\n'));val('c_areas',(x.areas||[]).join('\n'));val('c_testimonials',(x.testimonials||[]).map(t=>[t.name,t.role,t.text].join(' | ')).join('\n'));const v=x.visibility||{},o=x.operations||{};for(const k of ['trust','tutor','student','fees','contact','how','feedback','founder','faq','gallery'])chk('v_'+k,v[k]);chk('o_teacher',o.teacherRegistrationEnabled);chk('o_student',o.studentRegistrationEnabled);chk('o_quick',o.quickEnquiryEnabled);chk('o_regmail',o.registrationEmailsEnabled);chk('o_statusmail',o.statusEmailsEnabled);chk('o_cardmail',o.autoCardEmailOnApproval);const p=x.payments||{};val('p_teacherFee',p.teacherRegistrationFee??'500');val('p_studentAdvance',p.studentDefaultAdvanceAmount??'')}
+function collect(){const lines=id=>($(id)?.value||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);return{schemaVersion:2,hero:{kicker:$('c_heroKicker').value,title1:$('c_heroTitle1').value,title2:$('c_heroTitle2').value,city:$('c_heroCity').value,solution:$('c_heroSolution').value,sub:$('c_heroSub').value,chip1:$('c_heroChip1').value,chip2:$('c_heroChip2').value,chip3:$('c_heroChip3').value},trust:{kicker:$('c_trustKicker').value,sinceYear:$('c_sinceYear').value,sinceTitle:$('c_sinceTitle').value,sinceText:$('c_sinceText').value,teacherCount:$('c_teacherCount').value,teacherTitle:'Teacher Community',teacherText:$('c_teacherText').value,familyCount:$('c_familyCount').value,familyTitle:'Families Served',familyText:$('c_familyText').value,googleRating:$('c_googleRating').value,googleText:$('c_googleText').value,justdialRating:$('c_justdialRating').value,justdialText:$('c_justdialText').value},student:{kicker:$('c_studentKicker').value,title:$('c_studentTitle').value,text:$('c_studentText').value,button:$('c_studentButton').value},tutor:{kicker:$('c_tutorKicker').value,title:$('c_tutorTitle').value,text:$('c_tutorText').value,button:$('c_tutorButton').value},feesSection:{kicker:$('c_feesKicker').value,title:$('c_feesTitle').value,noteBadge:$('c_feesNoteBadge').value,noteText:$('c_feesNoteText').value},contactSection:{kicker:$('c_contactKicker').value,title:$('c_contactTitle').value,text:$('c_contactText').value,button:$('c_contactButton').value},howSection:{kicker:$('c_howKicker').value,title:$('c_howTitle').value,text:$('c_howText').value},feedbackSection:{kicker:$('c_feedbackKicker').value,title:$('c_feedbackTitle').value},founder:{name:'Vikash Kumar',role:$('c_founderRole').value,brand:$('c_founderBrand').value,quote:$('c_founderQuote').value},faqSection:{kicker:$('c_faqKicker').value,title:$('c_faqTitle').value,intro:$('c_faqIntro').value},contact:{phone:$('c_phone').value,email:$('c_email').value},footer:{tagline:$('c_footerTagline').value,services:lines('c_services')},social:{instagram:$('c_instagram').value,youtube:$('c_youtube').value,facebook:$('c_facebook').value,x:$('c_x').value,linkedin:$('c_linkedin').value,threads:$('c_threads').value},theme:{navy:$('c_navy').value,gold:$('c_gold').value,blue:$('c_blue').value},seo:{homeTitle:$('c_homeTitle').value,homeDescription:$('c_homeDescription').value,landingTitle:$('c_landingTitle').value,landingDescription:$('c_landingDescription').value},notice:{enabled:$('c_noticeEnabled').checked,text:$('c_noticeText').value},visibility:{trust:$('v_trust').checked,tutor:$('v_tutor').checked,student:$('v_student').checked,fees:$('v_fees').checked,contact:$('v_contact').checked,how:$('v_how').checked,feedback:$('v_feedback').checked,founder:$('v_founder').checked,faq:$('v_faq').checked,gallery:$('v_gallery').checked},operations:{teacherRegistrationEnabled:$('o_teacher').checked,studentRegistrationEnabled:$('o_student').checked,quickEnquiryEnabled:$('o_quick').checked,registrationEmailsEnabled:$('o_regmail').checked,statusEmailsEnabled:$('o_statusmail').checked,autoCardEmailOnApproval:$('o_cardmail').checked},payments:{teacherRegistrationFee:String($('p_teacherFee')?.value||'500').replace(/[^0-9]/g,''),studentDefaultAdvanceAmount:String($('p_studentAdvance')?.value||'').replace(/[^0-9]/g,'')},fees:lines('c_fees'),areas:lines('c_areas'),testimonials:lines('c_testimonials').map(line=>{const p=line.split('|').map(x=>x.trim());return{name:p[0]||'',role:p[1]||'',text:p.slice(2).join(' | ')||''}}).filter(x=>x.text)}}
+function syncCurrentDefaults(){fill(DEFAULTS);const m=$('contentMsg');if(m)m.innerHTML='<span class="ready">Current production defaults loaded. Click Save to apply them to the live CMS.</span>'}
+async function loadContent(){try{let s;if(LOCAL)s=JSON.parse(localStorage.getItem(CMS_KEY)||'{}');else s=(await api('/api/admin/content')).settings||{};fill(Object.keys(s).length?s:DEFAULTS);const m=$('contentMsg');if(m)m.textContent='Loaded current saved website settings.';const cm=$('controlMsg');if(cm)cm.textContent='Controls loaded.'}catch(e){const m=$('contentMsg');if(m)m.textContent=e.message}}
+async function saveContent(fromControls=false){try{const settings=collect();CURRENT_SETTINGS=deepMerge(DEFAULTS,settings);if(LOCAL)localStorage.setItem(CMS_KEY,JSON.stringify(settings));else await api('/api/admin/content',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({settings})});const id=fromControls?'controlMsg':'contentMsg',m=$(id);if(m)m.innerHTML='<span class="ready">Saved. Live website + backend controls are updated.</span>'}catch(e){const id=fromControls?'controlMsg':'contentMsg',m=$(id);if(m)m.innerHTML='<span class="not-ready">'+esc(e.message)+'</span>'}}
+async function loadMedia(){if(LOCAL){$('mediaGrid').innerHTML='<div class="card">Gallery upload is available after Cloudflare deployment.</div>';return}try{const items=(await api('/api/admin/media/list?kind=student-gallery')).items||[];$('mediaGrid').innerHTML=items.map(m=>`<article class="media-card"><img src="${esc(m.url)}" alt="${esc(m.altText||m.title)}"><div class="media-body"><h4>${esc(m.title||'Photo')}</h4><p>${esc(m.caption||'')}</p><div class="actions"><button class="btn light" onclick="toggleMedia('${esc(m.id)}',${m.published?'false':'true'},${Number(m.sortOrder||0)},'${esc(m.title)}','${esc(m.caption)}','${esc(m.altText)}')">${m.published?'Unpublish':'Publish'}</button><button class="btn danger-btn" onclick="deleteMedia('${esc(m.id)}')">Delete</button></div></div></article>`).join('')||'<div class="card">No gallery photos yet.</div>'}catch(e){$('mediaGrid').innerHTML='<div class="card">'+esc(e.message)+'</div>'}}
+async function uploadMedia(){if(LOCAL){$('mediaMsg').textContent='Deploy to Cloudflare to test real photo uploads.';return}const f=$('m_file').files[0];if(!f){$('mediaMsg').textContent='Choose a photo first.';return}const fd=new FormData();fd.append('file',f);fd.append('kind','student-gallery');fd.append('title',$('m_title').value);fd.append('caption',$('m_caption').value);fd.append('altText',$('m_alt').value);fd.append('sortOrder',$('m_order').value);fd.append('published',$('m_published').checked?'1':'0');try{$('mediaMsg').textContent='Uploading...';await api('/api/admin/media/upload',{method:'POST',body:fd});$('mediaMsg').textContent='Uploaded.';$('m_file').value='';loadMedia()}catch(e){$('mediaMsg').textContent=e.message}}
+async function toggleMedia(id,published,sortOrder,title,caption,altText){try{await api('/api/admin/media/update',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,published,sortOrder,title,caption,altText,kind:'student-gallery'})});loadMedia()}catch(e){alert(e.message)}}async function deleteMedia(id){if(!confirm('Delete this photo?'))return;try{await api('/api/admin/media/delete',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id})});loadMedia()}catch(e){alert(e.message)}}
+if(LOCAL){$('login').querySelector('p').textContent='Local review mode: click Open Admin Panel. Real registrations, email notifications, content saving and photo uploads use the Cloudflare backend after deployment.';$('token').classList.add('hidden')}if(LOCAL||TOKEN){showApp();loadList();loadContent()}
+</script></body></html>

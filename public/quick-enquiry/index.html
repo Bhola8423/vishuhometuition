@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061A3F">
+<meta name="robots" content="noindex,follow">
+<title>Quick Enquiry | VISHU HOME TUITION GORAKHPUR</title>
+<link rel="icon" href="/favicon-vishu-home-tuition.png?v=20260922" type="image/png">
+<style>
+:root{--navy:#061A3F;--blue:#1765E8;--gold:#F7C63D;--ink:#17233a;--muted:#6f7d91;--line:#dfe7f1;--bg:#f4f7fb;--green:#25D366}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#eef4fd 0,#f8faff 260px,#fff 100%);min-height:100vh}
+a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;background:rgba(6,26,63,.97);backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(0,0,0,.1)}.topin{width:min(1080px,92%);height:74px;margin:auto;display:flex;align-items:center;gap:14px}.logo{width:196px;height:56px;background:transparent;border-radius:0;padding:0;display:flex;align-items:center;justify-content:center}.logo img{width:100%;height:100%;object-fit:contain}.back{margin-left:auto;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;font-size:13px;font-weight:800;transition:.18s ease}.back:hover{transform:translateY(-1px);border-color:var(--gold);color:var(--gold)}
+main{width:min(920px,92%);margin:0 auto;padding:52px 0 70px}.head{text-align:center;margin-bottom:25px}.mini{display:inline-block;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.head h1{margin:8px 0 6px;color:var(--navy);font-size:clamp(28px,5vw,44px);line-height:1.08}.head p{margin:0;color:var(--muted);font-size:14px}.box{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 22px 54px rgba(6,26,63,.11);padding:26px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid input,.grid select,.grid textarea{width:100%;min-height:50px;border:1px solid #d6e0ec;border-radius:13px;padding:12px 14px;background:#fff;color:var(--ink);outline:none;transition:border-color .16s ease,box-shadow .16s ease}.grid textarea{grid-column:1/-1;min-height:112px;resize:vertical}.grid input:focus,.grid select:focus,.grid textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(23,101,232,.08)}.submit{grid-column:1/-1;border:0;min-height:52px;border-radius:14px;background:linear-gradient(135deg,#128C4A,#25D366);color:#fff;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 12px 25px rgba(37,211,102,.22);transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}.submit:hover{transform:translateY(-2px);filter:brightness(1.02);box-shadow:0 16px 30px rgba(37,211,102,.28)}.submit:active{transform:scale(.985)}.note{grid-column:1/-1;text-align:center;color:var(--muted);font-size:12px;line-height:1.5}.status{grid-column:1/-1;display:none;border-radius:12px;padding:11px 12px;font-size:12px;font-weight:700}.status.show{display:block}.status.ok{background:#eaf8f1;color:#126b45}.status.warn{background:#fff7e8;color:#805819}
+@media(max-width:680px){.topin{height:66px}.logo{width:176px;height:51px}.back{padding:9px 12px;font-size:12px}main{padding:34px 0 50px}.box{padding:18px;border-radius:20px}.grid{grid-template-columns:1fr}.grid textarea,.submit,.note,.status{grid-column:1}.head h1{font-size:30px}}
+
+/* FINAL CURSOR UX: show hand pointer only on interactive/clickable controls. */
+a[href],button:not(:disabled),[role="button"],[onclick],summary,select,label[for],input[type="button"],input[type="submit"],input[type="reset"],input[type="file"],input[type="checkbox"],input[type="radio"],.btn,.submit,[data-vht-register]{cursor:pointer!important}
+button:disabled,input:disabled,select:disabled,[aria-disabled="true"],.vht-cms-disabled{cursor:not-allowed!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="logo" href="/" aria-label="VISHU HOME TUITION Home"><img src="../vishu-logo-final-transparent.png" alt="VISHU HOME TUITION GORAKHPUR"></a><a class="back" href="/">← Back to Home</a></div></header>
+<main>
+  <div class="head"><span class="mini">Quick Enquiry</span><h1>NEED A HOME TUTOR?</h1><p>Fill your requirement and continue on WhatsApp.</p></div>
+  <form class="box" id="enquiryForm">
+    <div class="grid">
+      <input id="name" aria-label="Your Name" placeholder="Your Name" required>
+      <input id="phone" aria-label="Mobile Number" type="tel" inputmode="tel" placeholder="Mobile Number" required>
+      <select id="studentClass" aria-label="Class" required><option value="">Select Class</option><option>Nursery</option><option>LKG</option><option>UKG</option><option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option><option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option><option>11th</option><option>12th</option><option>Competitive Exam</option><option>Other</option></select>
+      <input id="subject" aria-label="Subject" placeholder="Subject" required>
+      <select id="board" aria-label="Board"><option value="">Select Board</option><option>CBSE</option><option>ICSE</option><option>UP Board / State Board</option><option>Other</option></select>
+      <input id="area" aria-label="Area / Location" placeholder="Area / Location" required>
+      <input id="time" aria-label="Preferred Time" placeholder="Preferred Time">
+      <textarea id="details" aria-label="Additional Details" placeholder="Additional Details (Optional)"></textarea>
+      <button class="submit" type="submit">Send Enquiry via WhatsApp</button>
+      <div class="status" id="status"></div>
+      <div class="note">Your details are prepared in WhatsApp automatically. Review once and tap Send.</div>
+    </div>
+  </form>
+</main>
+<script>
+(function(){
+  const form=document.getElementById('enquiryForm');
+  const status=document.getElementById('status');
+  const val=id=>String(document.getElementById(id)?.value||'').trim()||'Not specified';
+  async function submitLead(){
+    const payload={source:'main-quick-enquiry',name:val('name'),phone:val('phone'),className:val('studentClass'),board:val('board'),subjects:val('subject'),area:val('area'),preferredTime:val('time'),details:val('details')};
+    if(location.protocol==='http:'||location.protocol==='https:'){
+      try{const r=await fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});if(!r.ok)throw new Error('save failed');status.className='status show ok';status.textContent='Enquiry saved. Opening WhatsApp…'}catch(e){status.className='status show warn';status.textContent='Opening WhatsApp. If needed, you can submit again after checking your connection.'}
+    }
+    const message=`Hello VISHU HOME TUITION,
+
+I need a home tutor in Gorakhpur.
+
+Name: ${val('name')}
+Mobile: ${val('phone')}
+Class: ${val('studentClass')}
+Board: ${val('board')}
+Subject: ${val('subject')}
+Area / Location: ${val('area')}
+Preferred Time: ${val('time')}
+Additional Details: ${val('details')}`;
+    window.open('https://wa.me/917052500258?text='+encodeURIComponent(message),'_blank','noopener');
+  }
+  form.addEventListener('submit',function(e){e.preventDefault();submitLead()});
+  if(location.protocol!=='file:'){
+    fetch('/api/site-content',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{const s=d?.settings||{};const c=s.contactSection||{};if(c.kicker)document.querySelector('.mini').textContent=c.kicker;if(c.title)document.querySelector('.head h1').textContent=c.title;if(c.text)document.querySelector('.head p').textContent=c.text;if(c.button)document.querySelector('.submit').textContent=c.button;if(s.operations?.quickEnquiryEnabled===false){const b=document.querySelector('.submit');b.disabled=true;b.textContent='Quick Enquiry Paused';b.style.opacity='.6';b.style.cursor='not-allowed'}}).catch(()=>{});
+  }
+})();
+</script>
+</body>
+</html>

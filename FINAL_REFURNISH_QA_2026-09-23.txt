@@ -1,0 +1,63 @@
+VISHU HOME TUITION — REFURNISHED FINAL CHECK BUILD — 2026-09-23
+
+SOURCE / SAFETY
+- Rebuilt from: VISHU_HOME_TUITION_FINAL_MASTER_2026-09-23_REQUESTED_CHANGES.zip
+- The later broken COMPLETE.zip was NOT used as the base.
+- Only the requested frontend/backend files were modified; existing media assets were preserved.
+
+REGISTRATION — BOTH TEACHER + STUDENT
+- 5 minute upload timeout retained.
+- One automatic network retry retained.
+- JPG/JPEG/PNG/WEBP images above 2 MB are optimized in-browser before upload when possible.
+- Registration document hard limit is 5 MB after image optimization.
+- UI upload guidance shows Max 5 MB.
+- Teacher Marksheet upload control is removed.
+- Teacher Preferred Area(s) explains multiple areas can be entered.
+- Teacher Academic Board(s) explains academic qualification board.
+- Student Area/Locality is now Address.
+- Student Address/Requirement Note is now Special Requirement Note.
+
+REGISTRATION BUTTON / PANEL ROUTES
+- Register as a Teacher -> data-vht-register=teacher + /teacher-registration fallback.
+- Register as a Student -> data-vht-register=student + /student-registration fallback.
+- Worker routes /teacher-registration and /student-registration back to the correct homepage registration panel.
+- public/panels/tutor-registration.html, student-registration.html and admin.html are present and synchronized with source panel files.
+- Standalone preview embeds Teacher + Student registration panels so the buttons can be checked without a deployed server.
+
+DIGITAL CARDS
+- Teacher / Student digital card generator retained.
+- Visible card name is uppercase and auto-fit.
+- Indian mobile number display adds +91 for a 10-digit number.
+- QR verification is on the right-side layout.
+- Student visible card does not expose parent/guardian details; public QR verification data can show verification details.
+
+MAIN WEBSITE REQUESTS
+- Primary brand/site-name signals use: VISHU HOME TUITION GORAKHPUR.
+- Common spelling variants are included in structured data alternate names.
+- pages.dev hostname has a 301 canonical-domain redirect safeguard in the Worker.
+- Book Free Demo Class CTA goes to the NEED A HOME TUTOR / Quick Enquiry section.
+- Get a Tutor continues to go to the same Quick Enquiry section.
+- Book Free Demo + Teacher/Student registration CTAs use the requested royal-blue/gold soft-breath + shine animation language.
+- Existing train/carriage carousels use continuous movement on laptop + mobile at 15% higher speed (36.18 -> 41.61 px/sec).
+- Hero ambient stars/dots are slightly richer.
+- How It Works is directly after Student Registration.
+- Future Student Gallery is set for compact face-friendly cropping and 3-row continuous train movement once enough items exist.
+
+ADMIN PAYMENT CONTROL
+- Admin Content/Controls supports Teacher Registration Fee and Student Default Advance Amount.
+- Teacher registration form reads the saved teacher fee from /api/site-content.
+- Student form can read the saved default advance amount from /api/site-content.
+
+AUTOMATED STATIC QA COMPLETED
+- src/index.js: Node syntax PASS.
+- Inline JavaScript syntax: homepage, teacher, student, admin, landing page PASS.
+- Standalone preview inline JavaScript syntax PASS.
+- JSON-LD parses successfully on home + landing pages.
+- All homepage #anchor links resolve to existing sections (special registration hashes handled by registration router).
+- All checked local asset references exist.
+- public panel files are byte-for-byte synchronized with vhtTutorHtml/vhtStudentHtml/vhtAdminHtml source copies.
+- ZIP integrity tested after packaging.
+
+NOTE
+- Visual approval should be done using the supplied standalone HTML preview before deploying.
+- Search-engine ranking/position cannot be guaranteed by code; this build only strengthens controllable technical/site-name signals.

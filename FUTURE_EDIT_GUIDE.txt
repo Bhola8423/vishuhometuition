@@ -1,0 +1,33 @@
+VISHU HOME TUITION — FUTURE EDIT GUIDE
+
+No-code / routine edits
+Use https://vishuhometuition.in/admin after deployment for:
+- Home/registration copy
+- Phone/email/social links
+- Theme colors
+- SEO title/description
+- Notice/offer strip
+- Fee update lines
+- Additional service areas
+- Feedback
+- Student gallery photos
+
+Code/design edits
+- public/index.html — main website layout/CSS/JS and embedded interface payloads
+- public/home-tuition-gorakhpur/index.html — Gorakhpur landing page
+- src/index.js — backend/API/email/storage/verification logic
+- wrangler.jsonc — Cloudflare deployment config
+
+Decoded embedded sources are provided separately in the SOURCE EDIT PACK:
+- student-registration.html
+- tutor-registration.html
+- admin-panel.html
+- rebuild-embedded-forms.py
+
+After editing a decoded interface, run rebuild-embedded-forms.py to re-embed it into public/index.html.
+
+Before future deployment
+- node --check src/index.js
+- syntax-check inline JavaScript
+- confirm public asset references exist
+- never hard-code ADMIN_TOKEN or RESEND_API_KEY

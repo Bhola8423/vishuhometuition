@@ -1,0 +1,20 @@
+VISHU HOME TUITION — FINAL QA 2026-09-22
+
+Verified before packaging:
+- Worker JavaScript syntax: PASS
+- Admin/Tutor/Student inline JavaScript syntax: PASS
+- Public homepage inline JavaScript syntax: PASS
+- Permanent ID logic simulated: Teacher VHT-T2500, VHT-T2501... / Student VHT-S8500, VHT-S8501...
+- Old year-based ID examples removed from live panels: PASS
+- Registration emails: applicant Registration Received + admin New Registration only; no payment-proof email: PASS
+- Approval email: Approved + Digital ID attachment combined: PASS
+- Separate correction/rejection/payment applicant emails disabled per owner minimal-email request: PASS
+- Resend/ADMIN_TOKEN remain Cloudflare secrets and are not embedded in package: PASS
+- Admin API auth remains ADMIN_TOKEN protected: PASS
+- Admin controls: View, Edit, Approval, Payment, Active/Inactive, Documents, Digital Card, Notice: PASS
+- Admin theme controls: Navy / Gold / Blue live CMS controls: PASS
+- Public QR verification becomes invalid when registration is Inactive: PASS
+- Teacher QR verification includes contact number: PASS
+- Smart face-aware/portrait photo fit retained: PASS
+- Digital card output retained at 1200 x 720 PNG: PASS
+- Existing public design/content/graphics retained: PASS

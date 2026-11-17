@@ -12,18 +12,21 @@ const feeCards = [
 
 export default function FeeStructureSection() {
   const sliderRef = useRef(null);
+  const isVisibleRef = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Scroll ONLY the inner container horizontally (never scroll the window)
   const scrollToCard = useCallback((index) => {
     if (sliderRef.current) {
       const container = sliderRef.current;
       const cards = container.querySelectorAll('.fee-card');
       if (cards[index]) {
-        cards[index].scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
+        const card = cards[index];
+        const targetLeft = card.offsetLeft - (container.clientWidth - card.offsetWidth) / 2;
+        container.scrollTo({
+          left: targetLeft,
+          behavior: 'smooth'
         });
         setActiveIndex(index);
       }
@@ -35,10 +38,28 @@ export default function FeeStructureSection() {
     scrollToCard(nextIndex);
   };
 
-  // Auto-slide every 3.5 seconds when not hovered/paused
+  // Track if the fee section is currently visible in viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sliderRef.current) {
+      observer.observe(sliderRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-slide every 3.5 seconds ONLY when visible on screen and not paused
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
+      // Never auto-advance if user scrolled to another section (e.g. footer)
+      if (!isVisibleRef.current) return;
       setActiveIndex((prev) => {
         const next = (prev + 1) % feeCards.length;
         scrollToCard(next);

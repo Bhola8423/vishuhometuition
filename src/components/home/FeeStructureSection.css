@@ -1,0 +1,231 @@
+/* ==========================================================================
+   TUITION FEES - ANIMATIONS, SLIDER ENHANCEMENTS & POLISH
+   ========================================================================== */
+
+#fees {
+  position: relative;
+  overflow: hidden;
+}
+
+/* "PLEASE NOTE" Badge Animated Glow */
+#fees .note-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  animation: feeNotePulse 3s ease-in-out infinite !important;
+  transition: transform 0.25s ease !important;
+}
+
+@keyframes feeNotePulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(247, 198, 61, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(247, 198, 61, 0.45);
+    transform: scale(1.04);
+  }
+}
+
+/* Fees Shell & Subtle Edge Gradient Masks */
+#fees .fees-shell {
+  position: relative;
+  width: 100%;
+  margin: 18px 0 10px;
+}
+
+#fees .fees-shell::before,
+#fees .fees-shell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#fees .fees-shell::before {
+  left: 0;
+  background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+#fees .fees-shell::after {
+  right: 0;
+  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+@media (max-width: 600px) {
+  #fees .fees-shell::before,
+  #fees .fees-shell::after {
+    width: 24px;
+  }
+}
+
+/* Slider Track */
+#fees .fee-slider {
+  display: flex !important;
+  gap: 20px !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  scroll-behavior: smooth !important;
+  scrollbar-width: none !important;
+  padding: 16px 12px 26px !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+#fees .fee-slider::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Fee Card Styling & Animation */
+#fees .fee-card {
+  flex: 0 0 min(315px, 80vw) !important;
+  width: min(315px, 80vw) !important;
+  min-width: min(315px, 80vw) !important;
+  scroll-snap-align: center !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(10, 52, 120, 0.08) !important;
+  border-radius: 22px !important;
+  padding: 10px !important;
+  box-shadow: 0 10px 28px rgba(6, 30, 73, 0.07) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.4s ease !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#fees .fee-card img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16/9 !important;
+  object-fit: cover !important;
+  border-radius: 16px !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: block;
+}
+
+/* Shimmer Light Sweep on Hover */
+#fees .fee-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#fees .fee-card:hover::after {
+  transform: rotate(25deg) translateY(100%);
+}
+
+/* Active or Hovered Fee Card */
+#fees .fee-card.is-active,
+#fees .fee-card:hover {
+  transform: translateY(-8px) scale(1.025) !important;
+  box-shadow: 0 22px 48px rgba(23, 101, 232, 0.18), 0 6px 18px rgba(6, 30, 73, 0.08) !important;
+  border-color: rgba(23, 101, 232, 0.45) !important;
+}
+
+#fees .fee-card.is-active img,
+#fees .fee-card:hover img {
+  transform: scale(1.02) !important;
+}
+
+/* Navigation Buttons with Animated Float & Ripple */
+#fees .slider-btn {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(23, 101, 232, 0.22) !important;
+  color: #0A3478 !important;
+  display: grid !important;
+  place-items: center !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 24px rgba(6, 30, 73, 0.12) !important;
+  z-index: 5 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation: feeBtnFloat 3.2s ease-in-out infinite !important;
+}
+
+#fees .slider-btn.prev {
+  left: -8px !important;
+}
+
+#fees .slider-btn.next {
+  right: -8px !important;
+}
+
+@keyframes feeBtnFloat {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(6, 30, 73, 0.12);
+  }
+  50% {
+    box-shadow: 0 10px 28px rgba(23, 101, 232, 0.3);
+  }
+}
+
+#fees .slider-btn:hover {
+  background: #0A3478 !important;
+  color: #FFD95A !important;
+  border-color: #0A3478 !important;
+  transform: translateY(-50%) scale(1.12) !important;
+  box-shadow: 0 14px 34px rgba(10, 52, 120, 0.32) !important;
+}
+
+/* Animated Dots (Expandable pill indicator) */
+#fees .fee-dots {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 14px !important;
+}
+
+#fees .fee-dots button {
+  border: none !important;
+  background: #CBD8EC !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 999px !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+
+#fees .fee-dots button:hover {
+  background: #9BB8DE !important;
+  transform: scale(1.2);
+}
+
+#fees .fee-dots button.active {
+  width: 28px !important;
+  background: #1765E8 !important;
+  box-shadow: 0 4px 12px rgba(23, 101, 232, 0.42) !important;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  #fees .slider-btn,
+  #fees .note-badge,
+  #fees .fee-card::after {
+    animation: none !important;
+  }
+}

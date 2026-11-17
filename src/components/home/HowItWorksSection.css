@@ -1,0 +1,165 @@
+/* ==========================================================================
+   HOW IT WORKS - ANIMATIONS & POLISH
+   ========================================================================== */
+
+#how-it-works {
+  position: relative;
+  overflow: hidden;
+}
+
+#how-it-works .section-head .mini {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 6px 18px !important;
+  border-radius: 999px !important;
+  background: rgba(23, 101, 232, 0.08) !important;
+  border: 1px solid rgba(23, 101, 232, 0.16) !important;
+  color: #1765E8 !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.06em !important;
+  box-shadow: 0 4px 14px rgba(23, 101, 232, 0.08) !important;
+  animation: howMiniPulse 3.5s ease-in-out infinite !important;
+}
+
+@keyframes howMiniPulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 4px 14px rgba(23, 101, 232, 0.08);
+  }
+  50% {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(23, 101, 232, 0.22);
+  }
+}
+
+/* Connecting Flow Line Animation */
+#how-it-works .process::before {
+  background: linear-gradient(90deg, #C8D9F4 0%, #1765E8 35%, #F7C63D 65%, #1765E8 85%, #C8D9F4 100%) !important;
+  background-size: 250% 100% !important;
+  animation: howProcessFlow 5s linear infinite !important;
+  box-shadow: 0 0 10px rgba(23, 101, 232, 0.22) !important;
+}
+
+@keyframes howProcessFlow {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
+}
+
+/* Step Arrow Nudge Animation */
+#how-it-works .step:not(:last-child)::after {
+  animation: howStepArrowNudge 1.8s ease-in-out infinite !important;
+  transition: all 0.25s ease !important;
+}
+
+@keyframes howStepArrowNudge {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+    box-shadow: 0 6px 16px rgba(6, 30, 73, 0.08);
+    background: #FFFFFF;
+    color: #1765E8;
+  }
+  50% {
+    transform: translateY(-50%) translateX(4px);
+    box-shadow: 0 8px 22px rgba(23, 101, 232, 0.3);
+    background: #0A3478;
+    color: #FFD95A;
+  }
+}
+
+/* Base Step Animation & Transition */
+#how-it-works .step {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease !important;
+  cursor: pointer;
+}
+
+/* Gentle organic floating rhythm */
+#how-it-works .step:nth-child(1) {
+  animation: howStepFloat 6s ease-in-out 0s infinite;
+}
+#how-it-works .step:nth-child(2) {
+  animation: howStepFloat 6s ease-in-out -2s infinite;
+}
+#how-it-works .step:nth-child(3) {
+  animation: howStepFloat 6s ease-in-out -4s infinite;
+}
+
+@keyframes howStepFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Step Number Badge Glow */
+#how-it-works .step-num {
+  animation: howStepNumGlow 3s ease-in-out infinite !important;
+  transition: transform 0.3s ease, background 0.3s ease !important;
+}
+
+@keyframes howStepNumGlow {
+  0%, 100% {
+    box-shadow: 0 6px 16px rgba(23, 101, 232, 0.25);
+  }
+  50% {
+    box-shadow: 0 8px 22px rgba(23, 101, 232, 0.45);
+  }
+}
+
+/* Highlighted / Active Step (Driven by automatic sequential timer or hover) */
+#how-it-works .step.is-active-step,
+#how-it-works .step:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: rgba(23, 101, 232, 0.38) !important;
+  box-shadow: 0 20px 42px rgba(23, 101, 232, 0.15), 0 6px 16px rgba(6, 30, 73, 0.08) !important;
+  background: #FFFFFF !important;
+  animation-play-state: paused !important;
+}
+
+#how-it-works .step.is-active-step .step-circle,
+#how-it-works .step:hover .step-circle {
+  transform: scale(1.06) !important;
+  box-shadow: 0 14px 28px rgba(23, 101, 232, 0.22) !important;
+  border-color: rgba(23, 101, 232, 0.25) !important;
+}
+
+#how-it-works .step.is-active-step .step-circle svg,
+#how-it-works .step:hover .step-circle svg {
+  animation: howIconWiggle 1.8s ease-in-out infinite !important;
+}
+
+@keyframes howIconWiggle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.05);
+  }
+}
+
+#how-it-works .step.is-active-step .step-num,
+#how-it-works .step:hover .step-num {
+  background: #0A3478 !important;
+  color: #FFD95A !important;
+  transform: scale(1.12) !important;
+  box-shadow: 0 8px 24px rgba(10, 52, 120, 0.38) !important;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  #how-it-works .step,
+  #how-it-works .step:nth-child(1),
+  #how-it-works .step:nth-child(2),
+  #how-it-works .step:nth-child(3),
+  #how-it-works .process::before,
+  #how-it-works .step:not(:last-child)::after,
+  #how-it-works .step-num,
+  #how-it-works .section-head .mini {
+    animation: none !important;
+  }
+}

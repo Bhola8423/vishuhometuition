@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './HowItWorksSection.css';
 
 export default function HowItWorksSection() {
+  const [activeStep, setActiveStep] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Auto-cycle through the 3 steps smoothly when not hovered
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % 3);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
   return (
     <section className="section soft" id="how-it-works">
       <div className="container">
@@ -9,8 +22,16 @@ export default function HowItWorksSection() {
           <h2>HOW IT WORKS</h2>
           <p>Three simple steps from requirement to personalised learning.</p>
         </div>
-        <div className="process">
-          <article className="step reveal show">
+        <div
+          className="process"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <article
+            className={`step reveal show ${activeStep === 0 ? 'is-active-step' : ''}`}
+            onClick={() => setActiveStep(0)}
+            onMouseEnter={() => setActiveStep(0)}
+          >
             <div className="step-circle">
               <span className="step-num">01</span>
               <svg fill="none" viewBox="0 0 64 64">
@@ -23,7 +44,11 @@ export default function HowItWorksSection() {
             <p>Class, subject, board, area and timing.</p>
           </article>
 
-          <article className="step reveal show">
+          <article
+            className={`step reveal show ${activeStep === 1 ? 'is-active-step' : ''}`}
+            onClick={() => setActiveStep(1)}
+            onMouseEnter={() => setActiveStep(1)}
+          >
             <div className="step-circle">
               <span className="step-num">02</span>
               <svg fill="none" viewBox="0 0 64 64">
@@ -38,7 +63,11 @@ export default function HowItWorksSection() {
             <p>We match available tutors to your need.</p>
           </article>
 
-          <article className="step reveal show">
+          <article
+            className={`step reveal show ${activeStep === 2 ? 'is-active-step' : ''}`}
+            onClick={() => setActiveStep(2)}
+            onMouseEnter={() => setActiveStep(2)}
+          >
             <div className="step-circle">
               <span className="step-num">03</span>
               <svg fill="none" viewBox="0 0 64 64">

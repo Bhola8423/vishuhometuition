@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
-import { API_BASE } from '../../config/api';
+import { submitLead } from '../../api/enquiryApi';
 
 export default function QuickEnquirySection() {
   const [formData, setFormData] = useState({
@@ -29,14 +29,9 @@ export default function QuickEnquirySection() {
     setStatus({ type: '', msg: '' });
 
     try {
-      const res = await fetch(`${API_BASE}/api/lead`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      const data = await res.json().catch(() => ({}));
+      const data = await submitLead(formData);
       
-      if (res.ok && data.ok) {
+      if (data && data.ok) {
         setStatus({ 
           type: 'success', 
           msg: `Enquiry submitted successfully! Your Lead ID is ${data.id || 'CONFIRMED'}. Our team will contact you shortly.` 

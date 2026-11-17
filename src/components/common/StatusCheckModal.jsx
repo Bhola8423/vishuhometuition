@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Search, CheckCircle, AlertCircle, Clock, FileText } from 'lucide-react';
-import { API_BASE } from '../../config/api';
+import { verifyRegistrationStatus } from '../../api/statusApi';
 
 export default function StatusCheckModal({ isOpen, onClose }) {
   const [regId, setRegId] = useState('');
@@ -23,13 +23,7 @@ export default function StatusCheckModal({ isOpen, onClose }) {
     setResult(null);
 
     try {
-      const res = await fetch(`${API_BASE}/api/status?id=${encodeURIComponent(cleanId)}`, {
-        headers: { 'accept': 'application/json' }
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        throw new Error(data.error || 'Registration ID not found.');
-      }
+      const data = await verifyRegistrationStatus(cleanId);
       setResult(data);
     } catch (err) {
       setError(err.message || 'Unable to fetch status. Please try again.');

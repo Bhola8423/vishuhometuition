@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_BASE } from '../config/api';
+import { submitLead } from '../api/enquiryApi';
 
 export default function GorakhpurPage() {
   const [filterText, setFilterText] = useState('');
@@ -44,23 +44,18 @@ export default function GorakhpurPage() {
     setResultMsg({ type: '', text: '' });
 
     try {
-      const res = await fetch(`${API_BASE}/api/lead`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: leadForm.name,
-          phone: leadForm.phone,
-          studentClass: leadForm.studentClass,
-          board: leadForm.board,
-          subject: leadForm.subject,
-          locality: leadForm.area,
-          preferredTime: leadForm.time,
-          note: leadForm.details
-        })
+      const data = await submitLead({
+        name: leadForm.name,
+        phone: leadForm.phone,
+        studentClass: leadForm.studentClass,
+        board: leadForm.board,
+        subject: leadForm.subject,
+        locality: leadForm.area,
+        preferredTime: leadForm.time,
+        note: leadForm.details
       });
 
-      const data = await res.json().catch(() => ({}));
-      if (res.ok && data.ok) {
+      if (data && data.ok) {
         setResultMsg({ 
           type: 'ok', 
           text: `Quick Tutor Request submitted successfully! Request ID: ${data.id || 'CONFIRMED'}. Our Gorakhpur coordinator will call you shortly.` 

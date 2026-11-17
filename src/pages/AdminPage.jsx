@@ -5,7 +5,21 @@ import {
   AlertTriangle, Eye, Phone, Mail, FileText, ChevronRight, X,
   Save, RotateCcw, ArrowLeft, Upload, Trash2, Check, ExternalLink
 } from 'lucide-react';
-import { API_BASE, apiFetch } from '../config/api';
+import { 
+  fetchAdminRegistrations,
+  fetchAdminRegistrationDetail,
+  updateRegistrationStatus,
+  fetchAdminWebsiteContent,
+  saveAdminWebsiteContent,
+  fetchAdminMediaList,
+  uploadAdminMedia,
+  updateAdminMedia,
+  deleteAdminMedia,
+  fetchAdminSystemInfo,
+  sendAdminTestEmail,
+  getAdminFileUrl
+} from '../api/adminApi';
+import { getAdminToken, setAdminToken } from '../api/config';
 
 const DEFAULTS = {
   schemaVersion: 2,
@@ -201,7 +215,7 @@ export default function AdminPage() {
 
   // Auto-authenticate if token exists in sessionStorage
   useEffect(() => {
-    const savedToken = sessionStorage.getItem('vht_admin_token');
+    const savedToken = getAdminToken();
     if (savedToken) {
       setToken(savedToken);
       fetchLiveRegistrations(savedToken);
@@ -216,27 +230,20 @@ export default function AdminPage() {
     setMsg({ type: '', text: '' });
 
     try {
-      const res = await apiFetch('/api/admin/list', {
-        headers: {
-          'accept': 'application/json',
-          'authorization': `Bearer ${tok.trim()}`
-        }
-      });
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        if (res.status === 401) {
-          sessionStorage.removeItem('vht_admin_token');
-          setAuthenticated(false);
-        }
-        throw new Error(data.error || 'Invalid ADMIN_TOKEN provided.');
-      }
-
-      sessionStorage.setItem('vht_admin_token', tok.trim());
+      const data = await fetchAdminRegistrations(tok.trim());
+      setAdminToken(tok.trim());
       setAuthenticated(true);
       setRegistrations(data.items || data.registrations || []);
     } catch (err) {
-      setMsg({ type: 'danger', text: err.message || 'Authentication failed.' });
+      if (err.message && err.message.toLowerCase().includes('unauthorized')) {
+        setAdminToken('');
+        setAuthenticated(false);
+      }
+      let errorText = err.message || 'Authentication failed.';
+      if (errorText === 'Failed to fetch') {
+        errorText = 'Cross-origin connection blocked (CORS). Please open the official Admin Panel at https://vishuhometuition.in/admin or run deploy.bat to deploy the updated Cloudflare Worker.';
+      }
+      setMsg({ type: 'danger', text: errorText });
     } finally {
       setLoading(false);
     }
@@ -246,33 +253,24 @@ export default function AdminPage() {
     const tok = authToken || token;
     if (!tok) return;
     try {
-      const res = await apiFetch('/api/admin/content', {
-        headers: {
-          'accept': 'application/json',
-          'authorization': `Bearer ${tok.trim()}`
-        }
-      });
-      if (res.ok) {
-        const data = await res.json().catch(() => ({}));
-        const remote = data.settings && Object.keys(data.settings).length > 0 ? data.settings : {};
-        const merged = deepMerge(DEFAULTS, remote);
-        setSettings(merged);
-        setSavedSettings(merged);
-        setServicesText((merged.footer?.services || []).join('\n'));
-        setFeesText((merged.fees || []).join('\n'));
-        setAreasText((merged.areas || []).join('\n'));
-        setFeedbackText((merged.testimonials || []).map(t => [t.name, t.role, t.text].join(' | ')).join('\n'));
-        setContentMsg('Loaded current saved website settings.');
-        setControlMsg('Controls loaded.');
-      } else {
-        // Fallback to defaults
-        setServicesText((DEFAULTS.footer?.services || []).join('\n'));
-        setFeesText((DEFAULTS.fees || []).join('\n'));
-        setAreasText((DEFAULTS.areas || []).join('\n'));
-        setFeedbackText((DEFAULTS.testimonials || []).map(t => [t.name, t.role, t.text].join(' | ')).join('\n'));
-      }
+      const data = await fetchAdminWebsiteContent(tok.trim());
+      const remote = data.settings && Object.keys(data.settings).length > 0 ? data.settings : {};
+      const merged = deepMerge(DEFAULTS, remote);
+      setSettings(merged);
+      setSavedSettings(merged);
+      setServicesText((merged.footer?.services || []).join('\n'));
+      setFeesText((merged.fees || []).join('\n'));
+      setAreasText((merged.areas || []).join('\n'));
+      setFeedbackText((merged.testimonials || []).map(t => [t.name, t.role, t.text].join(' | ')).join('\n'));
+      setContentMsg('Loaded current saved website settings.');
+      setControlMsg('Controls loaded.');
     } catch (err) {
       console.warn('Could not load website content:', err);
+      // Fallback to defaults
+      setServicesText((DEFAULTS.footer?.services || []).join('\n'));
+      setFeesText((DEFAULTS.fees || []).join('\n'));
+      setAreasText((DEFAULTS.areas || []).join('\n'));
+      setFeedbackText((DEFAULTS.testimonials || []).map(t => [t.name, t.role, t.text].join(' | ')).join('\n'));
     }
   };
 
@@ -280,15 +278,8 @@ export default function AdminPage() {
     if (!token) return;
     setMediaLoading(true);
     try {
-      const res = await apiFetch('/api/admin/media/list?kind=student-gallery', {
-        headers: {
-          'authorization': `Bearer ${token.trim()}`
-        }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setMediaItems(data.items || []);
-      }
+      const data = await fetchAdminMediaList('student-gallery', token.trim());
+      setMediaItems(data.items || []);
     } catch (err) {
       console.error(err);
     } finally {
@@ -299,16 +290,8 @@ export default function AdminPage() {
   const loadSystemInfo = async () => {
     if (!token) return;
     try {
-      const res = await apiFetch('/api/admin/system', {
-        headers: {
-          'accept': 'application/json',
-          'authorization': `Bearer ${token.trim()}`
-        }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setSystemInfo(data);
-      }
+      const data = await fetchAdminSystemInfo(token.trim());
+      setSystemInfo(data);
     } catch (err) {
       console.error(err);
     }
@@ -337,7 +320,7 @@ export default function AdminPage() {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem('vht_admin_token');
+    setAdminToken('');
     setToken('');
     setAuthenticated(false);
     setRegistrations([]);
@@ -347,26 +330,13 @@ export default function AdminPage() {
   const handleUpdateStatus = async (id, newStatus) => {
     setUpdatingId(id);
     try {
-      const res = await apiFetch('/api/admin/update', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${token.trim()}`
-        },
-        body: JSON.stringify({ id, status: newStatus, active: true })
-      });
-      const data = await res.json().catch(() => ({}));
-
-      if (res.ok) {
-        setRegistrations(prev => prev.map(item => item.id === id ? { ...item, status: newStatus } : item));
-        if (selectedReg && selectedReg.id === id) {
-          setSelectedReg(prev => ({ ...prev, status: newStatus }));
-        }
-      } else {
-        alert(data.error || 'Failed to update status.');
+      await updateRegistrationStatus({ id, status: newStatus, active: true }, token.trim());
+      setRegistrations(prev => prev.map(item => item.id === id ? { ...item, status: newStatus } : item));
+      if (selectedReg && selectedReg.id === id) {
+        setSelectedReg(prev => ({ ...prev, status: newStatus }));
       }
     } catch (err) {
-      alert('Error connecting to backend server.');
+      alert(err.message || 'Error updating status.');
     } finally {
       setUpdatingId(null);
     }
@@ -374,20 +344,10 @@ export default function AdminPage() {
 
   const handleViewDetail = async (id) => {
     try {
-      const res = await apiFetch(`/api/admin/detail?id=${encodeURIComponent(id)}`, {
-        headers: {
-          'accept': 'application/json',
-          'authorization': `Bearer ${token.trim()}`
-        }
-      });
-      const data = await res.json().catch(() => ({}));
-      if (res.ok) {
-        setSelectedReg(data);
-      } else {
-        alert(data.error || 'Could not fetch registration details.');
-      }
+      const data = await fetchAdminRegistrationDetail(id, token.trim());
+      setSelectedReg(data);
     } catch (err) {
-      alert('Error connecting to live API.');
+      alert(err.message || 'Could not fetch registration details.');
     }
   };
 
@@ -443,22 +403,9 @@ export default function AdminPage() {
     };
 
     try {
-      const res = await apiFetch('/api/admin/content', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${token.trim()}`
-        },
-        body: JSON.stringify({ settings: payloadSettings })
-      });
-
-      const data = await res.json().catch(() => ({}));
-      if (res.ok) {
-        setSavedSettings(payloadSettings);
-        targetMsg('Saved. Live website + backend controls are updated.');
-      } else {
-        targetMsg(`Error: ${data.error || 'Failed to save settings.'}`);
-      }
+      await saveAdminWebsiteContent({ settings: payloadSettings }, token.trim());
+      setSavedSettings(payloadSettings);
+      targetMsg('Saved. Live website + backend controls are updated.');
     } catch (err) {
       targetMsg(`Error: ${err.message || 'Could not connect to backend.'}`);
     } finally {
@@ -484,67 +431,42 @@ export default function AdminPage() {
     fd.append('published', mPublished ? '1' : '0');
 
     try {
-      const res = await apiFetch('/api/admin/media/upload', {
-        method: 'POST',
-        headers: {
-          'authorization': `Bearer ${token.trim()}`
-        },
-        body: fd
-      });
-      if (res.ok) {
-        setMediaMsg('Photo uploaded successfully.');
-        setMFile(null);
-        setMTitle('');
-        setMCaption('');
-        setMAlt('');
-        loadMedia();
-      } else {
-        const d = await res.json().catch(() => ({}));
-        setMediaMsg(d.error || 'Upload failed.');
-      }
+      await uploadAdminMedia(fd, token.trim());
+      setMediaMsg('Photo uploaded successfully.');
+      setMFile(null);
+      setMTitle('');
+      setMCaption('');
+      setMAlt('');
+      loadMedia();
     } catch (err) {
-      setMediaMsg('Error connecting to upload API.');
+      setMediaMsg(err.message || 'Upload failed.');
     }
   };
 
   const handleToggleMedia = async (id, currentPublished, sortOrder, title, caption, altText) => {
     try {
-      await apiFetch('/api/admin/media/update', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${token.trim()}`
-        },
-        body: JSON.stringify({
-          id,
-          published: !currentPublished,
-          sortOrder: Number(sortOrder || 0),
-          title: title || '',
-          caption: caption || '',
-          altText: altText || '',
-          kind: 'student-gallery'
-        })
-      });
+      await updateAdminMedia({
+        id,
+        published: !currentPublished,
+        sortOrder: Number(sortOrder || 0),
+        title: title || '',
+        caption: caption || '',
+        altText: altText || '',
+        kind: 'student-gallery'
+      }, token.trim());
       loadMedia();
     } catch (err) {
-      alert('Failed to update photo state.');
+      alert(err.message || 'Failed to update photo state.');
     }
   };
 
   const handleDeleteMedia = async (id) => {
     if (!window.confirm('Delete this photo from gallery?')) return;
     try {
-      await apiFetch('/api/admin/media/delete', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${token.trim()}`
-        },
-        body: JSON.stringify({ id })
-      });
+      await deleteAdminMedia(id, token.trim());
       loadMedia();
     } catch (err) {
-      alert('Failed to delete photo.');
+      alert(err.message || 'Failed to delete photo.');
     }
   };
 
@@ -552,20 +474,10 @@ export default function AdminPage() {
     setSystemTesting(true);
     setSystemMsg('Sending test email to admin inbox...');
     try {
-      const res = await apiFetch('/api/admin/email-test', {
-        method: 'POST',
-        headers: {
-          'authorization': `Bearer ${token.trim()}`
-        }
-      });
-      const data = await res.json().catch(() => ({}));
-      if (res.ok) {
-        setSystemMsg(`✓ Test email sent successfully to ${data.to || 'admin inbox'}.`);
-      } else {
-        setSystemMsg(`✗ Test failed: ${data.error || 'Check RESEND_API_KEY configuration.'}`);
-      }
+      const data = await sendAdminTestEmail(token.trim());
+      setSystemMsg(`✓ Test email sent successfully to ${data.to || 'admin inbox'}.`);
     } catch (err) {
-      setSystemMsg('✗ Connection error sending test email.');
+      setSystemMsg(`✗ Test failed: ${err.message || 'Check RESEND_API_KEY configuration.'}`);
     } finally {
       setSystemTesting(false);
     }

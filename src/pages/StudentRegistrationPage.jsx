@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_BASE } from '../config/api';
+import { submitStudentRegistration, checkStudentStatus } from '../api/studentApi';
 
 export default function StudentRegistrationPage({ onOpenStatusModal }) {
   const [view, setView] = useState('form'); // 'form' | 'success' | 'verify'
@@ -56,16 +56,10 @@ export default function StudentRegistrationPage({ onOpenStatusModal }) {
     setVerifyResult(null);
 
     try {
-      const res = await fetch(`${API_BASE}/api/status?id=${encodeURIComponent(id)}`, {
-        headers: { 'accept': 'application/json' }
-      }).catch(() => null);
-
-      if (res && res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setVerifyResult(data);
-        return;
-      }
-
+      const data = await checkStudentStatus(id);
+      setVerifyResult(data);
+      return;
+    } catch (apiErr) {
       // Check local preview items
       const localItems = JSON.parse(localStorage.getItem('vht_final_demo_regs') || '[]');
       const match = localItems.find((x) => x.id === id);
@@ -73,11 +67,7 @@ export default function StudentRegistrationPage({ onOpenStatusModal }) {
         setVerifyResult(match);
         return;
       }
-
-      const errData = res ? await res.json().catch(() => ({})) : {};
-      setVerifyError(errData.error || 'Registration ID not found.');
-    } catch (err) {
-      setVerifyError('Registration ID not found.');
+      setVerifyError(apiErr.message || 'Registration ID not found.');
     } finally {
       setVerifyLoading(false);
     }
@@ -150,22 +140,7 @@ export default function StudentRegistrationPage({ onOpenStatusModal }) {
         if (paymentProof) fd.append('paymentProof', paymentProof);
       }
 
-      const res = await fetch(`${API_BASE}/api/register`, {
-        method: 'POST',
-        body: fd
-      });
-
-      const contentType = res.headers.get('content-type') || '';
-      if (!contentType.includes('application/json')) {
-        if (res.status === 413) throw new Error('File sizes are too large to upload together.');
-        throw new Error('Registration endpoint unavailable.');
-      }
-
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok || !data.id) {
-        throw new Error(data.error || 'Registration failed to save.');
-      }
-
+      const data = await submitStudentRegistration(fd);
       setSuccessData(data);
       setView('success');
     } catch (err) {

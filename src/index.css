@@ -9606,3 +9606,107 @@ html body .vht-emerald-btn:focus-visible{
   background: #fae3b8;
   color: #925f0f;
 }
+
+/* ==========================================================================
+   BLOCK 27: EXACT ANIMATION AS "BOOK FREE DEMO CLASS" BUTTON
+   - Moving shine sweep (vhtEmeraldShine)
+   - Arrow nudge (vhtEmeraldArrowNudge)
+   - Subtle breath (vhtEmeraldBreath)
+   - Background color and size do not blow up
+   ========================================================================== */
+
+html body #tutor a.tutor-btn.registration-cta,
+html body #student-registration a.student-main-btn.registration-cta,
+html body a[data-vht-register="teacher"],
+html body a[data-vht-register="student"] {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  white-space: nowrap !important;
+  transform-origin: center center !important;
+  animation: vhtEmeraldBreath 1.55s ease-in-out infinite !important;
+  will-change: transform !important;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease !important;
+}
+
+/* Identical moving shine sweep across the button */
+html body #tutor a.tutor-btn.registration-cta::before,
+html body #student-registration a.student-main-btn.registration-cta::before,
+html body a[data-vht-register="teacher"]::before,
+html body a[data-vht-register="student"]::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: auto !important;
+  top: -18% !important;
+  left: -30% !important;
+  width: 19% !important;
+  height: 136% !important;
+  z-index: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: skewX(-20deg) !important;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.20) 50%, transparent 100%) !important;
+  animation: vhtEmeraldShine 2.2s ease-in-out infinite !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+}
+
+/* Disable legacy secondary pseudo layer */
+html body #tutor a.tutor-btn.registration-cta::after,
+html body #student-registration a.student-main-btn.registration-cta::after,
+html body a[data-vht-register="teacher"]::after,
+html body a[data-vht-register="student"]::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+/* Arrow nudge animation identical to book free demo class */
+html body #tutor a.tutor-btn.registration-cta .vht-emerald-arrow,
+html body #student-registration a.student-main-btn.registration-cta .vht-emerald-arrow,
+html body a[data-vht-register="teacher"] .vht-emerald-arrow,
+html body a[data-vht-register="student"] .vht-emerald-arrow {
+  position: relative !important;
+  z-index: 2 !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  flex: 0 0 28px !important;
+  border-radius: 50% !important;
+  animation: vhtEmeraldArrowNudge 0.95s ease-in-out infinite !important;
+}
+
+/* Zero hover animation on both buttons: size and position remain completely steady */
+html body #tutor a.tutor-btn.registration-cta:hover,
+html body #student-registration a.student-main-btn.registration-cta:hover,
+html body a[data-vht-register="teacher"]:hover,
+html body a[data-vht-register="student"]:hover,
+html body #tutor a.tutor-btn.registration-cta:focus,
+html body #student-registration a.student-main-btn.registration-cta:focus,
+html body a[data-vht-register="teacher"]:focus,
+html body a[data-vht-register="student"]:focus,
+html body #tutor a.tutor-btn.registration-cta:active,
+html body #student-registration a.student-main-btn.registration-cta:active,
+html body a[data-vht-register="teacher"]:active,
+html body a[data-vht-register="student"]:active {
+  transform: none !important;
+  animation-play-state: running !important;
+  filter: none !important;
+}
+
+html body #tutor a.tutor-btn.registration-cta:hover .vht-emerald-arrow,
+html body #student-registration a.student-main-btn.registration-cta:hover .vht-emerald-arrow,
+html body a[data-vht-register="teacher"]:hover .vht-emerald-arrow,
+html body a[data-vht-register="student"]:hover .vht-emerald-arrow {
+  transform: none !important;
+}
+
+
+

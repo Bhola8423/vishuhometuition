@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './TutorRegistration.css';
-import { API_BASE } from '../config/api';
+import { submitTutorRegistration, fetchPublicSiteContent, checkTutorStatus } from '../api/tutorApi';
 
 export default function TutorRegistrationPage({ onOpenStatusModal }) {
   const [view, setView] = useState('form'); // 'form' | 'success' | 'verify'
@@ -47,8 +47,7 @@ export default function TutorRegistrationPage({ onOpenStatusModal }) {
 
   useEffect(() => {
     // Fetch live fee setting if available
-    fetch(`${API_BASE}/api/site-content`)
-      .then((res) => (res.ok ? res.json() : null))
+    fetchPublicSiteContent()
       .then((data) => {
         const liveFee = String(data?.settings?.payments?.teacherRegistrationFee || '').replace(/[^0-9]/g, '');
         if (liveFee) setFee(liveFee);
@@ -188,21 +187,18 @@ export default function TutorRegistrationPage({ onOpenStatusModal }) {
       fd.append('identityDoc', optIdentity);
       fd.append('paymentProof', optPayment);
 
-      const res = await fetch(`${API_BASE}/api/register`, {
-        method: 'POST',
-        body: fd
-      }).catch(() => null);
-
-      if (res && res.ok) {
-        const contentType = res.headers.get('content-type') || '';
-        if (contentType.includes('application/json')) {
-          const data = await res.json();
-          if (data && data.ok && data.id) {
-            setSuccessData(data);
-            setView('success');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-          }
+      try {
+        const data = await submitTutorRegistration(fd);
+        if (data && data.ok && data.id) {
+          setSuccessData(data);
+          setView('success');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      } catch (apiErr) {
+        // If file error or bad request from server, display error
+        if (apiErr.message && !apiErr.message.includes('unavailable') && !apiErr.message.includes('Failed to fetch')) {
+          throw apiErr;
         }
       }
 
@@ -244,16 +240,10 @@ export default function TutorRegistrationPage({ onOpenStatusModal }) {
     setVerifyResult(null);
 
     try {
-      const res = await fetch(`${API_BASE}/api/status?id=${encodeURIComponent(id)}`, {
-        headers: { 'accept': 'application/json' }
-      }).catch(() => null);
-
-      if (res && res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setVerifyResult(data);
-        return;
-      }
-
+      const data = await checkTutorStatus(id);
+      setVerifyResult(data);
+      return;
+    } catch (apiErr) {
       // Check local preview items
       const localItems = JSON.parse(localStorage.getItem('vht_final_demo_regs') || '[]');
       const match = localItems.find((x) => x.id === id);
@@ -261,11 +251,7 @@ export default function TutorRegistrationPage({ onOpenStatusModal }) {
         setVerifyResult(match);
         return;
       }
-
-      const errData = res ? await res.json().catch(() => ({})) : {};
-      setVerifyError(errData.error || 'Registration ID not found.');
-    } catch (err) {
-      setVerifyError('Registration ID not found.');
+      setVerifyError(apiErr.message || 'Registration ID not found.');
     } finally {
       setVerifyLoading(false);
     }

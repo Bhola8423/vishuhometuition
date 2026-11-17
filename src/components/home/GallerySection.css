@@ -1,0 +1,466 @@
+/* ==========================================================================
+   VISHU HOME TUITION - GALLERY SECTION (3-ROW SLOW MOTION CONTINUOUS SCROLL)
+   ========================================================================== */
+
+.gallery-section {
+  padding: 68px 0 76px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F4F8FD 50%, #FFFFFF 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(223, 231, 241, 0.6);
+  border-bottom: 1px solid rgba(223, 231, 241, 0.6);
+}
+
+.gallery-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.gallery-head {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.gallery-kicker {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #061A3F;
+  background: #FFE28A;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.gallery-head h2 {
+  color: #061A3F;
+  font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 4px 0 10px;
+  text-transform: uppercase;
+}
+
+.gallery-subtitle {
+  color: #64748B;
+  font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   3-ROW MARQUEE CONTAINER & SIDE FADE MASKS
+   ========================================================================== */
+
+.gallery-rows-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+/* Soft lateral fade gradients on edges for seamless look */
+.gallery-rows-wrapper::before,
+.gallery-rows-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.gallery-rows-wrapper::before {
+  left: 0;
+  background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0) 100%);
+}
+
+.gallery-rows-wrapper::after {
+  right: 0;
+  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0) 100%);
+}
+
+@media (max-width: 768px) {
+  .gallery-rows-wrapper::before,
+  .gallery-rows-wrapper::after {
+    width: 48px;
+  }
+}
+
+/* Each row viewport */
+.gallery-row-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+/* The moving track holding original + cloned cards */
+.gallery-row-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Pause motion smoothly when hovered */
+.gallery-row-viewport:hover .gallery-row-track {
+  animation-play-state: paused !important;
+}
+
+/* ==========================================================================
+   MARQUEE KEYFRAMES & SPEEDS (SLOW MOTION)
+   ========================================================================== */
+
+/* Left-to-Right: moves from -50% to 0 */
+.scroll-ltr {
+  animation: galleryMarqueeLTR 46s linear infinite;
+}
+
+/* Right-to-Left: moves from 0 to -50% */
+.scroll-rtl {
+  animation: galleryMarqueeRTL 42s linear infinite;
+}
+
+/* Slower variation for third row */
+.scroll-ltr-slow {
+  animation: galleryMarqueeLTR 52s linear infinite;
+}
+
+@keyframes galleryMarqueeLTR {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes galleryMarqueeRTL {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-row-track {
+    animation: none !important;
+    overflow-x: auto;
+  }
+}
+
+/* ==========================================================================
+   GALLERY CARD
+   ========================================================================== */
+
+.gallery-card {
+  width: 250px;
+  flex: 0 0 250px;
+  background: #FFFFFF;
+  border: 1px solid #DFE7F1;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 9px 24px rgba(6, 26, 63, 0.07);
+  cursor: pointer;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              box-shadow 0.32s ease, 
+              border-color 0.32s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(6, 26, 63, 0.15);
+  border-color: rgba(23, 101, 232, 0.4);
+}
+
+.gallery-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 165px;
+  background: #EEF3F8;
+  overflow: hidden;
+}
+
+.gallery-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover .gallery-card-img {
+  transform: scale(1.05);
+}
+
+/* Zoom hint badge */
+.gallery-card-zoom-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(6, 26, 63, 0.75);
+  backdrop-filter: blur(4px);
+  color: #FFFFFF;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.gallery-card:hover .gallery-card-zoom-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Category / Location Pill Badge */
+.gallery-card-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+  color: #061A3F;
+  border: 1px solid rgba(223, 231, 241, 0.8);
+  font-size: 10px;
+  font-weight: 850;
+  padding: 2px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Text Meta */
+.gallery-card-meta {
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 58px;
+}
+
+.gallery-card-title {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 850;
+  color: #061A3F;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+
+.gallery-card-caption {
+  margin: 0;
+  font-size: 10.5px;
+  color: #64748B;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE TUNING
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .gallery-section {
+    padding: 50px 0 58px;
+  }
+
+  .gallery-head {
+    margin-bottom: 24px;
+  }
+
+  .gallery-rows-wrapper {
+    gap: 12px;
+  }
+
+  .gallery-card {
+    width: 175px;
+    flex: 0 0 175px;
+    border-radius: 14px;
+  }
+
+  .gallery-card-img-wrap {
+    height: 130px;
+  }
+
+  .gallery-card-meta {
+    padding: 8px 10px 10px;
+    min-height: 52px;
+  }
+
+  .gallery-card-title {
+    font-size: 11.5px;
+  }
+
+  .gallery-card-caption {
+    font-size: 9.5px;
+  }
+
+  .scroll-ltr {
+    animation-duration: 34s;
+  }
+
+  .scroll-rtl {
+    animation-duration: 32s;
+  }
+
+  .scroll-ltr-slow {
+    animation-duration: 38s;
+  }
+}
+
+/* ==========================================================================
+   LIGHTBOX MODAL FOR PREVIEWING GALLERY PHOTOS
+   ========================================================================== */
+
+.gallery-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(4, 15, 38, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: galleryModalFadeIn 0.25s ease-out;
+}
+
+@keyframes galleryModalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gallery-lightbox-modal {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 20px;
+  max-width: 680px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  animation: galleryModalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes galleryModalPop {
+  from {
+    transform: scale(0.92) translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.gallery-lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(6, 26, 63, 0.7);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-lightbox-close:hover {
+  background: #E53935;
+  transform: rotate(90deg);
+}
+
+.gallery-lightbox-img-wrap {
+  width: 100%;
+  max-height: 440px;
+  background: #EEF3F8;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox-img {
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+  object-fit: contain;
+  display: block;
+}
+
+.gallery-lightbox-content {
+  padding: 20px 24px 24px;
+}
+
+.gallery-lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.gallery-lightbox-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #061A3F;
+}
+
+.gallery-lightbox-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  color: #061A3F;
+  background: #FFE28A;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.gallery-lightbox-caption {
+  margin: 0;
+  color: #64748B;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

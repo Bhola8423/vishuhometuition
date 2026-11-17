@@ -29,6 +29,7 @@ export default function Header({ onOpenStatusModal }) {
           <Link className={isHomeActive ? "active" : ""} to="/">Home</Link>
           <a href="#why">About Us</a>
           <a href="#fees">Fees</a>
+          <a href="#gallery">Gallery</a>
           <a href="#founder">Founder</a>
           <Link to="/tutor-registration">Become a Tutor</Link>
           <Link to="/quick-enquiry">Contact</Link>
@@ -53,6 +54,7 @@ export default function Header({ onOpenStatusModal }) {
         <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
         <a href="#why" onClick={() => setMobileMenuOpen(false)}>About Us</a>
         <a href="#fees" onClick={() => setMobileMenuOpen(false)}>Fees</a>
+        <a href="#gallery" onClick={() => setMobileMenuOpen(false)}>Gallery</a>
         <a href="#founder" onClick={() => setMobileMenuOpen(false)}>Founder</a>
         <Link to="/tutor-registration" onClick={() => setMobileMenuOpen(false)}>Become a Tutor</Link>
         <Link to="/quick-enquiry" onClick={() => setMobileMenuOpen(false)}>Contact</Link>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_BASE } from '../config/api';
+import { submitLead } from '../api/enquiryApi';
 
 export default function QuickEnquiryPage() {
   const [formData, setFormData] = useState({
@@ -40,11 +40,7 @@ Additional Details: ${val('details')}`;
     const waUrl = `https://wa.me/917052500258?text=${encoded}`;
 
     // Submit to live API asynchronously if available
-    fetch(`${API_BASE}/api/lead`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    }).catch(() => { });
+    submitLead(formData).catch(() => {});
 
     // Open WhatsApp URL directly
     window.open(waUrl, '_blank');

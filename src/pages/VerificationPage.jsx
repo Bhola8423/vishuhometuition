@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search, CheckCircle, AlertCircle, Clock, ShieldCheck } from 'lucide-react';
-import { API_BASE } from '../config/api';
+import { verifyRegistrationStatus } from '../api/statusApi';
 
 export default function VerificationPage() {
   const [searchParams] = useSearchParams();
@@ -24,13 +24,7 @@ export default function VerificationPage() {
     setData(null);
 
     try {
-      const res = await fetch(`${API_BASE}/api/status?id=${encodeURIComponent(cleanId)}`, {
-        headers: { 'accept': 'application/json' }
-      });
-      const result = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        throw new Error(result.error || 'Registration ID not found in database.');
-      }
+      const result = await verifyRegistrationStatus(cleanId);
       setData(result);
     } catch (err) {
       setError(err.message || 'Unable to check status.');

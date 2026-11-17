@@ -5,6 +5,7 @@ import TeacherRegistrationSection from '../components/home/TeacherRegistrationSe
 import StudentRegistrationSection from '../components/home/StudentRegistrationSection';
 import HowItWorksSection from '../components/home/HowItWorksSection';
 import FeeStructureSection from '../components/home/FeeStructureSection';
+import GallerySection from '../components/home/GallerySection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import FounderVisionSection from '../components/home/FounderVisionSection';
 import FAQSection from '../components/home/FAQSection';
@@ -20,6 +21,7 @@ export default function HomePage({ onOpenStatusModal }) {
       <StudentRegistrationSection />
       <HowItWorksSection />
       <FeeStructureSection />
+      <GallerySection />
       <TestimonialsSection />
       <FounderVisionSection />
       <FAQSection />

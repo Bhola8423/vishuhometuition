@@ -19,7 +19,7 @@ export default function HeroSection() {
       </div>
       <div className="container hero-grid">
         <div className="hero-copy reveal show">
-          <span className="hero-kicker">🍿 Gorakhpur's No. 1 Home Tuition Platform</span>
+          <span className="hero-kicker">👑 Gorakhpur's No. 1 Home Tuition Platform</span>
           <h1>VISHU<span>HOME TUITION</span></h1>
           <div className="city">GORAKHPUR</div>
           <div className="solution">Your <strong>Complete Home Tuition Solution</strong> in Gorakhpur</div>
@@ -61,4 +61,3 @@ export default function HeroSection() {
     </section>
   );
 }
-

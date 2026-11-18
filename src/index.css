@@ -8639,29 +8639,29 @@ body .tutor-btn.registration-cta{
 
 @media(max-width:720px){
   #fees .fee-variation-note{
-    width:92vw!important;
-    max-width:640px!important;
-    padding:9px 10px!important;
-    border-radius:17px!important;
+    width:92%!important;
+    max-width:480px!important;
+    padding:12px 16px!important;
+    border-radius:18px!important;
   }
   #fees .fee-variation-note .note-badge{
-    padding:5px 10px!important;
-    font-size:.64rem!important;
-    margin-bottom:7px!important;
+    padding:4px 10px!important;
+    font-size:.72rem!important;
+    margin-bottom:6px!important;
   }
   #fees .fee-variation-note > span:last-child{
     display:block!important;
     width:100%!important;
-    white-space:nowrap!important;
+    white-space:normal!important;
     text-align:center!important;
-    font-size:clamp(.58rem,2.4vw,.72rem)!important;
-    letter-spacing:-.01em!important;
+    font-size:.82rem!important;
+    line-height:1.45!important;
   }
 }
 
 @media(max-width:380px){
   #fees .fee-variation-note > span:last-child{
-    font-size:.57rem!important;
+    font-size:.76rem!important;
   }
 }
 
@@ -8976,33 +8976,30 @@ html body #tutor .tutor-btn.registration-cta .cta-label{
 
 /* User-approved final micro polish only: fee note strip, CTA sheen, contact shine. */
 #fees .fee-variation-note{
-  display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:nowrap!important;gap:0!important;
-  width:min(1120px,96%)!important;max-width:1120px!important;min-height:48px!important;margin:14px auto 18px!important;padding:10px 22px!important;
-  border:0!important;border-radius:999px!important;background:linear-gradient(90deg,#12396f 0%,#154b8c 100%)!important;
-  box-shadow:0 8px 22px rgba(6,30,73,.10)!important;color:#fff!important;overflow:hidden!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:8px 12px!important;
+  width:auto!important;max-width:min(94%,920px)!important;min-height:auto!important;margin:14px auto 18px!important;padding:10px 22px!important;
+  border:1.5px solid rgba(247,198,61,.3)!important;border-radius:999px!important;background:linear-gradient(90deg,#0d2f5f 0%,#154b8c 100%)!important;
+  box-shadow:0 8px 22px rgba(6,30,73,.10)!important;color:#fff!important;overflow:visible!important;
 }
 #fees .fee-variation-note::before{display:none!important;content:none!important}
 #fees .fee-variation-note .note-badge{
-  display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
-  background:transparent!important;box-shadow:none!important;color:#FFD11A!important;font-size:clamp(.78rem,1.35vw,1.05rem)!important;
-  font-weight:950!important;letter-spacing:.06em!important;line-height:1!important;white-space:nowrap!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 auto!important;margin:0!important;padding:4px 12px!important;border:1px solid rgba(247,198,61,.5)!important;border-radius:999px!important;
+  background:rgba(247,198,61,.2)!important;box-shadow:none!important;color:#FFD11A!important;font-size:.74rem!important;
+  font-weight:950!important;letter-spacing:.06em!important;line-height:1.2!important;white-space:nowrap!important;
 }
-#fees .fee-variation-note .note-badge::after{content:"|"!important;display:inline-block!important;margin:0 14px!important;color:rgba(255,255,255,.90)!important;font-weight:600!important}
+#fees .fee-variation-note .note-badge::after{display:none!important;content:none!important}
 #fees .fee-variation-note > span:last-child{
-  display:inline!important;width:auto!important;margin:0!important;color:#fff!important;font-size:clamp(.74rem,1.25vw,.98rem)!important;
-  font-weight:750!important;line-height:1.2!important;letter-spacing:0!important;white-space:nowrap!important;text-align:left!important;
+  display:inline!important;width:auto!important;margin:0!important;color:#fff!important;font-size:clamp(.78rem,2vw,.90rem)!important;
+  font-weight:600!important;line-height:1.45!important;letter-spacing:0!important;white-space:normal!important;text-align:center!important;
 }
 @media(max-width:720px){
-  #fees .fee-variation-note{width:94%!important;max-width:none!important;min-height:42px!important;padding:8px 12px!important;margin:10px auto 14px!important;border-radius:999px!important;flex-direction:row!important}
-  #fees .fee-variation-note .note-badge{font-size:clamp(.60rem,2.45vw,.72rem)!important;margin:0!important;padding:0!important}
-  #fees .fee-variation-note .note-badge::after{margin:0 7px!important}
-  #fees .fee-variation-note > span:last-child{display:inline!important;width:auto!important;font-size:clamp(.52rem,2.15vw,.66rem)!important;white-space:nowrap!important;text-align:left!important}
+  #fees .fee-variation-note{width:92%!important;max-width:480px!important;min-height:auto!important;padding:12px 16px!important;margin:12px auto 16px!important;border-radius:18px!important;flex-direction:column!important;gap:6px!important}
+  #fees .fee-variation-note .note-badge{font-size:.72rem!important;margin:0!important;padding:3px 10px!important}
+  #fees .fee-variation-note > span:last-child{display:block!important;width:100%!important;font-size:.82rem!important;white-space:normal!important;text-align:center!important;line-height:1.45!important}
 }
 @media(max-width:390px){
-  #fees .fee-variation-note{padding-left:9px!important;padding-right:9px!important}
-  #fees .fee-variation-note .note-badge{font-size:.56rem!important}
-  #fees .fee-variation-note .note-badge::after{margin:0 5px!important}
-  #fees .fee-variation-note > span:last-child{font-size:.485rem!important}
+  #fees .fee-variation-note{padding:10px 12px!important;border-radius:16px!important}
+  #fees .fee-variation-note > span:last-child{font-size:.76rem!important}
 }
 
 /* Register CTAs: same approved yellow, zero zoom/pulse, only subtle sheen. */
